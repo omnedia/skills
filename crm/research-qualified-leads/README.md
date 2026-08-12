@@ -67,6 +67,8 @@ The agent needs:
 - optionally, a custom minimum score;
 - optionally, a Twenty `company.csv` export for schema matching and CRM deduplication.
 
+Address fields, including `Address / Country`, are optional in the supplied CRM export. Geography is still verified for each researched candidate even when the input-derived CSV schema does not contain address columns.
+
 If no `company.csv` is supplied, the skill still creates the final CSV using its bundled compatibility schema. The run summary will clearly note that CRM deduplication was not performed.
 
 ## How it works

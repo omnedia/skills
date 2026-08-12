@@ -23,8 +23,8 @@
   },
   "budget_enrichment": {
     "exported_attempted": 50,
-    "exported_with_published_budget": 0,
-    "exported_without_published_budget": 50
+    "exported_with_published_budget": 9,
+    "exported_without_published_budget": 41
   },
-  "exported_with_budget": 0
+  "exported_with_budget": 9
 }

@@ -29,6 +29,27 @@ class CsvContractTests(unittest.TestCase):
             with self.assertRaisesRegex(ContractError, "Missing required"):
                 parse_csv(path)
 
+    def test_address_country_is_optional(self):
+        text = FIXTURE.read_text(encoding="utf-8")
+        rows = list(csv.reader(text.splitlines()))
+        country_index = rows[0].index("Address / Country")
+        for row in rows:
+            del row[country_index]
+        with tempfile.TemporaryDirectory() as directory:
+            source = Path(directory) / "without-country.csv"
+            with source.open("w", encoding="utf-8", newline="") as handle:
+                csv.writer(handle).writerows(rows)
+            contract, parsed_rows = parse_csv(source)
+            self.assertNotIn("Address / Country", contract.headers)
+            self.assertEqual(len(parsed_rows), 1)
+
+            output = Path(directory) / "out.csv"
+            summary = export(str(source), [potential_candidate()], str(output), "POTENTIAL_CUSTOMERS", 1)
+            out_contract, out_rows = parse_csv(output)
+            self.assertNotIn("Address / Country", out_contract.headers)
+            self.assertEqual(len(out_rows), 1)
+            self.assertEqual(summary["exported"], 1)
+
     def test_duplicate_header_stops(self):
         text = FIXTURE.read_text(encoding="utf-8").replace("Custom Field", "Name", 1)
         with tempfile.TemporaryDirectory() as directory:

@@ -14,7 +14,6 @@ REQUIRED_COLUMNS = (
     "Scope",
     "Domain Name / Link URL",
     "Status",
-    "Address / Country",
     "Phone / Primary Phone Number",
     "Mail / Primary Email",
 )

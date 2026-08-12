@@ -86,7 +86,8 @@ def map_candidate(candidate: dict[str, Any], headers: list[str], contract_empty_
     row["Domain Name / Link URL"] = candidate["website_url"]
     row["Referrer / Link URL"] = candidate["primary_source_url"]
     row["Status"] = "OFFEN"
-    row["Address / Country"] = candidate["country"]
+    if "Address / Country" in row:
+        row["Address / Country"] = candidate["country"]
     email = str(candidate.get("email", "")).strip()
     if email:
         if not EMAIL_RE.fullmatch(email):

@@ -15,6 +15,9 @@ except ImportError:  # pragma: no cover - CLI gives an actionable dependency err
     tldextract = None
 
 
+DOMAIN_EXTRACTOR = tldextract.TLDExtract(suffix_list_urls=(), cache_dir=None) if tldextract else None
+
+
 LEGAL_SUFFIXES = {
     "ag", "e k", "ek", "gbr", "gmbh", "gmbh co kg", "kg", "kgaa", "ohg",
     "se", "ug", "mbh", "gesellschaft mit beschrankter haftung", "aktiengesellschaft",
@@ -26,7 +29,7 @@ def registrable_domain(url: str) -> str:
         raise RuntimeError("Install dependencies with: python -m pip install -r requirements.txt")
     normalized = validate_http_url(url)
     host = normalized.split("//", 1)[1].split("/", 1)[0].split(":", 1)[0]
-    result = tldextract.TLDExtract(suffix_list_urls=())(host)
+    result = DOMAIN_EXTRACTOR(host)
     if not result.domain or not result.suffix:
         raise ContractError(f"URL has no registrable public domain: {url!r}")
     return f"{result.domain}.{result.suffix}".lower()

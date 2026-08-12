@@ -19,6 +19,8 @@ If the mode is missing, ask whether to use `VIDEO_EDITING` or `POTENTIAL_CUSTOME
 
 Accept an optional Twenty `company.csv` for schema discovery and CRM deduplication. Never block research or ordinary CSV creation when it is absent. Treat a user-supplied output path as a location hint: create a new run folder in its parent and place the requested CSV inside that folder rather than alongside unrelated files.
 
+`Address / Country` and the other address columns are optional in a supplied `company.csv`. Use them for location-aware review when present, but do not add them to an input-derived export schema when absent. Candidate geography is still mandatory evidence and qualification data.
+
 Read `config/twenty.yaml`. Apply the import-smoke-test, approved-purpose, and retention gates only when the user explicitly requests a production-verified CRM delivery using `--production`. Never claim a smoke test was performed automatically. Do not decide legal compliance for the operator.
 
 ## Run Directory
