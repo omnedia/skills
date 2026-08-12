@@ -23,6 +23,7 @@ def potential_candidate(**overrides):
                 "observed_at": "2026-08-11",
                 "published_at": "2026-08-01",
                 "signal_category": "CONTENT_HIRING",
+                "job_title": "Video Content Producer",
                 "factual_summary": "Das Unternehmen sucht Unterstützung für laufende Social-Video-Produktion.",
                 "current_state": "open",
             },
@@ -37,6 +38,11 @@ def potential_candidate(**overrides):
             },
         ],
         "primary_source_url": "https://beispiel-handel.de/jobs/content",
+        "budget_enrichment": {
+            "attempted": True,
+            "pages_checked": ["https://beispiel-handel.de/jobs/content"],
+            "unavailable_reason": "NOT_PUBLISHED",
+        },
         "phone": "+49 30 123456",
         "email": "kontakt@beispiel-handel.de",
         "contact_enrichment": {
@@ -60,4 +66,9 @@ def potential_candidate(**overrides):
         ),
     }
     candidate.update(overrides)
+    if candidate.get("budget") and candidate.get("budget_source_url") and "budget_enrichment" not in overrides:
+        candidate["budget_enrichment"] = {
+            "attempted": True,
+            "pages_checked": [candidate["budget_source_url"]],
+        }
     return candidate

@@ -1,0 +1,2317 @@
+[
+  {
+    "name": "Neona Living GmbH",
+    "website_url": "https://www.neona.store",
+    "country": "DE",
+    "city": "Köln",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video-Editor/in (m/w/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Video-Editor/in (m/w/d)“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "support@neona.store",
+    "phone": "+49 214 50680266",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.neona.store/pages/impressum"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://www.neona.store/pages/impressum",
+      "phone_source_url": "https://www.neona.store/pages/impressum"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Neona Living GmbH schreibt aktuell die Position „Video-Editor/in (m/w/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "DATRON AG",
+    "website_url": "https://www.datron.de",
+    "country": "DE",
+    "city": "Ober-Ramstadt",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Content Creator (m/w/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Video Content Creator (m/w/d)“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "info@datron.de",
+    "phone": "+49 6154 637660",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://webshop.datron.de/Informationen/Impressum/"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://webshop.datron.de/Informationen/Impressum/",
+      "phone_source_url": "https://webshop.datron.de/Informationen/Impressum/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: DATRON AG schreibt aktuell die Position „Video Content Creator (m/w/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "PBMvisuals GmbH",
+    "website_url": "https://pbmvisuals.de",
+    "country": "DE",
+    "city": "Hamm",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Content Creator (m/w/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Video Content Creator (m/w/d)“.",
+        "current_state": "open"
+      },
+      {
+        "source_url": "https://de.indeed.com/viewjob?jk=ccd6365913746f84",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Content Creator (m/w/d)",
+        "factual_summary": "Die konkrete Stellenanzeige veröffentlicht für die Position eine Vergütung von 32.000–45.000 EUR brutto/Jahr.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor",
+        "https://de.indeed.com/viewjob?jk=ccd6365913746f84"
+      ]
+    },
+    "email": "service@pbmvisuals.de",
+    "phone": "+49 2381 8769988",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://pbmvisuals.de/impressum/"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://pbmvisuals.de/impressum/",
+      "phone_source_url": "https://pbmvisuals.de/impressum/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: PBMvisuals GmbH schreibt aktuell die Position „Video Content Creator (m/w/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen.",
+    "budget": "32.000–45.000 EUR brutto/Jahr",
+    "budget_source_url": "https://de.indeed.com/viewjob?jk=ccd6365913746f84"
+  },
+  {
+    "name": "Binder Optik GmbH",
+    "website_url": "https://www.binder-optik.de",
+    "country": "DE",
+    "city": "Böblingen",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video & Foto Creator (m/w/d) mit Fokus KI",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Video & Foto Creator (m/w/d) mit Fokus KI“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "info@binder-optik.de",
+    "phone": "+49 7031 62070",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.binder-optik.de/impressum/"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://www.binder-optik.de/impressum/",
+      "phone_source_url": "https://www.binder-optik.de/impressum/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Binder Optik GmbH schreibt aktuell die Position „Video & Foto Creator (m/w/d) mit Fokus KI“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "Dr. O. K. Wack Chemie GmbH",
+    "website_url": "https://wack-group.com",
+    "country": "DE",
+    "city": "Baar-Ebenhausen",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Junior Video Content Creator - Technik / Social Media (m/w/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Junior Video Content Creator - Technik / Social Media (m/w/d)“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "",
+    "phone": "+49 8453 41995100",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://wack-group.com/en/contact/"
+      ],
+      "unavailable_reasons": {
+        "email": "NOT_PUBLISHED"
+      },
+      "phone_source_url": "https://wack-group.com/en/contact/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Dr. O. K. Wack Chemie GmbH schreibt aktuell die Position „Junior Video Content Creator - Technik / Social Media (m/w/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "Anker Marketing GmbH",
+    "website_url": "https://www.anker-marketing.com",
+    "country": "DE",
+    "city": "Frankfurt am Main",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Editor*in GESUCHT! - Freelance / Vollzeit",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Video Editor*in GESUCHT! - Freelance / Vollzeit“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "info@anker-marketing.com",
+    "phone": "+49 152 33717046",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.anker-marketing.com/impressum"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://www.anker-marketing.com/impressum",
+      "phone_source_url": "https://www.anker-marketing.com/impressum"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Anker Marketing GmbH schreibt aktuell die Position „Video Editor*in GESUCHT! - Freelance / Vollzeit“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "Unseen Media GmbH",
+    "website_url": "https://unseenmedia.de",
+    "country": "DE",
+    "city": "Berlin",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Freelance Video Editor (m,w,d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Freelance Video Editor (m,w,d)“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "nico@unseenmedia.de",
+    "phone": "+49 1512 9467227",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://unseenmedia.de/"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://unseenmedia.de/",
+      "phone_source_url": "https://unseenmedia.de/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Unseen Media GmbH schreibt aktuell die Position „Freelance Video Editor (m,w,d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "Dschungel Marketing GmbH",
+    "website_url": "https://www.dschungel.io",
+    "country": "DE",
+    "city": "Berlin",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Editor Performance Marketing (all genders)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Video Editor Performance Marketing (all genders)“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "hallo@dschungel.io",
+    "phone": "+49 157 88894760",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.dschungel.io/impressum"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://www.dschungel.io/impressum",
+      "phone_source_url": "https://www.dschungel.io/impressum"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Dschungel Marketing GmbH schreibt aktuell die Position „Video Editor Performance Marketing (all genders)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "Priesmeier Sicherheit Systeme GmbH",
+    "website_url": "https://priesmeier-sicherheit.de",
+    "country": "DE",
+    "city": "Braunschweig",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Performance Video Editor / Cutter (m/w/d) Direct Response & Meta Ads | Freelance",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Performance Video Editor / Cutter (m/w/d) Direct Response & Meta Ads | Freelance“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "info@priesmeier-sicherheit.de",
+    "phone": "+49 531 243990",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://priesmeier-sicherheit.de/impressum/"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://priesmeier-sicherheit.de/impressum/",
+      "phone_source_url": "https://priesmeier-sicherheit.de/impressum/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Priesmeier Sicherheit Systeme GmbH schreibt aktuell die Position „Performance Video Editor / Cutter (m/w/d) Direct Response & Meta Ads | Freelance“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "MWA Media Works Agency GmbH",
+    "website_url": "https://www.media-works.de",
+    "country": "DE",
+    "city": "Hamburg",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "AI Video Editor / Social Media Cutter",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „AI Video Editor / Social Media Cutter“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "info@media-works.de",
+    "phone": "+49 40 63855272",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.media-works.de/imprint"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://www.media-works.de/imprint",
+      "phone_source_url": "https://www.media-works.de/imprint"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: MWA Media Works Agency GmbH schreibt aktuell die Position „AI Video Editor / Social Media Cutter“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "Falk Berberich Consulting",
+    "website_url": "https://www.falkberberich.com",
+    "country": "DE",
+    "city": "Villingen-Schwenningen",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Videoeditor / Cutter - Vollzeit (m/w/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Videoeditor / Cutter - Vollzeit (m/w/d)“.",
+        "current_state": "open"
+      },
+      {
+        "source_url": "https://talents.studysmarter.de/companies/falkberberich/videoeditor-cutter-vollzeit-m-w-d-3192378/",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Videoeditor / Cutter - Vollzeit (m/w/d)",
+        "factual_summary": "Die konkrete Stellenanzeige veröffentlicht für die Position eine Vergütung von 2.900 EUR brutto/Monat (Einstiegsgehalt).",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor",
+        "https://talents.studysmarter.de/companies/falkberberich/videoeditor-cutter-vollzeit-m-w-d-3192378/"
+      ]
+    },
+    "email": "info@falkberberich.com",
+    "phone": "+49 176 55700504",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.falkberberich.com/rechtliches/impressum"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://www.falkberberich.com/rechtliches/impressum",
+      "phone_source_url": "https://www.falkberberich.com/rechtliches/impressum"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Falk Berberich Consulting schreibt aktuell die Position „Videoeditor / Cutter - Vollzeit (m/w/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen.",
+    "budget": "2.900 EUR brutto/Monat (Einstiegsgehalt)",
+    "budget_source_url": "https://talents.studysmarter.de/companies/falkberberich/videoeditor-cutter-vollzeit-m-w-d-3192378/"
+  },
+  {
+    "name": "Baulig Consulting GmbH",
+    "website_url": "https://www.andreasbaulig.de",
+    "country": "DE",
+    "city": "Koblenz",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Editor/-in - Vollzeit (m/w/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Video Editor/-in - Vollzeit (m/w/d)“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "kontakt@andreasbaulig.de",
+    "phone": "+49 173 7458514",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.andreasbaulig.de/impressum"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://www.andreasbaulig.de/impressum",
+      "phone_source_url": "https://www.andreasbaulig.de/impressum"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Baulig Consulting GmbH schreibt aktuell die Position „Video Editor/-in - Vollzeit (m/w/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "Continu-ING GmbH",
+    "website_url": "https://www.continu-ing.com",
+    "country": "DE",
+    "city": "Wittlich",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Videoeditor (auch Quereinstieg) (m/w/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Videoeditor (auch Quereinstieg) (m/w/d)“.",
+        "current_state": "open"
+      },
+      {
+        "source_url": "https://karriere.continu-ing.com/o/videoeditor-auch-quereinstieg-mwd",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Videoeditor (auch Quereinstieg) (m/w/d)",
+        "factual_summary": "Die konkrete Stellenanzeige veröffentlicht für die Position eine Vergütung von 4.000 EUR brutto/Monat.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor",
+        "https://karriere.continu-ing.com/o/videoeditor-auch-quereinstieg-mwd"
+      ]
+    },
+    "email": "kontakt@continu-ing.com",
+    "phone": "+49 6571 95593100",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.continu-ing.com/impressum"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://www.continu-ing.com/impressum",
+      "phone_source_url": "https://www.continu-ing.com/impressum"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Continu-ING GmbH schreibt aktuell die Position „Videoeditor (auch Quereinstieg) (m/w/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen.",
+    "budget": "4.000 EUR brutto/Monat",
+    "budget_source_url": "https://karriere.continu-ing.com/o/videoeditor-auch-quereinstieg-mwd"
+  },
+  {
+    "name": "adbaker GmbH",
+    "website_url": "https://www.adbaker.de",
+    "country": "DE",
+    "city": "Köln",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Editor - all genders",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Video Editor - all genders“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "mail@adbaker.de",
+    "phone": "+49 221 99983680",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.adbaker.de/transparenz/kunden"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://www.adbaker.de/transparenz/kunden",
+      "phone_source_url": "https://www.adbaker.de/transparenz/kunden"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: adbaker GmbH schreibt aktuell die Position „Video Editor - all genders“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "Boost Media GmbH",
+    "website_url": "https://www.videoboost.de",
+    "country": "DE",
+    "city": "Darmstadt",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Videograph / Video Editor (m/w/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Videograph / Video Editor (m/w/d)“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "info@videoboost.de",
+    "phone": "+49 6151 62938122",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.videoboost.de/legal/impressum/"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://www.videoboost.de/legal/impressum/",
+      "phone_source_url": "https://www.videoboost.de/legal/impressum/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Boost Media GmbH schreibt aktuell die Position „Videograph / Video Editor (m/w/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "Uplift Marketing GmbH",
+    "website_url": "https://uplift-marketing.eu",
+    "country": "DE",
+    "city": "Fulda",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Editor Social Ads (m/w/d) 32-40 Std.",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Video Editor Social Ads (m/w/d) 32-40 Std.“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "info@uplift-marketing.eu",
+    "phone": "",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://uplift-marketing.eu/impressum/"
+      ],
+      "unavailable_reasons": {
+        "phone": "NOT_PUBLISHED"
+      },
+      "email_source_url": "https://uplift-marketing.eu/impressum/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Uplift Marketing GmbH schreibt aktuell die Position „Video Editor Social Ads (m/w/d) 32-40 Std.“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "Holzhey-Consulting GmbH",
+    "website_url": "https://www.katjaholzhey.com",
+    "country": "DE",
+    "city": "Mannheim",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Videograph & Video-Editor (m/w/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Videograph & Video-Editor (m/w/d)“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "hallo@katjaholzhey.com",
+    "phone": "+49 151 54166349",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.katjaholzhey.com/impressum"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://www.katjaholzhey.com/impressum",
+      "phone_source_url": "https://www.katjaholzhey.com/impressum"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Holzhey-Consulting GmbH schreibt aktuell die Position „Videograph & Video-Editor (m/w/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "everydays GmbH",
+    "website_url": "https://www.everydays.de",
+    "country": "DE",
+    "city": "Berlin",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Editor / AI Creative Cutter (m/w/d) - Video Ads für Meta & Co",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Video Editor / AI Creative Cutter (m/w/d) - Video Ads für Meta & Co“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "service@everydays.de",
+    "phone": "",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.everydays.de/pages/impressum"
+      ],
+      "unavailable_reasons": {
+        "phone": "NOT_PUBLISHED"
+      },
+      "email_source_url": "https://www.everydays.de/pages/impressum"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: everydays GmbH schreibt aktuell die Position „Video Editor / AI Creative Cutter (m/w/d) - Video Ads für Meta & Co“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "Uhl Werbeagentur GmbH",
+    "website_url": "https://uhl-werbeagentur.de",
+    "country": "DE",
+    "city": "Augsburg",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Editor (m/w/d) - Teilzeit",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Video Editor (m/w/d) - Teilzeit“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "info@uhl-werbeagentur.de",
+    "phone": "+49 821 38043",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://uhl-werbeagentur.de/"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://uhl-werbeagentur.de/",
+      "phone_source_url": "https://uhl-werbeagentur.de/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Uhl Werbeagentur GmbH schreibt aktuell die Position „Video Editor (m/w/d) - Teilzeit“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "G-IN GmbH",
+    "website_url": "https://g-in-gmbh.de",
+    "country": "DE",
+    "city": "Stuttgart",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video-Editor / Motion Designer (m/w/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Video-Editor / Motion Designer (m/w/d)“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "office@g-in.de",
+    "phone": "",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://g-in-gmbh.de/impressum/"
+      ],
+      "unavailable_reasons": {
+        "phone": "NOT_PUBLISHED"
+      },
+      "email_source_url": "https://g-in-gmbh.de/impressum/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: G-IN GmbH schreibt aktuell die Position „Video-Editor / Motion Designer (m/w/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "Cheggl GmbH",
+    "website_url": "https://www.cheggl.com",
+    "country": "DE",
+    "city": "Hamburg",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Editor:in",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Video Editor:in“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "hallo@cheggl.com",
+    "phone": "+49 40 334684480",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.cheggl.com/impressum"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://www.cheggl.com/impressum",
+      "phone_source_url": "https://www.cheggl.com/impressum"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Cheggl GmbH schreibt aktuell die Position „Video Editor:in“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "DartSturm GmbH",
+    "website_url": "https://dartsturm.de",
+    "country": "DE",
+    "city": "Naila",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "(Junior) Video Content Creator / Social Media (m/w/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „(Junior) Video Content Creator / Social Media (m/w/d)“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "kundenservice@dartsturm.de",
+    "phone": "+49 9282 9324822",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://dartsturm.de/Informationen/AGB/"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://dartsturm.de/Informationen/AGB/",
+      "phone_source_url": "https://dartsturm.de/Informationen/AGB/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: DartSturm GmbH schreibt aktuell die Position „(Junior) Video Content Creator / Social Media (m/w/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "Saykos GmbH",
+    "website_url": "https://saykos.de",
+    "country": "DE",
+    "city": "Heek",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Foto- & Video-Content Creator (m/w/d) – Beauty- & Friseurbranche",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Foto- & Video-Content Creator (m/w/d) – Beauty- & Friseurbranche“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "info@saykos.de",
+    "phone": "+49 2568 9099020",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://saykos.de/de/impressum"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://saykos.de/de/impressum",
+      "phone_source_url": "https://saykos.de/de/impressum"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Saykos GmbH schreibt aktuell die Position „Foto- & Video-Content Creator (m/w/d) – Beauty- & Friseurbranche“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "Gauder GmbH",
+    "website_url": "https://gauder.net",
+    "country": "DE",
+    "city": "Berlin",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Content Creator & Brand Personality Social Media (m/w/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Video Content Creator & Brand Personality Social Media (m/w/d)“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "hallo@gauder.net",
+    "phone": "+49 385 48930970",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://gauder.net/en/pages/imprint"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://gauder.net/en/pages/imprint",
+      "phone_source_url": "https://gauder.net/en/pages/imprint"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Gauder GmbH schreibt aktuell die Position „Video Content Creator & Brand Personality Social Media (m/w/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "O.C. Hairsystems GmbH",
+    "website_url": "https://oc-hairsystems.ch",
+    "country": "DE",
+    "city": "Düsseldorf",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/video-producer",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Videographer & Social Content Creator (m/w/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Videographer & Social Content Creator (m/w/d)“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/video-producer",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/video-producer"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "kontakt@oc-hairsystems.com",
+    "phone": "+49 211 22975318",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://oc-hairsystems.ch/impressum/"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://oc-hairsystems.ch/impressum/",
+      "phone_source_url": "https://oc-hairsystems.ch/impressum/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: O.C. Hairsystems GmbH schreibt aktuell die Position „Videographer & Social Content Creator (m/w/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "BRABUS GmbH",
+    "website_url": "https://www.brabus.com",
+    "country": "DE",
+    "city": "Bottrop",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/video-producer",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Videograph / Cinematograph - Serien & Dokumentationen (m/w/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Videograph / Cinematograph - Serien & Dokumentationen (m/w/d)“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/video-producer",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/video-producer"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "",
+    "phone": "+49 2041 7770",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.brabus.com/en-ee/imprint.html"
+      ],
+      "unavailable_reasons": {
+        "email": "NOT_PUBLISHED"
+      },
+      "phone_source_url": "https://www.brabus.com/en-ee/imprint.html"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: BRABUS GmbH schreibt aktuell die Position „Videograph / Cinematograph - Serien & Dokumentationen (m/w/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "planetlan GmbH",
+    "website_url": "https://planetlan.de",
+    "country": "DE",
+    "city": "Bochum",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/video-producer",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Mediengestalter Bild & Ton / Videograf – mit FPV-Skills (m/w/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Mediengestalter Bild & Ton / Videograf – mit FPV-Skills (m/w/d)“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/video-producer",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/video-producer"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "",
+    "phone": "+49 2327 369420",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://planetlan.de/de/impressum.htm"
+      ],
+      "unavailable_reasons": {
+        "email": "NOT_PUBLISHED"
+      },
+      "phone_source_url": "https://planetlan.de/de/impressum.htm"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: planetlan GmbH schreibt aktuell die Position „Mediengestalter Bild & Ton / Videograf – mit FPV-Skills (m/w/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "Pending System GmbH & Co. KG",
+    "website_url": "https://www.cube.eu",
+    "country": "DE",
+    "city": "Waldershof",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/video-producer",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Producer (m/w/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Video Producer (m/w/d)“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/video-producer",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/video-producer"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "",
+    "phone": "+49 9231 97007845",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.cube.eu/de-de/impressum"
+      ],
+      "unavailable_reasons": {
+        "email": "NOT_PUBLISHED"
+      },
+      "phone_source_url": "https://www.cube.eu/de-de/impressum"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Pending System GmbH & Co. KG schreibt aktuell die Position „Video Producer (m/w/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "J.L.B. Gaststättenbetrieb GmbH",
+    "website_url": "https://landhaus-walter.de",
+    "country": "DE",
+    "city": "Hamburg",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/video-producer",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Producer (m/w/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Video Producer (m/w/d)“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/video-producer",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/video-producer"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "impressum@landhaus-walter.de",
+    "phone": "",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://landhaus-walter.de/impressum/"
+      ],
+      "unavailable_reasons": {
+        "phone": "NOT_PUBLISHED"
+      },
+      "email_source_url": "https://landhaus-walter.de/impressum/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: J.L.B. Gaststättenbetrieb GmbH schreibt aktuell die Position „Video Producer (m/w/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "Ordio GmbH",
+    "website_url": "https://www.ordio.com",
+    "country": "DE",
+    "city": "Köln",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/video-producer",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Creative Video Producer (m/f/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Creative Video Producer (m/f/d)“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/video-producer",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/video-producer"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "hallo@ordio.com",
+    "phone": "",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.ordio.com/datenschutz"
+      ],
+      "unavailable_reasons": {
+        "phone": "NOT_PUBLISHED"
+      },
+      "email_source_url": "https://www.ordio.com/datenschutz"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Ordio GmbH schreibt aktuell die Position „Creative Video Producer (m/f/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "ABH24 GmbH & Co. KG",
+    "website_url": "https://www.abh24.com",
+    "country": "DE",
+    "city": "Bielefeld",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/video-producer",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Videograf / Creative Video Producer (m/w/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Videograf / Creative Video Producer (m/w/d)“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/video-producer",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/video-producer"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "info@abh24.com",
+    "phone": "+49 521 99997580",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.abh24.com/impressum"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://www.abh24.com/impressum",
+      "phone_source_url": "https://www.abh24.com/impressum"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: ABH24 GmbH & Co. KG schreibt aktuell die Position „Videograf / Creative Video Producer (m/w/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "BEWEGT.content GmbH",
+    "website_url": "https://www.bewegt-content.com",
+    "country": "DE",
+    "city": "Neusäß",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/video-producer",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Producer / Editor – Foto, Film & KI (m/w/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Video Producer / Editor – Foto, Film & KI (m/w/d)“.",
+        "current_state": "open"
+      },
+      {
+        "source_url": "https://www.arbeitsagentur.de/jobsuche/suche?angebotsart=1&was=Video",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Producer / Editor – Foto, Film & KI (m/w/d)",
+        "factual_summary": "Die konkrete Stellenanzeige veröffentlicht für die Position eine Vergütung von 30.000–40.000 EUR/Jahr.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/video-producer",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/video-producer",
+        "https://www.arbeitsagentur.de/jobsuche/suche?angebotsart=1&was=Video"
+      ]
+    },
+    "email": "",
+    "phone": "+49 821 99959062",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.bewegt-content.com/Kontakt/"
+      ],
+      "unavailable_reasons": {
+        "email": "NOT_PUBLISHED"
+      },
+      "phone_source_url": "https://www.bewegt-content.com/Kontakt/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: BEWEGT.content GmbH schreibt aktuell die Position „Video Producer / Editor – Foto, Film & KI (m/w/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen.",
+    "budget": "30.000–40.000 EUR/Jahr",
+    "budget_source_url": "https://www.arbeitsagentur.de/jobsuche/suche?angebotsart=1&was=Video"
+  },
+  {
+    "name": "Scalecom GmbH",
+    "website_url": "https://www.scalecom.de",
+    "country": "DE",
+    "city": "Neu-Isenburg",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/video-producer",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Videograf & Cutter für Social Media Ads (m/w/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Videograf & Cutter für Social Media Ads (m/w/d)“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/video-producer",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/video-producer"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "info@scalecom.de",
+    "phone": "+49 157 73730402",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.scalecom.de/impressum"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://www.scalecom.de/impressum",
+      "phone_source_url": "https://www.scalecom.de/impressum"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Scalecom GmbH schreibt aktuell die Position „Videograf & Cutter für Social Media Ads (m/w/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "Fitklusiv GmbH",
+    "website_url": "https://fitklusiv.de",
+    "country": "DE",
+    "city": "Düsseldorf",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/video-producer",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Content Creator / Videograf (Festanstellung)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Content Creator / Videograf (Festanstellung)“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/video-producer",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/video-producer"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "kontakt@fitklusiv.de",
+    "phone": "+49 211 68788299",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://fitklusiv.de/studios/"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://fitklusiv.de/studios/",
+      "phone_source_url": "https://fitklusiv.de/studios/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Fitklusiv GmbH schreibt aktuell die Position „Content Creator / Videograf (Festanstellung)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "CMF Advertising GmbH",
+    "website_url": "https://www.cmf.de",
+    "country": "DE",
+    "city": "Oberursel",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/video-producer",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Junior Videographer & Motion Designer (m/w/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Junior Videographer & Motion Designer (m/w/d)“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/video-producer",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/video-producer"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "frankfurt@cmf.de",
+    "phone": "+49 6171 88780",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.cmf.de/impressum/"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://www.cmf.de/impressum/",
+      "phone_source_url": "https://www.cmf.de/impressum/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: CMF Advertising GmbH schreibt aktuell die Position „Junior Videographer & Motion Designer (m/w/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "IMAGETOWN GmbH",
+    "website_url": "https://imagetown.de",
+    "country": "DE",
+    "city": "Schönefeld",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/video-producer",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Immobilienfoto/videografIn",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Immobilienfoto/videografIn“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/video-producer",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/video-producer"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "hello@imagetown.de",
+    "phone": "+49 30 233285540",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://imagetown.de/kontakt/"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://imagetown.de/kontakt/",
+      "phone_source_url": "https://imagetown.de/kontakt/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: IMAGETOWN GmbH schreibt aktuell die Position „Immobilienfoto/videografIn“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "DMV Deutsche Mittelstandsversorgung GmbH",
+    "website_url": "https://dmv-karriere.de",
+    "country": "DE",
+    "city": "Landshut",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/video-producer",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Foto- & Videograph/in Vollzeit",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Foto- & Videograph/in Vollzeit“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/video-producer",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/video-producer"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "kontakt@betriebsrente.de",
+    "phone": "+49 871 97309220",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://dmv-karriere.de/impressum/"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://dmv-karriere.de/impressum/",
+      "phone_source_url": "https://dmv-karriere.de/impressum/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: DMV Deutsche Mittelstandsversorgung GmbH schreibt aktuell die Position „Foto- & Videograph/in Vollzeit“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "the social. Academy GmbH",
+    "website_url": "https://social-academy.at",
+    "country": "AT",
+    "city": "Salzburg",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://social-academy.at/karriere/",
+        "source_type": "company_career_page",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Editor Vollzeit",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Video Editor Vollzeit“.",
+        "current_state": "open"
+      },
+      {
+        "source_url": "https://karriere.social-academy.at/o/video-editor-vollzeit-mwd",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Editor Vollzeit",
+        "factual_summary": "Die konkrete Stellenanzeige veröffentlicht für die Position eine Vergütung von ab 3.000 EUR brutto/Monat.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://social-academy.at/karriere/",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://social-academy.at/karriere/",
+        "https://karriere.social-academy.at/o/video-editor-vollzeit-mwd"
+      ]
+    },
+    "email": "info@social-academy.at",
+    "phone": "+43 660 3733587",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://social-academy.at/impressum/"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://social-academy.at/impressum/",
+      "phone_source_url": "https://social-academy.at/impressum/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: the social. Academy GmbH schreibt aktuell die Position „Video Editor Vollzeit“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen.",
+    "budget": "ab 3.000 EUR brutto/Monat",
+    "budget_source_url": "https://karriere.social-academy.at/o/video-editor-vollzeit-mwd"
+  },
+  {
+    "name": "Quantum-Systems GmbH",
+    "website_url": "https://quantum-systems.com",
+    "country": "DE",
+    "city": "Gilching",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://quantum-systems.com/career/",
+        "source_type": "company_career_page",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Videoeditor / Cutter (m/f/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Videoeditor / Cutter (m/f/d)“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://quantum-systems.com/career/",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://quantum-systems.com/career/"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "info@quantum-systems.com",
+    "phone": "+49 8105 7709100",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://quantum-systems.com/legal-notice/"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://quantum-systems.com/legal-notice/",
+      "phone_source_url": "https://quantum-systems.com/legal-notice/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Quantum-Systems GmbH schreibt aktuell die Position „Videoeditor / Cutter (m/f/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "fonio GmbH",
+    "website_url": "https://fonio.info",
+    "country": "AT",
+    "city": "Wien",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://jobs.ashbyhq.com/fonio",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Cutter / Post-Production",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Video Cutter / Post-Production“.",
+        "current_state": "open"
+      },
+      {
+        "source_url": "https://jobs.ashbyhq.com/fonio/d6099f0b-4903-4a4e-8caf-7c078de8b7d9",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Cutter / Post-Production",
+        "factual_summary": "Die konkrete Stellenanzeige veröffentlicht für die Position eine Vergütung von 55.000–80.000 EUR brutto/Jahr.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://jobs.ashbyhq.com/fonio",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://jobs.ashbyhq.com/fonio",
+        "https://jobs.ashbyhq.com/fonio/d6099f0b-4903-4a4e-8caf-7c078de8b7d9"
+      ]
+    },
+    "email": "info@fonio.ai",
+    "phone": "",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://fonio.info/de/articles/legal"
+      ],
+      "unavailable_reasons": {
+        "phone": "NOT_PUBLISHED"
+      },
+      "email_source_url": "https://fonio.info/de/articles/legal"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: fonio GmbH schreibt aktuell die Position „Video Cutter / Post-Production“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen.",
+    "budget": "55.000–80.000 EUR brutto/Jahr",
+    "budget_source_url": "https://jobs.ashbyhq.com/fonio/d6099f0b-4903-4a4e-8caf-7c078de8b7d9"
+  },
+  {
+    "name": "Heritsch Media GmbH",
+    "website_url": "https://www.heritsch-media.at",
+    "country": "AT",
+    "city": "Lieboch",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Cutter & Editor",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Video Cutter & Editor“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "impressum@heritsch-media.at",
+    "phone": "",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.heritsch-media.at/impressum"
+      ],
+      "unavailable_reasons": {
+        "phone": "NOT_PUBLISHED"
+      },
+      "email_source_url": "https://www.heritsch-media.at/impressum"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Heritsch Media GmbH schreibt aktuell die Position „Video Cutter & Editor“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "Universität Wien",
+    "website_url": "https://www.univie.ac.at",
+    "country": "AT",
+    "city": "Wien",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/video-producer",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Mitarbeiter*in Video Content Production – freier Dienstvertrag",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Mitarbeiter*in Video Content Production – freier Dienstvertrag“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/video-producer",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/video-producer"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "",
+    "phone": "+43 1 427737012",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.univie.ac.at/impressum/"
+      ],
+      "unavailable_reasons": {
+        "email": "NOT_PUBLISHED"
+      },
+      "phone_source_url": "https://www.univie.ac.at/impressum/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Universität Wien schreibt aktuell die Position „Mitarbeiter*in Video Content Production – freier Dienstvertrag“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "BlackWood GmbH",
+    "website_url": "https://www.oscarkarem.com",
+    "country": "AT",
+    "city": "Wien",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/video-producer",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Videograph (m/w/d)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Videograph (m/w/d)“.",
+        "current_state": "open"
+      },
+      {
+        "source_url": "https://talents.studysmarter.de/companies/blackwood-gmbh/videographer-video-content-creator-m-w-d-4648195/",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Videograph (m/w/d)",
+        "factual_summary": "Die konkrete Stellenanzeige veröffentlicht für die Position eine Vergütung von 3.000 EUR brutto/Monat (Einstiegsgehalt, 40 Std.).",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/video-producer",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/video-producer",
+        "https://talents.studysmarter.de/companies/blackwood-gmbh/videographer-video-content-creator-m-w-d-4648195/"
+      ]
+    },
+    "email": "mail@oscarkarem.com",
+    "phone": "+43 660 6251710",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.oscarkarem.com/impressum"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://www.oscarkarem.com/impressum",
+      "phone_source_url": "https://www.oscarkarem.com/impressum"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: BlackWood GmbH schreibt aktuell die Position „Videograph (m/w/d)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen.",
+    "budget": "3.000 EUR brutto/Monat (Einstiegsgehalt, 40 Std.)",
+    "budget_source_url": "https://talents.studysmarter.de/companies/blackwood-gmbh/videographer-video-content-creator-m-w-d-4648195/"
+  },
+  {
+    "name": "ZOOOM Productions GmbH",
+    "website_url": "https://www.zooom.com",
+    "country": "AT",
+    "city": "Fuschl am See",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.zooom.com/en_eu/agency/offices/zooom-fuschl-am-see",
+        "source_type": "company_career_page",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Videographer, Editor & Content Creator",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Videographer, Editor & Content Creator“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.zooom.com/en_eu/agency/offices/zooom-fuschl-am-see",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.zooom.com/en_eu/agency/offices/zooom-fuschl-am-see"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "europe@zooom.com",
+    "phone": "+43 6226 88480",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.zooom.com/en_eu/agency/offices/zooom-fuschl-am-see"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://www.zooom.com/en_eu/agency/offices/zooom-fuschl-am-see",
+      "phone_source_url": "https://www.zooom.com/en_eu/agency/offices/zooom-fuschl-am-see"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: ZOOOM Productions GmbH schreibt aktuell die Position „Videographer, Editor & Content Creator“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "NinetoSix GmbH",
+    "website_url": "https://www.ninetosix.de",
+    "country": "DE",
+    "city": "Nürnberg",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Editor:in",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Video Editor:in“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "info@ninetosix.de",
+    "phone": "+49 911 38466016",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.ninetosix.de/kontakt"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://www.ninetosix.de/kontakt",
+      "phone_source_url": "https://www.ninetosix.de/kontakt"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: NinetoSix GmbH schreibt aktuell die Position „Video Editor:in“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "Osteopathie Praxis Benkmann",
+    "website_url": "https://osteopathie-benkmann.com",
+    "country": "DE",
+    "city": "Hamburg",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Mediengestalter:in / Video Content Creator (YouTube) Konzept, Dreh & Schnitt",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Mediengestalter:in / Video Content Creator (YouTube) Konzept, Dreh & Schnitt“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "info@osteopathie-benkmann.com",
+    "phone": "+49 40 64850258",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://osteopathie-benkmann.com/impressum/"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://osteopathie-benkmann.com/impressum/",
+      "phone_source_url": "https://osteopathie-benkmann.com/impressum/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: Osteopathie Praxis Benkmann schreibt aktuell die Position „Mediengestalter:in / Video Content Creator (YouTube) Konzept, Dreh & Schnitt“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "twentythree GmbH",
+    "website_url": "https://twentythree.de",
+    "country": "DE",
+    "city": "Esslingen am Neckar",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Content Creator (m/w/d) Social Media",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Video Content Creator (m/w/d) Social Media“.",
+        "current_state": "open"
+      },
+      {
+        "source_url": "https://join.com/companies/twentythree",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Video Content Creator (m/w/d) Social Media",
+        "factual_summary": "Die konkrete Stellenanzeige veröffentlicht für die Position eine Vergütung von 1.446–1.807 EUR/Monat (Teilzeit).",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor",
+        "https://join.com/companies/twentythree"
+      ]
+    },
+    "email": "team@twentythree.de",
+    "phone": "+49 711 90755917",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://twentythree.de/pages/datenschutz"
+      ],
+      "unavailable_reasons": {},
+      "email_source_url": "https://twentythree.de/pages/datenschutz",
+      "phone_source_url": "https://twentythree.de/pages/datenschutz"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: twentythree GmbH schreibt aktuell die Position „Video Content Creator (m/w/d) Social Media“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen.",
+    "budget": "1.446–1.807 EUR/Monat (Teilzeit)",
+    "budget_source_url": "https://join.com/companies/twentythree"
+  },
+  {
+    "name": "L1VE Germany GmbH",
+    "website_url": "https://www.l1ve.com",
+    "country": "DE",
+    "city": "Berlin",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Post-production Producer (360° VR) (f,m,x)",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Post-production Producer (360° VR) (f,m,x)“.",
+        "current_state": "open"
+      },
+      {
+        "source_url": "https://join.com/companies/soft-seedcom/16465099-post-production-producer-360-vr",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Post-production Producer (360° VR) (f,m,x)",
+        "factual_summary": "Die konkrete Stellenanzeige veröffentlicht für die Position eine Vergütung von 48.000–58.000 EUR/Jahr.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor",
+        "https://join.com/companies/soft-seedcom/16465099-post-production-producer-360-vr"
+      ]
+    },
+    "email": "info@l1ve.com",
+    "phone": "",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.l1ve.com/terms"
+      ],
+      "unavailable_reasons": {
+        "phone": "NOT_PUBLISHED"
+      },
+      "email_source_url": "https://www.l1ve.com/terms"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: L1VE Germany GmbH schreibt aktuell die Position „Post-production Producer (360° VR) (f,m,x)“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen.",
+    "budget": "48.000–58.000 EUR/Jahr",
+    "budget_source_url": "https://join.com/companies/soft-seedcom/16465099-post-production-producer-360-vr"
+  },
+  {
+    "name": "urbanuncut GmbH",
+    "website_url": "https://www.urbanuncut.de",
+    "country": "DE",
+    "city": "München",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.stepstone.de/jobs/videoeditor",
+        "source_type": "job_board",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Cutter/Editor:in",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Cutter/Editor:in“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.stepstone.de/jobs/videoeditor",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.stepstone.de/jobs/videoeditor"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "",
+    "phone": "+49 89 21529461",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.urbanuncut.de/kontakt/"
+      ],
+      "unavailable_reasons": {
+        "email": "NOT_PUBLISHED"
+      },
+      "phone_source_url": "https://www.urbanuncut.de/kontakt/"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: urbanuncut GmbH schreibt aktuell die Position „Cutter/Editor:in“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  },
+  {
+    "name": "dibido.tv GmbH",
+    "website_url": "https://www.dibido.tv",
+    "country": "AT",
+    "city": "Wien",
+    "mode": "VIDEO_EDITING",
+    "evidence": [
+      {
+        "source_url": "https://www.dibido.tv/jobs",
+        "source_type": "company_career_page",
+        "observed_at": "2026-08-12",
+        "signal_category": "DIRECT_EDITING_VACANCY",
+        "job_title": "Cutter:in / Editor:in, Vollzeit 40h",
+        "factual_summary": "Die aktuell beobachtete Ausschreibung nennt ausdrücklich die Position „Cutter:in / Editor:in, Vollzeit 40h“.",
+        "current_state": "open"
+      }
+    ],
+    "primary_source_url": "https://www.dibido.tv/jobs",
+    "budget_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.dibido.tv/jobs"
+      ],
+      "unavailable_reason": "NOT_PUBLISHED"
+    },
+    "email": "jobs@dibido.tv",
+    "phone": "",
+    "contact_enrichment": {
+      "attempted": true,
+      "pages_checked": [
+        "https://www.dibido.tv/jobs"
+      ],
+      "unavailable_reasons": {
+        "phone": "NOT_PUBLISHED"
+      },
+      "email_source_url": "https://www.dibido.tv/jobs"
+    },
+    "score_components": [
+      {
+        "reason": "DIRECT_EDITING_VACANCY",
+        "points": 60
+      }
+    ],
+    "ai_notes": "Fakt: dibido.tv GmbH schreibt aktuell die Position „Cutter:in / Editor:in, Vollzeit 40h“ aus und signalisiert damit konkreten Bedarf an laufender Video-Postproduktion. Ansatz: Als externer Editing-Partner lassen sich Kapazitätsspitzen abfangen, Durchlaufzeiten verkürzen und wiederkehrende Formate mit einem verlässlichen, skalierbaren Workflow unterstützen."
+  }
+]

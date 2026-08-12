@@ -10,6 +10,7 @@ from typing import Any
 
 from lead_core import ContractError, validate_http_url
 from normalize_company import registrable_domain
+from parse_phone import parse_phone
 
 
 MODES = {
@@ -42,6 +43,15 @@ MODES = {
 }
 
 CONTACT_UNAVAILABLE_REASONS = {"NOT_PUBLISHED", "ACCESS_BLOCKED", "INVALID_PUBLISHED_VALUE"}
+BUDGET_UNAVAILABLE_REASONS = {"NOT_PUBLISHED", "ACCESS_BLOCKED", "INVALID_PUBLISHED_VALUE"}
+EMAIL_RE = re.compile(r"^[^\s@]+@[^\s@]+\.[^\s@]+$")
+JOB_SIGNAL_CATEGORIES = {"DIRECT_EDITING_VACANCY", "EDITING_DUTY_IN_BROADER_ROLE", "CONTENT_HIRING"}
+LOW_COMPENSATION_ROLE_RE = re.compile(
+    r"\b(?:werk(?:s)?stu(?:dent|ndent)(?:in|en)?|working[ -]?student|studentische[ -]+hilfskraft|"
+    r"praktik(?:um|ant(?:in|en)?)|intern(?:ship)?|mini[ -]?job|geringf(?:ü|ue)gig|"
+    r"ausbildung|auszubildend(?:e|er|en)?|azubi|duales[ -]+studium|ehrenamt|volunteer)\b",
+    flags=re.IGNORECASE,
+)
 
 
 def iso_date(value: Any, field: str) -> date:
@@ -72,13 +82,13 @@ def reject(reason: str, details: str = "") -> dict[str, Any]:
     return {"accepted": False, "reason": reason, "details": details}
 
 
-def validate_contact_enrichment(candidate: dict[str, Any], company_domain: str) -> str | None:
+def validate_contact_enrichment(candidate: dict[str, Any], company_domain: str, country: str) -> str | None:
     enrichment = candidate.get("contact_enrichment")
     if not isinstance(enrichment, dict) or enrichment.get("attempted") is not True:
         return "A first-party contact-enrichment attempt is required"
     pages = enrichment.get("pages_checked")
-    if not isinstance(pages, list) or not 1 <= len(pages) <= 3 or len(pages) != len(set(pages)):
-        return "pages_checked must contain one to three unique official URLs"
+    if not isinstance(pages, list) or not 1 <= len(pages) <= 6 or len(pages) != len(set(pages)):
+        return "pages_checked must contain one to six unique official URLs"
     normalized_pages: set[str] = set()
     for page in pages:
         try:
@@ -103,6 +113,49 @@ def validate_contact_enrichment(candidate: dict[str, Any], company_domain: str) 
                 return f"{source_key} must be one of pages_checked"
         elif unavailable.get(field) not in CONTACT_UNAVAILABLE_REASONS:
             return f"Missing {field} requires a controlled unavailable reason"
+    email = str(candidate.get("email", "")).strip()
+    phone = str(candidate.get("phone", "")).strip()
+    valid_email = bool(email and EMAIL_RE.fullmatch(email))
+    valid_phone = False
+    if phone:
+        try:
+            parse_phone(phone, country)
+            valid_phone = True
+        except (ValueError, RuntimeError):
+            pass
+    if not valid_email and not valid_phone:
+        return "No valid published business email or phone number was found"
+    return None
+
+
+def validate_budget_enrichment(candidate: dict[str, Any], evidence_urls: set[str]) -> tuple[str, str] | None:
+    enrichment = candidate.get("budget_enrichment")
+    if not isinstance(enrichment, dict) or enrichment.get("attempted") is not True:
+        return "BUDGET_ENRICHMENT_INCOMPLETE", "A budget-enrichment attempt is required"
+    pages = enrichment.get("pages_checked")
+    if not isinstance(pages, list) or not 1 <= len(pages) <= 6 or len(pages) != len(set(pages)):
+        return "BUDGET_ENRICHMENT_INCOMPLETE", "pages_checked must contain one to six unique job or ATS URLs"
+    normalized_pages: set[str] = set()
+    for page in pages:
+        try:
+            normalized_pages.add(validate_http_url(page))
+        except ContractError:
+            return "BUDGET_ENRICHMENT_INCOMPLETE", "Budget pages must be valid http(s) URLs"
+    budget = str(candidate.get("budget", "")).strip()
+    if budget:
+        try:
+            source = validate_http_url(candidate.get("budget_source_url", ""))
+        except ContractError as exc:
+            return "INVALID_BUDGET", str(exc)
+        if source not in evidence_urls:
+            return "INVALID_BUDGET", "budget_source_url is not present in evidence"
+        if source not in normalized_pages:
+            return "BUDGET_ENRICHMENT_INCOMPLETE", "budget_source_url must be one of budget_enrichment.pages_checked"
+        if enrichment.get("unavailable_reason"):
+            return "BUDGET_ENRICHMENT_INCOMPLETE", "Published budget must not have an unavailable_reason"
+    else:
+        if enrichment.get("unavailable_reason") not in BUDGET_UNAVAILABLE_REASONS:
+            return "BUDGET_ENRICHMENT_INCOMPLETE", "Missing budget requires a controlled unavailable_reason"
     return None
 
 
@@ -129,6 +182,7 @@ def qualify(candidate: dict[str, Any], mode: str | None = None, minimum_score: i
     if not isinstance(evidence, list) or not evidence:
         return reject("SOURCE_UNVERIFIABLE", "No evidence items")
     fresh_categories: set[str] = set()
+    fresh_items: list[dict[str, Any]] = []
     for item in evidence:
         try:
             validate_http_url(item.get("source_url", ""))
@@ -136,10 +190,19 @@ def qualify(candidate: dict[str, Any], mode: str | None = None, minimum_score: i
                 raise ContractError("Evidence lacks factual_summary")
             if evidence_is_fresh(item):
                 fresh_categories.add(str(item.get("signal_category", "")))
+                fresh_items.append(item)
         except (ContractError, ValueError):
             continue
     if not fresh_categories.intersection(rules["primary"]):
         return reject("STALE_SIGNAL" if fresh_categories else "SOURCE_UNVERIFIABLE")
+    job_items = [item for item in fresh_items if item.get("signal_category") in JOB_SIGNAL_CATEGORIES]
+    if job_items:
+        titles = [str(item.get("job_title", "")).strip() for item in job_items]
+        if any(not title for title in titles):
+            return reject("SOURCE_UNVERIFIABLE", "Job-based evidence requires job_title")
+        non_job_primary = set(rules["primary"]) - JOB_SIGNAL_CATEGORIES
+        if all(LOW_COMPENSATION_ROLE_RE.search(title) for title in titles) and not fresh_categories.intersection(non_job_primary):
+            return reject("LOW_COMPENSATION_ROLE", ", ".join(titles))
     supplied = candidate.get("score_components", [])
     reasons = [str(item.get("reason", "")) for item in supplied if isinstance(item, dict)]
     if len(reasons) != len(set(reasons)):
@@ -166,9 +229,13 @@ def qualify(candidate: dict[str, Any], mode: str | None = None, minimum_score: i
             continue
     if primary_url not in valid_evidence_urls:
         return reject("SOURCE_UNVERIFIABLE", "Primary source is not present in evidence")
-    contact_error = validate_contact_enrichment(candidate, domain)
+    budget_error = validate_budget_enrichment(candidate, valid_evidence_urls)
+    if budget_error:
+        return reject(*budget_error)
+    contact_error = validate_contact_enrichment(candidate, domain, country)
     if contact_error:
-        return reject("CONTACT_ENRICHMENT_INCOMPLETE", contact_error)
+        reason = "CONTACT_NOT_FOUND" if contact_error.startswith("No valid published") else "CONTACT_ENRICHMENT_INCOMPLETE"
+        return reject(reason, contact_error)
     notes = str(candidate.get("ai_notes", "")).strip()
     if not notes or "Fakt:" not in notes or "Ansatz:" not in notes:
         return reject("INVALID_NOTES", "AI Notes must separate Fakt and Ansatz")

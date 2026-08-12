@@ -57,6 +57,23 @@ class CsvContractTests(unittest.TestCase):
             self.assertEqual(rows[1]["Status"], "OFFEN")
             self.assertEqual(rows[1]["AI Notes / Markdown"], potential_candidate()["ai_notes"])
             self.assertEqual(summary["contact_enrichment"]["exported_with_both"], 1)
+            self.assertEqual(summary["budget_enrichment"]["exported_attempted"], 1)
+            self.assertEqual(summary["budget_enrichment"]["exported_without_published_budget"], 1)
+
+    def test_adds_and_exports_optional_budget_column(self):
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory) / "out.csv"
+            candidate = potential_candidate(
+                budget="45.000–55.000 EUR/Jahr",
+                budget_source_url="https://beispiel-handel.de/jobs/content",
+            )
+            summary = export(str(FIXTURE), [candidate], str(output), "POTENTIAL_CUSTOMERS", 1)
+            contract, rows = parse_csv(output)
+            self.assertIn("Budget", contract.headers)
+            self.assertEqual(rows[0]["Budget"], "45.000–55.000 EUR/Jahr")
+            self.assertEqual(summary["exported_with_budget"], 1)
+            self.assertEqual(summary["budget_enrichment"]["exported_attempted"], 1)
+            self.assertEqual(summary["budget_enrichment"]["exported_with_published_budget"], 1)
 
     def test_only_keeps_markdown_notes_and_migrates_existing_text(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -94,16 +111,15 @@ class CsvContractTests(unittest.TestCase):
             _, out_rows = parse_csv(output)
             self.assertEqual(out_rows[0]["AI Notes / Markdown"], "BlockNote fallback")
 
-    def test_invalid_optional_contact_is_emptied_not_disqualifying(self):
+    def test_invalid_contacts_are_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             output = Path(directory) / "out.csv"
             candidate = potential_candidate(phone="not a phone", email="not an email")
             summary = export(str(FIXTURE), [candidate], str(output), "POTENTIAL_CUSTOMERS", 1)
             _, rows = parse_csv(output)
-            self.assertEqual(summary["accepted"], 1)
-            self.assertEqual(summary["warnings"], {"INVALID_CONTACT_DATA": 1})
-            self.assertEqual(rows[0]["Phone / Primary Phone Number"], "")
-            self.assertEqual(rows[0]["Mail / Primary Email"], "")
+            self.assertEqual(summary["accepted"], 0)
+            self.assertEqual(summary["rejected"], {"CONTACT_NOT_FOUND": 1})
+            self.assertEqual(rows, [])
 
     def test_bom_is_preserved(self):
         with tempfile.TemporaryDirectory() as directory:

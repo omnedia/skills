@@ -16,6 +16,7 @@ Supply either one object or a JSON array of objects:
       "observed_at": "2026-08-11",
       "published_at": "2026-08-01",
       "signal_category": "CONTENT_HIRING",
+      "job_title": "Video Content Producer (m/w/d)",
       "factual_summary": "The company is hiring for recurring social content production.",
       "current_state": "open"
     },
@@ -30,6 +31,14 @@ Supply either one object or a JSON array of objects:
     }
   ],
   "primary_source_url": "https://beispiel-handel.de/careers/content",
+  "budget": "45.000–55.000 EUR/Jahr",
+  "budget_source_url": "https://beispiel-handel.de/careers/content",
+  "budget_enrichment": {
+    "attempted": true,
+    "pages_checked": [
+      "https://beispiel-handel.de/careers/content"
+    ]
+  },
   "phone": "+49 211 87574712",
   "email": "info@beispiel-handel.de",
   "contact_enrichment": {
@@ -50,6 +59,8 @@ Supply either one object or a JSON array of objects:
 }
 ```
 
-Optional booleans `excluded_competitor` and `excluded_candidate` force rejection. The deterministic qualifier derives the score, scope, status, and normalized domain; it does not trust supplied values for those fields.
+Optional booleans `excluded_competitor` and `excluded_candidate` force rejection. The deterministic qualifier derives the score, scope, status, and normalized domain; it does not trust supplied values for those fields. Every job-derived evidence item must include its exact published `job_title`; low-compensation student/training roles are rejected as `LOW_COMPENSATION_ROLE`.
 
-`contact_enrichment` is mandatory for export. `pages_checked` must contain one to three official-domain URLs. Supply `email_source_url` and `phone_source_url` when the corresponding value exists. For each missing field, put `email` or `phone` in `unavailable_reasons` with `NOT_PUBLISHED`, `ACCESS_BLOCKED`, or `INVALID_PUBLISHED_VALUE`.
+`budget_enrichment` is mandatory for export. Set `attempted = true` and record one to six checked job-detail or ATS URLs in `pages_checked`. When a supported amount is found, provide `budget` plus `budget_source_url`; the source must occur in both `evidence` and `budget_enrichment.pages_checked`. When no amount is published, leave `budget` empty and set `unavailable_reason` to `NOT_PUBLISHED`, `ACCESS_BLOCKED`, or `INVALID_PUBLISHED_VALUE`. The exporter always creates the `Budget` column.
+
+`contact_enrichment` is mandatory for export. `pages_checked` must contain one to six official-domain URLs. Supply `email_source_url` and `phone_source_url` when the corresponding value exists. For each missing field, put `email` or `phone` in `unavailable_reasons` with `NOT_PUBLISHED`, `ACCESS_BLOCKED`, or `INVALID_PUBLISHED_VALUE`. At least one of `email` or `phone` must be present and valid; a candidate with neither is rejected as `CONTACT_NOT_FOUND` and must be replaced during research.

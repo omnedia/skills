@@ -28,6 +28,7 @@ CONTROL_RE = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]")
 FORMULA_RE = re.compile(r"^\s*[=+\-@]")
 AI_NOTES_MARKDOWN = "AI Notes / Markdown"
 AI_NOTES_ALIASES = {"AI Notes / BlockNote", "AI Notes"}
+BUDGET = "Budget"
 
 
 class ContractError(ValueError):
@@ -152,6 +153,9 @@ def sanitize_free_text(value: object, maximum: int = 500) -> tuple[str, bool]:
 def output_headers(headers: Iterable[str]) -> list[str]:
     source = list(headers)
     result = [header for header in source if header not in AI_NOTES_ALIASES]
+    if BUDGET not in result:
+        insert_at = result.index("Scope") + 1 if "Scope" in result else len(result)
+        result.insert(insert_at, BUDGET)
     if AI_NOTES_MARKDOWN not in result:
         alias_positions = [index for index, header in enumerate(source) if header in AI_NOTES_ALIASES]
         insert_at = min(alias_positions[0], len(result)) if alias_positions else len(result)

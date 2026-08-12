@@ -1,0 +1,13 @@
+{
+  "run_id": "20260812-212546-video-editing-video-editing-50",
+  "mode": "VIDEO_EDITING",
+  "created_at": "2026-08-12T21:25:46+02:00",
+  "run_directory": "C:\\Users\\marku\\projects\\skills\\crm\\research-qualified-leads\\lead-research-runs\\20260812-212546-video-editing-video-editing-50",
+  "artifacts": {
+    "evidence_directory": "C:\\Users\\marku\\projects\\skills\\crm\\research-qualified-leads\\lead-research-runs\\20260812-212546-video-editing-video-editing-50\\evidence",
+    "schema": "C:\\Users\\marku\\projects\\skills\\crm\\research-qualified-leads\\lead-research-runs\\20260812-212546-video-editing-video-editing-50\\schema.json",
+    "candidates": "C:\\Users\\marku\\projects\\skills\\crm\\research-qualified-leads\\lead-research-runs\\20260812-212546-video-editing-video-editing-50\\candidates.json",
+    "qualified_csv": "C:\\Users\\marku\\projects\\skills\\crm\\research-qualified-leads\\lead-research-runs\\20260812-212546-video-editing-video-editing-50\\qualified-leads.csv",
+    "run_summary": "C:\\Users\\marku\\projects\\skills\\crm\\research-qualified-leads\\lead-research-runs\\20260812-212546-video-editing-video-editing-50\\run-summary.json"
+  }
+}

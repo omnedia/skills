@@ -13,7 +13,7 @@ from typing import Any
 
 import yaml
 
-from lead_core import AI_NOTES_MARKDOWN, ContractError, LIST_COLUMNS, output_headers, parse_csv, sanitize_free_text
+from lead_core import AI_NOTES_MARKDOWN, BUDGET, ContractError, LIST_COLUMNS, output_headers, parse_csv, sanitize_free_text
 from normalize_company import compare, registrable_domain
 from parse_phone import parse_phone
 from qualify_lead import MODES, qualify
@@ -79,6 +79,7 @@ def map_candidate(candidate: dict[str, Any], headers: list[str], contract_empty_
         sanitized_count += int(changed)
 
     free("Name", candidate["name"])
+    free(BUDGET, candidate.get("budget", ""), int(config["field_max_lengths"]["default"]))
     free("Address / City", candidate.get("city", ""))
     free(AI_NOTES_MARKDOWN, candidate["ai_notes"], int(config["field_max_lengths"]["ai_notes"]))
     row["Scope"] = candidate["scope"]
@@ -230,6 +231,7 @@ def export(
     with_email = sum(bool(row.get("Mail / Primary Email")) for row in accepted_rows)
     with_phone = sum(bool(row.get("Phone / Primary Phone Number")) for row in accepted_rows)
     with_both = sum(bool(row.get("Mail / Primary Email")) and bool(row.get("Phone / Primary Phone Number")) for row in accepted_rows)
+    with_budget = sum(bool(row.get(BUDGET)) for row in accepted_rows)
     return {
         "mode": mode,
         "minimum_score": minimum_score,
@@ -253,6 +255,12 @@ def export(
             "exported_with_both": with_both,
             "exported_with_neither": len(accepted_rows) - (with_email + with_phone - with_both),
         },
+        "budget_enrichment": {
+            "exported_attempted": len(accepted_rows),
+            "exported_with_published_budget": with_budget,
+            "exported_without_published_budget": len(accepted_rows) - with_budget,
+        },
+        "exported_with_budget": with_budget,
     }
 
 

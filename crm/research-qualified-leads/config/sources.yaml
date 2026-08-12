@@ -4,11 +4,15 @@ research_budget:
 
 contact_enrichment:
   required: true
-  max_official_pages: 3
+  require_at_least_one_valid_contact: true
+  max_official_pages: 6
   page_priority:
     - contact
     - legal_notice
-    - footer_or_about
+    - homepage_footer
+    - about_or_team
+    - careers
+    - location_or_service_page
   unavailable_reasons:
     - NOT_PUBLISHED
     - ACCESS_BLOCKED
@@ -25,6 +29,13 @@ preferred_sources:
   - public_job_board
 
 fallback_attempts: 1
+excluded_job_types:
+  - working_student
+  - internship
+  - minijob
+  - apprenticeship
+  - student_assistant
+  - volunteer
 allowed_url_schemes:
   - http
   - https
