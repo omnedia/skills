@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Qualified Leads"
+  short_description: "Find qualified, import-safe Twenty CRM leads"
+  default_prompt: "Use $research-qualified-leads to research qualified companies and export evidence-backed Twenty CRM records."

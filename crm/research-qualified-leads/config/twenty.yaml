@@ -1,0 +1,29 @@
+import_smoke_test:
+  verified: false
+  verified_at: null
+  workspace: null
+  notes: "Set verified to true only after a successful non-production Twenty import."
+
+csv:
+  encoding: utf-8
+  preserve_bom: true
+  fallback_line_ending: "\r\n"
+  empty_list: "[]"
+
+twenty:
+  created_by_source: MANUAL
+  created_by_workspace_member: ""
+  created_by_name: ""
+  created_by_context: "{}"
+  id: ""
+  creation_date: ""
+
+operator:
+  approved_purpose: ""
+  rejected_candidate_retention_days: null
+
+known_equivalent_domains: []
+field_max_lengths:
+  default: 500
+  ai_notes: 1200
+  url: 2048

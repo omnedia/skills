@@ -1,0 +1,30 @@
+research_budget:
+  max_pages_per_candidate: 5
+  max_minutes_per_candidate: 10
+
+contact_enrichment:
+  required: true
+  max_official_pages: 3
+  page_priority:
+    - contact
+    - legal_notice
+    - footer_or_about
+  unavailable_reasons:
+    - NOT_PUBLISHED
+    - ACCESS_BLOCKED
+    - INVALID_PUBLISHED_VALUE
+
+preferred_sources:
+  - official_company_career_page
+  - personio
+  - greenhouse
+  - lever
+  - ashby
+  - public_trade_fair_exhibitor_page
+  - official_ad_transparency_library
+  - public_job_board
+
+fallback_attempts: 1
+allowed_url_schemes:
+  - http
+  - https
