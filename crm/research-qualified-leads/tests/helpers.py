@@ -19,7 +19,15 @@ def potential_candidate(**overrides):
         "evidence": [
             {
                 "source_url": "https://beispiel-handel.de/jobs/content",
-                "source_type": "company_career_page",
+                "source_type": "company_job_detail",
+                "page_kind": "job_detail",
+                "job_detail_verified": True,
+                "job_detail_identity": {
+                    "single_vacancy": True,
+                    "employer": "Beispiel Handel AG",
+                    "job_title": "Video Content Producer",
+                    "canonical_url": "https://beispiel-handel.de/jobs/content",
+                },
                 "observed_at": "2026-08-11",
                 "published_at": "2026-08-01",
                 "signal_category": "CONTENT_HIRING",
@@ -66,6 +74,11 @@ def potential_candidate(**overrides):
         ),
     }
     candidate.update(overrides)
+    if "name" in overrides and "evidence" not in overrides:
+        candidate["evidence"][0]["job_detail_identity"]["employer"] = str(candidate["name"])
+    if candidate.get("budget"):
+        candidate.setdefault("budget_type", "PUBLISHED")
+        candidate.setdefault("offer_type", "Vollzeit")
     if candidate.get("budget") and candidate.get("budget_source_url") and "budget_enrichment" not in overrides:
         candidate["budget_enrichment"] = {
             "attempted": True,

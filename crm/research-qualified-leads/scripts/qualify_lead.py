@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Any
 
 from lead_core import ContractError, validate_http_url
-from normalize_company import registrable_domain
+from normalize_company import normalize_name, registrable_domain
 from parse_phone import parse_phone
 
 
@@ -44,8 +44,10 @@ MODES = {
 
 CONTACT_UNAVAILABLE_REASONS = {"NOT_PUBLISHED", "ACCESS_BLOCKED", "INVALID_PUBLISHED_VALUE"}
 BUDGET_UNAVAILABLE_REASONS = {"NOT_PUBLISHED", "ACCESS_BLOCKED", "INVALID_PUBLISHED_VALUE"}
+BUDGET_TYPES = {"PUBLISHED", "ESTIMATED"}
 EMAIL_RE = re.compile(r"^[^\s@]+@[^\s@]+\.[^\s@]+$")
 JOB_SIGNAL_CATEGORIES = {"DIRECT_EDITING_VACANCY", "EDITING_DUTY_IN_BROADER_ROLE", "CONTENT_HIRING"}
+JOB_DETAIL_SOURCE_TYPES = {"company_job_detail", "ats_job_detail", "job_board_job_detail"}
 LOW_COMPENSATION_ROLE_RE = re.compile(
     r"\b(?:werk(?:s)?stu(?:dent|ndent)(?:in|en)?|working[ -]?student|studentische[ -]+hilfskraft|"
     r"praktik(?:um|ant(?:in|en)?)|intern(?:ship)?|mini[ -]?job|geringf(?:ü|ue)gig|"
@@ -80,6 +82,34 @@ def evidence_is_fresh(item: dict[str, Any]) -> bool:
 
 def reject(reason: str, details: str = "") -> dict[str, Any]:
     return {"accepted": False, "reason": reason, "details": details}
+
+
+def validate_job_detail(item: dict[str, Any], candidate_name: str) -> str | None:
+    """Reject discovery/search URLs masquerading as individual vacancy evidence."""
+    if item.get("source_type") not in JOB_DETAIL_SOURCE_TYPES:
+        return "Job evidence source_type must identify an individual company, ATS, or job-board detail page"
+    if item.get("page_kind") != "job_detail" or item.get("job_detail_verified") is not True:
+        return "Job evidence must be opened and verified as an individual job-detail page"
+    try:
+        source_url = validate_http_url(item.get("source_url", ""))
+    except ContractError as exc:
+        return str(exc)
+    identity = item.get("job_detail_identity")
+    if not isinstance(identity, dict) or identity.get("single_vacancy") is not True:
+        return "Every platform requires evidence that the opened page represents one individual vacancy"
+    employer = str(identity.get("employer", "")).strip()
+    if not employer or normalize_name(employer) != normalize_name(candidate_name):
+        return "The employer shown on the job-detail page must match the candidate company"
+    page_title = str(identity.get("job_title", "")).strip()
+    if not page_title or normalize_name(page_title) != normalize_name(str(item.get("job_title", ""))):
+        return "The title shown on the job-detail page must match the recorded job title"
+    try:
+        canonical_url = validate_http_url(identity.get("canonical_url", ""))
+    except ContractError:
+        return "The opened job-detail page must provide a valid canonical/final URL"
+    if canonical_url != source_url:
+        return "source_url must equal the opened job page's canonical/final URL"
+    return None
 
 
 def validate_contact_enrichment(candidate: dict[str, Any], company_domain: str, country: str) -> str | None:
@@ -134,7 +164,7 @@ def validate_budget_enrichment(candidate: dict[str, Any], evidence_urls: set[str
         return "BUDGET_ENRICHMENT_INCOMPLETE", "A budget-enrichment attempt is required"
     pages = enrichment.get("pages_checked")
     if not isinstance(pages, list) or not 1 <= len(pages) <= 6 or len(pages) != len(set(pages)):
-        return "BUDGET_ENRICHMENT_INCOMPLETE", "pages_checked must contain one to six unique job or ATS URLs"
+        return "BUDGET_ENRICHMENT_INCOMPLETE", "pages_checked must contain one to six unique job, ATS, or estimate-source URLs"
     normalized_pages: set[str] = set()
     for page in pages:
         try:
@@ -143,6 +173,15 @@ def validate_budget_enrichment(candidate: dict[str, Any], evidence_urls: set[str
             return "BUDGET_ENRICHMENT_INCOMPLETE", "Budget pages must be valid http(s) URLs"
     budget = str(candidate.get("budget", "")).strip()
     if budget:
+        if "|" in budget or re.match(r"^(?:geschätzt|estimated)\s*:", budget, flags=re.IGNORECASE):
+            return "INVALID_BUDGET", "budget must contain only the raw amount; estimate label and offer type are added automatically"
+        budget_type = str(candidate.get("budget_type", "")).upper()
+        if budget_type not in BUDGET_TYPES:
+            return "INVALID_BUDGET", "budget_type must be PUBLISHED or ESTIMATED"
+        if not str(candidate.get("offer_type", "")).strip():
+            return "INVALID_BUDGET", "A budget requires offer_type, for example Vollzeit, Teilzeit, or Selbstständig"
+        if budget_type == "ESTIMATED" and not str(candidate.get("budget_estimation_basis", "")).strip():
+            return "INVALID_BUDGET", "An estimated budget requires budget_estimation_basis"
         try:
             source = validate_http_url(candidate.get("budget_source_url", ""))
         except ContractError as exc:
@@ -152,11 +191,19 @@ def validate_budget_enrichment(candidate: dict[str, Any], evidence_urls: set[str
         if source not in normalized_pages:
             return "BUDGET_ENRICHMENT_INCOMPLETE", "budget_source_url must be one of budget_enrichment.pages_checked"
         if enrichment.get("unavailable_reason"):
-            return "BUDGET_ENRICHMENT_INCOMPLETE", "Published budget must not have an unavailable_reason"
+            return "BUDGET_ENRICHMENT_INCOMPLETE", "A populated budget must not have an unavailable_reason"
     else:
         if enrichment.get("unavailable_reason") not in BUDGET_UNAVAILABLE_REASONS:
             return "BUDGET_ENRICHMENT_INCOMPLETE", "Missing budget requires a controlled unavailable_reason"
     return None
+
+
+def budget_display(candidate: dict[str, Any]) -> str:
+    value = str(candidate.get("budget", "")).strip()
+    if not value:
+        return ""
+    prefix = "Geschätzt: " if str(candidate.get("budget_type", "")).upper() == "ESTIMATED" else ""
+    return f"{prefix}{value} | {str(candidate['offer_type']).strip()}"
 
 
 def qualify(candidate: dict[str, Any], mode: str | None = None, minimum_score: int | None = None) -> dict[str, Any]:
@@ -197,6 +244,10 @@ def qualify(candidate: dict[str, Any], mode: str | None = None, minimum_score: i
         return reject("STALE_SIGNAL" if fresh_categories else "SOURCE_UNVERIFIABLE")
     job_items = [item for item in fresh_items if item.get("signal_category") in JOB_SIGNAL_CATEGORIES]
     if job_items:
+        for item in job_items:
+            job_detail_error = validate_job_detail(item, str(candidate.get("name", "")))
+            if job_detail_error:
+                return reject("JOB_DETAIL_URL_REQUIRED", job_detail_error)
         titles = [str(item.get("job_title", "")).strip() for item in job_items]
         if any(not title for title in titles):
             return reject("SOURCE_UNVERIFIABLE", "Job-based evidence requires job_title")
@@ -229,6 +280,10 @@ def qualify(candidate: dict[str, Any], mode: str | None = None, minimum_score: i
             continue
     if primary_url not in valid_evidence_urls:
         return reject("SOURCE_UNVERIFIABLE", "Primary source is not present in evidence")
+    if job_items:
+        job_detail_urls = {validate_http_url(item["source_url"]) for item in job_items}
+        if primary_url not in job_detail_urls:
+            return reject("JOB_DETAIL_URL_REQUIRED", "Referrer must be the actual individual job-offer URL")
     budget_error = validate_budget_enrichment(candidate, valid_evidence_urls)
     if budget_error:
         return reject(*budget_error)
@@ -254,6 +309,7 @@ def qualify(candidate: dict[str, Any], mode: str | None = None, minimum_score: i
         "primary_source_url": primary_url,
         "score_components": score_components,
         "score": score,
+        "budget": budget_display(candidate),
     })
     return result
 

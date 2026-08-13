@@ -177,6 +177,7 @@ def export(
     headers = output_headers(contract.headers)
     accepted_rows: list[dict[str, str]] = []
     accepted_identities: list[dict[str, str]] = []
+    accepted_budget_types: list[str] = []
     rejected: Counter[str] = Counter()
     warnings: Counter[str] = Counter()
     if not deduplication_performed:
@@ -217,6 +218,7 @@ def export(
         warnings.update(contact_warnings)
         accepted_rows.append(row)
         accepted_identities.append(identity)
+        accepted_budget_types.append(str(result.get("budget_type", "")).upper())
         sanitized += changed
     output_rows = []
     if include_existing:
@@ -233,6 +235,14 @@ def export(
     with_phone = sum(bool(row.get("Phone / Primary Phone Number")) for row in accepted_rows)
     with_both = sum(bool(row.get("Mail / Primary Email")) and bool(row.get("Phone / Primary Phone Number")) for row in accepted_rows)
     with_budget = sum(bool(row.get(BUDGET)) for row in accepted_rows)
+    with_estimated_budget = sum(
+        bool(row.get(BUDGET)) and budget_type == "ESTIMATED"
+        for row, budget_type in zip(accepted_rows, accepted_budget_types)
+    )
+    with_published_budget = sum(
+        bool(row.get(BUDGET)) and budget_type == "PUBLISHED"
+        for row, budget_type in zip(accepted_rows, accepted_budget_types)
+    )
     return {
         "mode": mode,
         "minimum_score": minimum_score,
@@ -258,8 +268,9 @@ def export(
         },
         "budget_enrichment": {
             "exported_attempted": len(accepted_rows),
-            "exported_with_published_budget": with_budget,
-            "exported_without_published_budget": len(accepted_rows) - with_budget,
+            "exported_with_published_budget": with_published_budget,
+            "exported_with_estimated_budget": with_estimated_budget,
+            "exported_without_budget": len(accepted_rows) - with_budget,
         },
         "exported_with_budget": with_budget,
     }

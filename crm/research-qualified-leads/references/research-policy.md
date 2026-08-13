@@ -4,7 +4,13 @@
 
 Record `source_url`, `source_type`, mandatory ISO `observed_at`, nullable `published_at`, `signal_category`, and a source-supported `factual_summary`. Prefer first-party evidence. A search snippet is discovery evidence only unless its underlying page is unavailable and it contains a clear date and complete factual signal; mark such an exception low-confidence and never use it alone for a subjective claim.
 
-Put the strongest qualifying source in `Referrer / Link URL`. Retain all sources required to prove combined claims in the run artifact.
+Put the strongest qualifying source in `Referrer / Link URL`. For every job-derived candidate, this must be the actual individual vacancy URL, never a search-results page, keyword/category page, jobs landing page, or search-engine URL. Retain all sources required to prove combined claims in the run artifact.
+
+## Job-offer URL verification
+
+On every website and platform, treat job searches, result lists, snippets, category/keyword pages, and generic jobs pages as discovery aids only. Open the individual vacancy and follow redirects to its final employer, ATS, or job-board detail page. Confirm that the opened page displays the candidate employer and exact `job_title`, represents one vacancy, and is currently open. Record that final canonical URL as both the job evidence `source_url` and candidate `primary_source_url`. Apply these requirements identically to all domains; never infer page quality from a platform allowlist or URL pattern.
+
+For job evidence, set `source_type` to `company_job_detail`, `ats_job_detail`, or `job_board_job_detail`, `page_kind` to `job_detail`, and `job_detail_verified` to `true`. Record `job_detail_identity` with `single_vacancy: true`, the employer and job title shown on the page, and its final/canonical URL. The qualifier requires that employer and title to match the candidate evidence and that canonical URL to equal `source_url`. Do not set these fields from a snippet or URL shape alone. If the individual vacancy cannot be opened or verified, reject it as `JOB_DETAIL_URL_REQUIRED` and find a replacement.
 
 ## Freshness
 
@@ -37,9 +43,13 @@ Reject agencies or production competitors, companies outside Germany, companies 
 
 ## Budget
 
-For every otherwise-qualifying candidate, attempt budget enrichment. Search the qualifying job-detail page and its linked official ATS page for an explicit salary range, hourly/day rate, project fee, or stated project budget. Record `budget_enrichment.attempted = true` and one to six checked job or ATS URLs. When found, record a concise normalized value in `budget`, including currency and period or scope, for example `45.000–55.000 EUR/Jahr` or `500–700 EUR/Tag`, and put the exact evidence URL in `budget_source_url`.
+For every otherwise-qualifying candidate, attempt budget enrichment. Use this ladder until a supported value is found: (1) explicit compensation, rate, fee, or budget on the individual job page; (2) the linked official ATS page; (3) a job-specific estimate published on the individual job-board detail page; (4) a current salary/rate benchmark matching the job title, geography, and employment type. Record `budget_enrichment.attempted = true` and one to six checked job, ATS, or estimate-source URLs.
 
-The published amount remains optional, but the enrichment attempt is mandatory. Leave `budget` empty when the checked sources publish no monetary range and record `budget_enrichment.unavailable_reason` as `NOT_PUBLISHED`, `ACCESS_BLOCKED`, or `INVALID_PUBLISHED_VALUE`. Never derive a precise budget from company size, a generic salary portal, marketing spend, or the qualification score. If a useful estimate is explicitly requested later, label it as an estimate outside the CSV unless the user asks for estimated values in the field.
+Record the monetary value alone in candidate `budget`, including currency and period or scope, for example `45.000–55.000 EUR/Jahr` or `500–700 EUR/Tag`. Set `budget_type` to `PUBLISHED` for an employer-published amount or `ESTIMATED` for a third-party/job-board estimate. For estimates, record a short `budget_estimation_basis` naming the matched title, geography, and employment/engagement basis. Record the exact source in `budget_source_url`; it must also occur in evidence and `budget_enrichment.pages_checked`.
+
+Record `offer_type` from the offer, such as `Vollzeit`, `Teilzeit`, `Selbstständig`, `Freelance`, `Projektbasis`, or `Befristet`. The qualifier deterministically exports `PUBLISHED` values as `45.000–55.000 EUR/Jahr | Vollzeit` and estimates as `Geschätzt: 45.000–55.000 EUR/Jahr | Vollzeit`, so an estimate can never appear as a published amount.
+
+Prefer a defensible range over false precision. Do not estimate from company size, perceived budget, marketing spend, or qualification score. Do not convert a full-time annual benchmark into a part-time, freelance, or project rate without a directly supported matching basis. When no sufficiently matched published or estimated value is available, leave `budget` empty and record `budget_enrichment.unavailable_reason` as `NOT_PUBLISHED`, `ACCESS_BLOCKED`, or `INVALID_PUBLISHED_VALUE`.
 
 ## Contact and privacy
 
