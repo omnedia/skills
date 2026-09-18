@@ -1,0 +1,6 @@
+{
+  "text": "Every word matters. Go, go!",
+  "source": "Synthetic test speech generated locally with Windows SAPI, Microsoft Zira Desktop, default rate",
+  "purpose": "Repeatable local forced-alignment integration test; no user recording or voice model is bundled",
+  "audioDurationSeconds": 3.18
+}

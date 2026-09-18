@@ -1,0 +1,4 @@
+interface:
+  display_name: "Captions"
+  short_description: "Create timed, animated caption overlays in Remotion"
+  default_prompt: "Use $captions to create a transparent Active Word Highlight overlay from my transcript."

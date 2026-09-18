@@ -1,0 +1,8 @@
+{
+  "projectFolder": null,
+  "brandColors": {},
+  "width": 1080,
+  "height": 1920,
+  "fps": 30,
+  "export": {"codec": "prores", "profile": "4444", "pixelFormat": "yuva444p10le", "container": "mov", "imageFormat": "png", "jpegQuality": 90, "scale": 2}
+}

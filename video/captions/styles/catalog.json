@@ -1,0 +1,10 @@
+[
+  {
+    "id": "active-word-highlight",
+    "name": "Active Word Highlight",
+    "instructions": "styles/active-word-highlight/STYLE.md",
+    "preview": "styles/active-word-highlight/preview.gif",
+    "colors": {"base": "#FFFFFF", "active": "#FFD54A", "shadow": "#000000"},
+    "font": "styles/active-word-highlight/fonts/Inter-Bold.woff2"
+  }
+]

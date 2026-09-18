@@ -1,0 +1,13 @@
+{
+  "sentences": [
+    {"words": [
+      {"text":"Every","startMs":500,"endMs":780,"timestampMs":null,"confidence":null},
+      {"text":" word","startMs":900,"endMs":1200,"timestampMs":null,"confidence":null},
+      {"text":" matters.","startMs":1200,"endMs":1800,"timestampMs":null,"confidence":null}
+    ]},
+    {"words": [
+      {"text":" Go,","startMs":2100,"endMs":2300,"timestampMs":null,"confidence":null},
+      {"text":" go!","startMs":2500,"endMs":2800,"timestampMs":null,"confidence":null}
+    ]}
+  ]
+}
