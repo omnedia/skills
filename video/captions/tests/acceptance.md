@@ -1,5 +1,47 @@
 # Acceptance exercises
 
+## Editorial Kinetic — 2026-09-19
+
+Palette/underline refinement: default ivory, sea-glass teal and champagne gold;
+14 px minimum descender clearance, 12 px accent / 5 px curved strokes, 90 ms draw
+delay and 320 ms quadratic ease-out. Regenerated the component GIF and inspected
+the four-design contact sheet. All 15 behavioral tests, all 262 decoded-frame
+safe-bound checks, arbitrary-seek PNG comparison and ProRes/alpha checks passed
+again with these defaults.
+
+Added `editorial-kinetic` with bundled Poppins Bold, Libre Baskerville Italic
+(user-approved free Marion alternative), and Paul Neave's public-domain Lazy Dog.
+Font identities/character maps were inspected using fontTools; bundled binary
+hashes and licenses are checked before project creation, and the renderer verifies
+hashes again before measuring. No system-font fallback.
+
+- `node --test tests/core.test.mjs tests/editorial.test.mjs`: 15 tests passed,
+  including existing style behavior, fixed geometry, repeated words, short speech,
+  immediate transitions, clamped underline drawing, safe geometry and font hashes.
+- `node scripts/editorial-render-check.mjs <available-plugin-SKILL.md> [runtime-project]`:
+  actual component compiled and rendered 262 frames / 8.733333 seconds, 1080×1920
+  at 30 fps, silent ProRes 4444 with decoded alpha 0–255. Gallery GIF generated
+  from that MOV. Inspected four complete mixed-font headline designs, both
+  gradients and underline treatments; gallery includes single/group entrances
+  and all four directions. The optional runtime reuses existing test dependencies
+  through a directory link; all project files/output remain in a new temp folder.
+- `node tests/editorial-render.mjs <reported-project>`: actual sequential PNG
+  rendering matched arbitrary-seek PNG bytes. Rendered fast repeated words,
+  adjacent phrases, a long word with smaller project size, and the unchanged
+  Active Word Highlight style. An oversized word rejected with safe-width guidance.
+- `python tests/editorial-frames.py <reported-project>`: all 262 decoded frames
+  remained in safe bounds with transparent leading silence; additional fast/long
+  stills fit, and the old style's spoken-word highlight remained present.
+- `python scripts/verify-export.py <project>/editorial.mov <project>/project.json
+  <project>/qa --time 1.13`: actual codec, alpha, dimensions, fps and silence passed.
+- Browser gallery: both style cards appeared; all eight Editorial color roles and
+  the bundled-font sample loaded. Explicit Ocean→accent selection saved and
+  restored on reload, skipping the already resolved style choice.
+- Skill frontmatter validation passed. Font assets, sources, licenses, style
+  documentation and the actual-component GIF are included in the skill directory.
+
+The original Active Word Highlight exercises below are historical results.
+
 Executed on 2026-09-18 on Windows, Node 24.20.0, Python 3.12, Remotion 4.0.526 and its Chrome Headless Shell 149. Package requirements and model setup are in the skill references. Tests use isolated configuration/project directories; personal defaults were not changed.
 
 ## Reproduce

@@ -50,3 +50,9 @@ Before timing is resolved, retain `timing.status` such as `untimed`, `cue-only` 
 `sourceOffsetMs` adds to every source timestamp inside the output. `timelinePlacementMs` is where MOV frame zero is placed in the editor. They are distinct. Example: words start at source 1500 ms, offset 500 ms, and MOV placed at 10000 ms: speech appears 2000 ms into the MOV / 12000 ms on the editor timeline. Preserve leading silence; do not subtract the first word time automatically. A negative offset that would truncate speech is rejected.
 
 Saved `project.json` contains resolved shared settings, style, explicit colors, font asset/checksum, style options, timing provenance, both offsets and duration. Editing personal defaults does not alter it. `prepare` saves `projectPath` and a `prepared` snapshot of settings/captions in the run. The Remotion plugin scaffolds that path, then `attach` adds captions. Resume failed setup in the same folder; after attachment, use the `dependencies` helper to retry caption dependency installation. Keep node_modules and the project lockfile in that generated folder.
+
+For `editorial-kinetic`, settings also contain a `fonts` map for primary, serif and
+handwritten faces, including hashes and supported characters. The serif is Libre
+Baskerville Italic, the approved freely redistributable Marion alternative. Its
+`styleOptions.phrases` stores line roles, focal word indices, entrance groups,
+directions and optional decoration; see [the style contract](../styles/editorial-kinetic/STYLE.md).

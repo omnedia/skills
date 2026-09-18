@@ -5,7 +5,7 @@ description: Create animated caption-only overlays in a new Remotion project fro
 
 # Captions
 
-Create an editable Remotion project and a synchronized transparent caption overlay. The shipped style is **Active Word Highlight**. This directory is independently installable; the Remotion app plugin and local runtime remain mandatory prerequisites.
+Create an editable Remotion project and a synchronized transparent caption overlay. Shipped styles are **Active Word Highlight** and **Editorial Kinetic**. This directory is independently installable; the Remotion app plugin and local runtime remain mandatory prerequisites.
 
 ## Start or resume
 
@@ -20,9 +20,11 @@ Read the request and existing run context first. Keep a `run.json` in a task wor
 
 Load [styles/catalog.json](styles/catalog.json). Skip style selection when the request already picks a valid style. Otherwise start `node <skill>/scripts/gallery.mjs <run.json>`, open its exact local URL, and let the user choose. It displays four columns on wide screens, readable smaller layouts, and a selectable placeholder if a GIF is unavailable. Only installed styles appear.
 
-Read only the selected style’s instructions: [Active Word Highlight](styles/active-word-highlight/STYLE.md). If colors are unresolved, use the gallery’s role-labeled pickers, visible hex values, brand palette and live sample. The save button writes style, colors and acceptance into the run; read it before proceeding. With an already selected style, the gallery goes directly to colors. Skip this step when colors are explicit or defaults are clearly accepted. Never infer a highlight role from an arbitrary brand palette entry.
+Read only the selected style’s instructions: [Active Word Highlight](styles/active-word-highlight/STYLE.md) or [Editorial Kinetic](styles/editorial-kinetic/STYLE.md). Editorial Kinetic uses short reviewed phrases, mixed typography, directional group entrances and optional drawn underlines; save phrase grouping and emphasis in per-project options. If colors are unresolved, use the gallery’s role-labeled pickers, visible hex values, brand palette and live sample. The save button writes style, colors and acceptance into the run; read it before proceeding. With an already selected style, the gallery goes directly to colors. Skip this step when colors are explicit or defaults are clearly accepted. Never infer a highlight role from an arbitrary brand palette entry.
 
 If the browser is unavailable, show the actual preview/name in chat, list the style’s color roles/defaults and named brand colors, and accept a named style and explicit role mapping or acceptance of defaults. Save the same fields in `run.json`. Close the gallery server after selection. Missing timing must not erase completed choices.
+
+For Editorial Kinetic, apply the style's [underline selection guide](styles/editorial-kinetic/STYLE.md#choose-by-editorial-purpose) across the transcript before rendering. Save a per-phrase choice: no underline for ordinary text, a curved stroke for quieter editorial emphasis, or a bold bar for major beats. Do not propagate the example's underline setting to every phrase.
 
 ## Produce and deliver
 

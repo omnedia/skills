@@ -29,7 +29,12 @@ export function startGallery(runFile, {catalog = readJson(path.join(skillRoot, '
       catch {res.writeHead(404).end();} return;
     }
     if (req.method === 'GET' && url.pathname === '/font') {
-      res.setHeader('Content-Type', 'font/woff2'); res.end(fs.readFileSync(path.join(skillRoot, 'styles/active-word-highlight/fonts/Inter-Bold.woff2'))); return;
+      const selected = style ?? catalog.find(s => s.id === 'active-word-highlight');
+      const role = url.searchParams.get('role') ?? 'primary';
+      const entry = selected?.fontManifest ? readJson(path.join(skillRoot, selected.fontManifest)).fonts[role] : null;
+      const file = entry ? `styles/${selected.id}/${entry.asset}` : selected?.font;
+      if (!file) {res.writeHead(404).end(); return;}
+      res.setHeader('Content-Type', file.endsWith('.ttf') ? 'font/ttf' : 'font/woff2'); res.end(fs.readFileSync(path.join(skillRoot, file))); return;
     }
     if (req.method === 'POST' && url.pathname === '/select') {
       if (req.headers.origin && req.headers.origin !== `http://127.0.0.1:${server.address().port}`) {res.writeHead(403).end(); return;}

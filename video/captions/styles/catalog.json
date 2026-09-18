@@ -6,5 +6,14 @@
     "preview": "styles/active-word-highlight/preview.gif",
     "colors": {"base": "#FFFFFF", "active": "#FFD54A", "shadow": "#000000"},
     "font": "styles/active-word-highlight/fonts/Inter-Bold.woff2"
+  },
+  {
+    "id": "editorial-kinetic",
+    "name": "Editorial Kinetic",
+    "instructions": "styles/editorial-kinetic/STYLE.md",
+    "preview": "styles/editorial-kinetic/preview.gif",
+    "colors": {"base":"#F7F4ED", "creamTop":"#E1F8F2", "creamBottom":"#77D8C8", "pinkTop":"#FFF0CD", "pinkBottom":"#E6BB70", "accent":"#F2C879", "stroke":"#F7F4ED", "shadow":"#111B22"},
+    "font": "styles/editorial-kinetic/fonts/Poppins-Bold.ttf",
+    "fontManifest": "styles/editorial-kinetic/fonts/source.json"
   }
 ]

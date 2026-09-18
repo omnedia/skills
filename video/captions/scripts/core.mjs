@@ -70,6 +70,10 @@ export function resolveSettings(run, saved) {
     sourceOffsetMs: run.sourceOffsetMs ?? 0, timelinePlacementMs: run.timelinePlacementMs ?? 0,
     timing: run.timing,
     font: {asset: 'fonts/Inter-Bold.woff2', family: 'CaptionsBundledInter', weight: 700}};
+  if (style.fontManifest) {
+    result.fonts = readJson(path.join(skillRoot, style.fontManifest)).fonts;
+    result.font = result.fonts.primary;
+  }
   for (const key of ['width', 'height', 'fps']) if (!Number.isFinite(result[key]) || result[key] <= 0) throw new Error(`Invalid output ${key}`);
   if (!Number.isInteger(result.width) || !Number.isInteger(result.height)) throw new Error('Dimensions must be whole pixels.');
   if (!Number.isFinite(result.sourceOffsetMs) || !Number.isFinite(result.timelinePlacementMs)) throw new Error('Resolve offsets in milliseconds before creating a project.');
@@ -90,13 +94,18 @@ export function prepareProject(run, {saved = loadConfig(), checkRuntime = runtim
   const words = data.sentences.flatMap(sentence => sentence.words);
   if (!words.length) throw new Error('No reviewed words to render.');
   if (words[0].startMs + settings.sourceOffsetMs < 0) throw new Error('Offset would truncate speech before frame zero. Resolve the timeline origin.');
-  settings.durationInFrames = Math.ceil((Math.max(...words.map(w => w.endMs)) + settings.sourceOffsetMs + 120) * settings.fps / 1000);
+  settings.durationInFrames = Math.ceil((Math.max(...words.map(w => w.endMs)) + settings.sourceOffsetMs + (settings.style === 'editorial-kinetic' ? settings.styleOptions.exitMs ?? 140 : 120)) * settings.fps / 1000);
   settings.runtimeAtCreation = runtime;
-  const fontPath = path.join(skillRoot, 'styles/active-word-highlight/fonts/Inter-Bold.woff2');
+  const fontPath = path.join(skillRoot, `styles/${settings.style}/${settings.font.asset}`);
   const font = fs.readFileSync(fontPath);
   const fontManifest = readJson(path.join(path.dirname(fontPath), 'source.json'));
   settings.font.sha256 = createHash('sha256').update(font).digest('hex');
-  if (settings.font.sha256 !== fontManifest.sha256) throw new Error('Bundled font checksum mismatch: repair the skill package.');
+  if (settings.font.sha256 !== (fontManifest.fonts?.primary.sha256 ?? fontManifest.sha256)) throw new Error('Bundled font checksum mismatch: repair the skill package.');
+  for (const entry of Object.values(settings.fonts ?? {})) {
+    const bytes = fs.readFileSync(path.join(skillRoot, `styles/${settings.style}`, entry.asset));
+    if (createHash('sha256').update(bytes).digest('hex') !== entry.sha256) throw new Error(`Bundled font checksum mismatch: ${entry.asset}`);
+    if (!entry.license || !fs.existsSync(path.join(skillRoot, `styles/${settings.style}/fonts`, entry.license))) throw new Error('Missing bundled font license');
+  }
   const base = path.resolve(settings.projectFolder);
   fs.mkdirSync(base, {recursive: true});
   const original = path.join(base, run.projectName);
@@ -116,16 +125,13 @@ export function attachProject(run, {checkRuntime = runtimeReady} = {}) {
   if (!fs.existsSync(packageFile)) throw new Error('The Remotion plugin must scaffold the new project before captions are attached.');
   const pkg = readJson(packageFile);
   if (!(pkg.dependencies?.remotion ?? pkg.devDependencies?.remotion)) throw new Error('The selected folder is not a Remotion scaffold.');
-  const files = ['src/captions', 'captions-render.mjs', 'captions-export-options.mjs', 'project.json', 'EDITOR.md', 'public/fonts/Inter-Bold.woff2', 'public/fonts/LICENSE.txt', 'public/fonts/source.json'];
+  const files = ['src/captions', 'captions-render.mjs', 'captions-export-options.mjs', 'project.json', 'EDITOR.md', 'public/fonts'];
   if (files.some(file => fs.existsSync(path.join(target, file))) || ['captions:studio', 'captions:render', 'captions:preview'].some(key => pkg.scripts?.[key])) throw new Error('Caption files or scripts already exist. Resume that project without attaching again; do not overwrite it.');
   fs.cpSync(path.join(skillRoot, 'assets/caption-code/src'), path.join(target, 'src/captions'), {recursive: true});
   fs.copyFileSync(path.join(skillRoot, 'assets/caption-code/render.mjs'), path.join(target, 'captions-render.mjs'));
   fs.copyFileSync(path.join(skillRoot, 'assets/caption-code/export-options.mjs'), path.join(target, 'captions-export-options.mjs'));
-  const fontPath = path.join(skillRoot, 'styles/active-word-highlight/fonts/Inter-Bold.woff2');
-  fs.mkdirSync(path.join(target, 'public/fonts'), {recursive: true});
-  fs.copyFileSync(fontPath, path.join(target, 'public', settings.font.asset));
-  fs.copyFileSync(path.join(path.dirname(fontPath), 'LICENSE.txt'), path.join(target, 'public/fonts/LICENSE.txt'));
-  fs.copyFileSync(path.join(path.dirname(fontPath), 'source.json'), path.join(target, 'public/fonts/source.json'));
+  const fontDir = path.join(skillRoot, `styles/${settings.style}/fonts`);
+  fs.cpSync(fontDir, path.join(target, 'public/fonts'), {recursive: true});
   writeJson(path.join(target, 'project.json'), {settings, sentences});
   pkg.scripts = {...pkg.scripts, 'captions:studio': 'remotion studio src/captions/index.tsx --no-open',
     'captions:render': 'node captions-render.mjs', 'captions:preview': 'node captions-render.mjs --preview'};

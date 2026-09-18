@@ -137,7 +137,7 @@ test('gallery placeholder stays selectable; selections persist into actual proje
   try {
     const endpoint = route => url.replace('/?', `${route}?`);
     const data = await fetch(endpoint('/catalog')).then(r => r.json());
-    assert.equal(data.catalog.length, 1);
+    assert.equal(data.catalog.length, catalog.length);
     assert.equal(data.catalog[0].previewAvailable, false);
     assert.equal((await fetch(url.split('?')[0])).status, 403);
     const colors = {base: '#123456', active: '#ABCDEF', shadow: '#000000'};

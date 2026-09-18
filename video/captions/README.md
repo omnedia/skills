@@ -16,9 +16,9 @@ Turn your transcript into animated captions with precise word highlights, your b
 
 <br>
 
-<img src="styles/active-word-highlight/preview.gif" alt="Active Word Highlight preview: each spoken word turns yellow while the sentence stays in place." width="540">
+<img src="styles/editorial-kinetic/preview.gif" alt="Editorial Kinetic preview: each word an sentence is animated with different fonts and underlines." width="540">
 
-**Active Word Highlight**<br>
+**Editorial Kinetic**<br>
 <sub>Preview generated from the actual caption component. The final overlay has a transparent background.</sub>
 
 </div>
@@ -73,7 +73,15 @@ On first use, the agent saves your preferred project folder and optionally a nam
 | Active word | Warm yellow · `#FFD54A` |
 | Shadow and outline | Black · `#000000`, applied subtly |
 
-Choose colors in the local gallery or specify them in your request. Already supplied choices are reused. One finished style is currently included; the [style catalog](styles/catalog.json) lists what is available.
+Choose colors in the local gallery or specify them in your request. Already supplied choices are reused. The [style catalog](styles/catalog.json) includes both styles.
+
+### Editorial Kinetic
+
+![Editorial Kinetic preview](styles/editorial-kinetic/preview.gif)
+
+**Editorial Kinetic** (`editorial-kinetic`) builds short editorial headlines with mixed fonts, sea-glass teal or champagne-gold emphasis, directional word/group entrances and selectively drawn underlines. Complete phrases are measured before reveal, keeping visible words fixed.
+
+It bundles Poppins Bold, Libre Baskerville Italic (the approved free alternative to Marion), and Paul Neave's public-domain Lazy Dog. [Style details and project overrides](styles/editorial-kinetic/STYLE.md) cover fonts, color roles, phrase grouping and animation. The preview comes from the actual component; its dark background is excluded from exports.
 
 ## What to provide
 
@@ -217,7 +225,7 @@ Real audio, render, 4K, and standalone-copy checks are documented in [the accept
 
 ## License
 
-Skill code and documentation use the repository's [MIT License](../../LICENSE). The bundled Inter font is distributed under the [SIL Open Font License 1.1](styles/active-word-highlight/fonts/LICENSE.txt); its [source and checksum](styles/active-word-highlight/fonts/source.json) are included.
+Skill code and documentation use the repository's [MIT License](../../LICENSE). Inter uses [SIL OFL 1.1](styles/active-word-highlight/fonts/LICENSE.txt). Editorial Kinetic includes [Poppins's OFL](styles/editorial-kinetic/fonts/Poppins-LICENSE.txt), [Libre Baskerville's OFL](styles/editorial-kinetic/fonts/LibreBaskerville-LICENSE.txt), and [Lazy Dog's public-domain dedication](styles/editorial-kinetic/fonts/LazyDog-LICENSE.txt), with [sources and checksums](styles/editorial-kinetic/fonts/source.json).
 
 ---
 

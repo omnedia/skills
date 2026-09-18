@@ -2,17 +2,26 @@ import React, {useEffect, useState} from 'react';
 import {AbsoluteFill, cancelRender, continueRender, delayRender, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import type {Caption} from '@remotion/captions';
 import {layoutSentences, segmentState} from './layout.mjs';
+import {EditorialKinetic} from './EditorialKinetic';
+import type {EditorialOptions} from './editorial.mjs';
+
+export type FontEntry = {asset: string; family: string; weight: number; style?: string; sha256?: string; codepoints?: number[]};
 
 export type Settings = {
   width: number; height: number; fps: number; durationInFrames: number;
   sourceOffsetMs: number; timelinePlacementMs: number;
-  colors: {base: string; active: string; shadow: string};
+  style?: string;
+  colors: Record<string, string>;
+  fonts?: Record<'primary'|'serif'|'handwritten', FontEntry>;
   font: {asset: string; family: string; weight: number};
-  styleOptions?: {fontSize?: number; bottomRatio?: number};
+  styleOptions?: EditorialOptions & {fontSize?: number; bottomRatio?: number};
 };
 export type Props = {settings: Settings; sentences: {words: Caption[]}[]; previewBackground?: string};
 
-export const CaptionOverlay: React.FC<Props> = ({settings, sentences, previewBackground}) => {
+export const CaptionOverlay: React.FC<Props> = props => props.settings.style === 'editorial-kinetic'
+  ? <EditorialKinetic {...props}/> : <ActiveWordHighlight {...props}/>;
+
+const ActiveWordHighlight: React.FC<Props> = ({settings, sentences, previewBackground}) => {
   const frame = useCurrentFrame();
   const {fps, width, height} = useVideoConfig();
   const [handle] = useState(() => delayRender('Load exact bundled font and measure captions'));
