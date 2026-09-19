@@ -1,6 +1,6 @@
 <div align="center">
 
-# Captions
+# Omnedia Captions
 
 ### Every word, right on time.
 

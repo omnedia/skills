@@ -1,9 +1,9 @@
 ---
-name: captions
+name: omnedia-captions
 description: Create styled Remotion captions from timed transcripts or supplied text with matching audio. Includes style/color selection, silent ProRes 4444 alpha overlays, and optional Montserrat Difference compositing. Requires the Remotion plugin in Codex.
 ---
 
-# Captions
+# Omnedia Captions
 
 Create an editable Remotion project and a synchronized transparent caption overlay. Shipped styles are **Active Word Highlight**, **Editorial Kinetic**, **Montserrat Difference**, and **Brunson Red Script**. All styles default to one transparent MOV; Montserrat offers optional Difference compositing when explicitly requested. This directory is independently installable; the Remotion app plugin and local runtime remain mandatory prerequisites.
 

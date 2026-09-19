@@ -68,7 +68,7 @@ Use the research-qualified-leads skill to find 20 qualified leads.
 
 | Skill | What it does |
 | :--- | :--- |
-| **[Captions](https://github.com/omnedia/skills/tree/master/video/captions)** | Creates animated, transparent caption overlays in editable Remotion projects from timed transcripts or text with matching audio. Requires the Remotion plugin in Codex. |
+| **[Omnedia Captions](https://github.com/omnedia/skills/tree/master/video/captions)** | Creates animated, transparent caption overlays in editable Remotion projects from timed transcripts or text with matching audio. Requires the Remotion plugin in Codex. |
 
 <p align="center"><em>More skills and categories are on the way.</em></p>
 
