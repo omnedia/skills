@@ -4,6 +4,10 @@ import type {Caption} from '@remotion/captions';
 import {layoutSentences, segmentState} from './layout.mjs';
 import {EditorialKinetic} from './EditorialKinetic';
 import type {EditorialOptions} from './editorial.mjs';
+import {MontserratDifference} from './MontserratDifference';
+import type {MontserratOptions} from './montserrat.mjs';
+import {BrunsonRedScript} from './BrunsonRedScript';
+import type {BrunsonOptions} from './brunson.mjs';
 
 export type FontEntry = {asset: string; family: string; weight: number; style?: string; sha256?: string; codepoints?: number[]};
 
@@ -12,14 +16,15 @@ export type Settings = {
   sourceOffsetMs: number; timelinePlacementMs: number;
   style?: string;
   colors: Record<string, string>;
-  fonts?: Record<'primary'|'serif'|'handwritten', FontEntry>;
+  fonts?: Record<string, FontEntry>;
   font: {asset: string; family: string; weight: number};
-  styleOptions?: EditorialOptions & {fontSize?: number; bottomRatio?: number};
+  styleOptions?: (EditorialOptions | MontserratOptions | BrunsonOptions) & {fontSize?: number; bottomRatio?: number};
+  delivery?: {mode:'alpha'|'footage'|'layers';footage?:string;trimBeforeFrames?:number};
 };
-export type Props = {settings: Settings; sentences: {words: Caption[]}[]; previewBackground?: string};
+export type Props = {settings: Settings; sentences: {words: Caption[]}[]; previewBackground?: string;layer?:string};
 
 export const CaptionOverlay: React.FC<Props> = props => props.settings.style === 'editorial-kinetic'
-  ? <EditorialKinetic {...props}/> : <ActiveWordHighlight {...props}/>;
+  ? <EditorialKinetic {...props}/> : props.settings.style === 'brunson-red-script' ? <BrunsonRedScript {...props}/> : props.settings.style === 'montserrat-difference' ? <MontserratDifference {...props}/> : <ActiveWordHighlight {...props}/>;
 
 const ActiveWordHighlight: React.FC<Props> = ({settings, sentences, previewBackground}) => {
   const frame = useCurrentFrame();

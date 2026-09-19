@@ -5,6 +5,8 @@ import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
 import {exportOptions} from '../assets/caption-code/export-options.mjs';
+import {montserratDefaults} from '../assets/caption-code/src/montserrat.mjs';
+import {brunsonDefaults} from '../assets/caption-code/src/brunson.mjs';
 
 export const skillRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const readJson = file => JSON.parse(fs.readFileSync(file, 'utf8').replace(/^\uFEFF/, ''));
@@ -74,6 +76,18 @@ export function resolveSettings(run, saved) {
     result.fonts = readJson(path.join(skillRoot, style.fontManifest)).fonts;
     result.font = result.fonts.primary;
   }
+  if (style.id === 'brunson-red-script') {
+    result.styleOptions = {...brunsonDefaults, ...run.styleOptions,
+      sizes: {...brunsonDefaults.sizes, ...run.styleOptions?.sizes},
+      anchors: {...brunsonDefaults.anchors, ...run.styleOptions?.anchors}};
+  }
+  if (style.id === 'montserrat-difference') {
+    result.styleOptions = {...montserratDefaults, ...run.styleOptions};
+    result.delivery = run.delivery ?? {mode:'alpha'};
+    if (!['alpha','footage','layers'].includes(result.delivery?.mode)) throw Error('Montserrat delivery.mode must be alpha, footage or layers.');
+    if (result.delivery.mode === 'footage' && (!result.delivery.footage || path.isAbsolute(result.delivery.footage) || result.delivery.footage.includes('..'))) throw Error('Set delivery.footage to a project public asset path.');
+    if (!Number.isInteger(result.delivery.trimBeforeFrames ?? 0) || (result.delivery.trimBeforeFrames ?? 0) < 0) throw Error('Invalid footage trimBeforeFrames');
+  }
   for (const key of ['width', 'height', 'fps']) if (!Number.isFinite(result[key]) || result[key] <= 0) throw new Error(`Invalid output ${key}`);
   if (!Number.isInteger(result.width) || !Number.isInteger(result.height)) throw new Error('Dimensions must be whole pixels.');
   if (!Number.isFinite(result.sourceOffsetMs) || !Number.isFinite(result.timelinePlacementMs)) throw new Error('Resolve offsets in milliseconds before creating a project.');
@@ -95,7 +109,9 @@ export function prepareProject(run, {saved = loadConfig(), checkRuntime = runtim
   if (!words.length) throw new Error('No reviewed words to render.');
   if (words[0].startMs + settings.sourceOffsetMs < 0) throw new Error('Offset would truncate speech before frame zero. Resolve the timeline origin.');
   settings.durationInFrames = Math.ceil((Math.max(...words.map(w => w.endMs)) + settings.sourceOffsetMs + (settings.style === 'editorial-kinetic' ? settings.styleOptions.exitMs ?? 140 : 120)) * settings.fps / 1000);
+  if (settings.style === 'montserrat-difference') settings.durationInFrames = Math.ceil((Math.max(...data.sentences.map((s,i) => (settings.styleOptions.phrases?.[i]?.endMs ?? s.words.at(-1).endMs) + (settings.styleOptions.phrases?.[i]?.exitMs ?? settings.styleOptions.exitMs))) + settings.sourceOffsetMs) * settings.fps / 1000);
   settings.runtimeAtCreation = runtime;
+  if (settings.style === 'brunson-red-script') settings.durationInFrames = Math.ceil((Math.max(...data.sentences.map((s,i) => settings.styleOptions.phrases?.[i]?.endMs ?? s.words.at(-1).endMs)) + settings.sourceOffsetMs) * settings.fps / 1000);
   const fontPath = path.join(skillRoot, `styles/${settings.style}/${settings.font.asset}`);
   const font = fs.readFileSync(fontPath);
   const fontManifest = readJson(path.join(path.dirname(fontPath), 'source.json'));
@@ -137,6 +153,8 @@ export function attachProject(run, {checkRuntime = runtimeReady} = {}) {
     'captions:render': 'node captions-render.mjs', 'captions:preview': 'node captions-render.mjs --preview'};
   writeJson(packageFile, pkg);
   fs.writeFileSync(path.join(target, 'EDITOR.md'), `# Caption overlay\n\nImport out/captions.mov above your footage; use its alpha channel (straight/unmatted). The overlay is silent.\n\nPlace the MOV at ${settings.timelinePlacementMs} ms on the editing timeline. A source timestamp t appears at t + ${settings.sourceOffsetMs} ms inside the MOV. Leading silence is retained. Match ${settings.fps} fps; rendered dimensions ${settings.width * settings.export.scale} × ${settings.height * settings.export.scale} (${settings.export.scale}× export scale; composition ${settings.width} × ${settings.height}).\n\nReproduce: npm ci, then npm run captions:render. Edit project.json for saved colors/timing/style settings. npm run captions:studio opens an editable preview.\n`);
+  if (settings.style === 'montserrat-difference' && settings.delivery.mode === 'alpha') fs.appendFileSync(path.join(target,'EDITOR.md'), '\nMontserrat alpha mode preserves source colors, typography and animation with normal compositing. Background-dependent Difference blending is not baked into this single overlay.\n');
+  if (settings.style === 'montserrat-difference' && settings.delivery.mode !== 'alpha') fs.writeFileSync(path.join(target,'EDITOR.md'), `# Montserrat Difference delivery\n\nSaved mode: ${settings.delivery.mode}. Run npm run captions:render.\n\nFootage mode: copy the intended video into public/${settings.delivery.footage ?? 'footage.mp4'}, then render. out/captions.mov contains the footage and its actual Difference result (silent). Footage begins at trimBeforeFrames; captions use source time + sourceOffsetMs.\n\nLayers mode: each text group gets a separate source-color ProRes 4444 alpha file. Import out/layers.json in its recorded bottom-to-top order; set each layer to its listed normal or Difference blend mode, straight/unmatted alpha. Keep the same footage, crop, color space and timing. Do not flatten these source layers or composite every layer normally. A standard alpha overlay cannot preserve a Difference relationship with footage added later.\n\nPlace all outputs at ${settings.timelinePlacementMs} ms; keep ${settings.fps} fps. Every layer retains the full timeline. Preview files start at the firstFrame reported by the renderer and are review-only. Edit project.json for saved editorial choices.\n`);
   return target;
 }
 

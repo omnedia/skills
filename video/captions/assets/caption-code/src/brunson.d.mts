@@ -1,0 +1,12 @@
+import type {Caption} from '@remotion/captions';
+export type Role='headline'|'script'|'default';
+type Anchor={x:number;y:number};
+type Shadow={color:string;opacity:number;x:number;y:number;blur:number};
+export type BrunsonGroup={from:number;to:number;role?:Role;size?:number;color?:string;region?:string;line?:number;anchor?:Anchor;align?:'left'|'center'|'right';offset?:Anchor;zIndex?:number;breakAfter?:number[];lineGap?:number;endMs?:number;entrance?:'instant'|'rise-fade';entranceMs?:number;travel?:number;motionBlur?:number;easing?:'ease-out-cubic'|'ease-out-quart';shadow?:Shadow|null};
+export type BrunsonOptions={sizes?:Partial<Record<Role,number>>;anchors?:Record<string,Anchor>;maxWidthRatio?:number;entranceMs?:number;travel?:number;motionBlur?:number;easing?:string;phrases?:Record<number,{mode:'hero'|'default';endMs?:number;anchor?:Anchor;regions?:Record<string,{anchor?:Anchor;align?:'left'|'center'|'right';rowGap?:number;wordGap?:number}>;groups?:BrunsonGroup[]}>};
+type Metrics={width:number;left:number;right:number;ascent:number;descent:number};
+type LaidGroup=BrunsonGroup&{index:number;role:Role;text:string;originalText:string;size:number;color:string;startMs:number;endMs:number;lines:(Metrics&{text:string;x:number;y:number})[];zIndex:number;boxX:number;boxY:number;inkWidth:number;inkHeight:number};
+export type Segment={phraseIndex:number;mode:'hero'|'default';startMs:number;endMs:number;groups:LaidGroup[]};
+export const brunsonDefaults:BrunsonOptions;
+export function brunsonLayout(sentences:{words:Caption[]}[],measure:(text:string,role:Role,size:number)=>Metrics,width:number,height:number,options?:BrunsonOptions,colors?:Record<string,string>):Segment[];
+export function brunsonState(segments:Segment[],timeMs:number):(Omit<Segment,'groups'>&{groups:(LaidGroup&{opacity:number;dy:number;blur:number})[]})|null;

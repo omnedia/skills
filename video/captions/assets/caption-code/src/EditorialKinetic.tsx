@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {AbsoluteFill, cancelRender, continueRender, delayRender, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
-import {editorialLayout, editorialState, underlineMetrics, type EditorialSegment, type Role} from './editorial.mjs';
+import {editorialLayout, editorialState, underlineMetrics, type EditorialSegment, type Role, type EditorialOptions} from './editorial.mjs';
 import type {Props} from './CaptionOverlay';
 
 export const EditorialKinetic: React.FC<Props> = ({settings, sentences, previewBackground}) => {
@@ -9,7 +9,7 @@ export const EditorialKinetic: React.FC<Props> = ({settings, sentences, previewB
   const [handle] = useState(() => delayRender('Load Editorial Kinetic fonts and measure complete phrases'));
   const [segments, setSegments] = useState<EditorialSegment[] | null>(null);
   const fonts = settings.fonts!;
-  const options = settings.styleOptions;
+  const options = settings.styleOptions as EditorialOptions;
   useEffect(() => {
     let mounted = true;
     (async () => {

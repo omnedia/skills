@@ -1,0 +1,8 @@
+export type MontserratGroup = {from:number;to:number;line?:number;slot?:string;emphasis?:boolean;shadow?:boolean;number?:boolean;weight?:100|200|300|700;italic?:boolean;size?:number;uppercase?:boolean;sourceColor?:string;colorRole?:string;blendMode?:'normal'|'difference';reveal?:'fade-ltr'|'instant';revealMs?:number};
+export type MontserratPhrase = {groups:MontserratGroup[];layout?:'stacked'|'asymmetric'|'single'|'number';behavior?:'build'|'replace';position?:{x?:number;y?:number};gap?:number;rowGap?:number;endMs?:number;exitMs?:number;reveal?:'fade-ltr'|'instant';revealMs?:number};
+export type MontserratOptions = {thinWeight?:100|200|300;supportSize?:number;emphasisSize?:number;numberSize?:number;reveal?:'fade-ltr'|'instant';revealMs?:number;exitMs?:number;maxWidthRatio?:number;position?:{x:number;y:number};phrases?:Record<number,MontserratPhrase>};
+export type MeasuredGroup = MontserratGroup & {index:number;text:string;weight:number;italic:boolean;size:number;color:string;blendMode:'normal'|'difference';x:number;y:number;boxX:number;boxY:number;boxWidth:number;boxHeight:number;opacity:number;progress:number;offsetX:number;entranceDistance:number};
+export type Segment = {groups:MeasuredGroup[];startMs:number;endMs:number;exitMs:number;phraseIndex:number};
+export const montserratDefaults: MontserratOptions;
+export function montserratLayout(sentences: {words:import('@remotion/captions').Caption[]}[],measure:(text:string,weight:number,italic:boolean,size:number)=>{width:number;left:number;right:number;ascent:number;descent:number},width:number,height:number,options?:MontserratOptions,colors?:Record<string,string>):Segment[];
+export function montserratState(segments:Segment[],timeMs:number):Segment|null;

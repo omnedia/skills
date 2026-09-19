@@ -56,3 +56,11 @@ handwritten faces, including hashes and supported characters. The serif is Libre
 Baskerville Italic, the approved freely redistributable Marion alternative. Its
 `styleOptions.phrases` stores line roles, focal word indices, entrance groups,
 directions and optional decoration; see [the style contract](../styles/editorial-kinetic/STYLE.md).
+
+## Montserrat Difference
+
+The installed `montserrat-difference` style adds reviewed Montserrat compositions with per-group source colors and genuine Difference blending. Save explicit phrase groups, positions and reveal/persistence choices. Delivery defaults to `alpha`: one transparent MOV using normal source-color text. Only explicitly requested `footage` or `layers` delivery preserves the backdrop-dependent Difference effect. See [style configuration and delivery](../styles/montserrat-difference/STYLE.md).
+
+## Brunson Red Script
+
+Select `brunson-red-script`; colors are `headline`, `script`, and `default`. Save reviewed `styleOptions.phrases` with mode, stable word-index ranges, roles, independent region anchors/lines, explicit default units, size/shadow overrides, script overlap and layer order, entrance parameters and end times. Shared defaults do not select hero moments. See [style contract](../styles/brunson-red-script/STYLE.md) and [representative configuration](../tests/fixtures/brunson-example.mjs). Original transcript text and word timing remain independent of display casing.

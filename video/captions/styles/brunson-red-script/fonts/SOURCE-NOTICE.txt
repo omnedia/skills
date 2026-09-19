@@ -1,0 +1,16 @@
+Downloaded at the user's explicit request on 2026-09-19. Original unmodified font files.
+
+Brunson.ttf: The Branded Quotes. https://www.dafont.com/brunson.font
+Download: https://dl.dafont.com/dl/?f=brunson
+Source states personal use only. Commercial license:
+https://thebrandedquotes.sellfy.store/p/brunson-typeface/
+
+BrushScriptMT.ttf: Brush Script MT Italic, Monotype Typography Ltd.
+Download: https://static.wfonts.com/download/data/2014/12/29/brush-script-mt/brush-script-mt.zip
+Original archive file: BRUSHSCI.ttf (renamed only; font bytes unchanged).
+The archive did not include a license grant. This notice is NOT a license.
+Font information and licensing: https://learn.microsoft.com/en-us/typography/font-list/brush-script-mt
+
+These are not OFL or unrestricted redistribution assets. Commercial-use and
+redistribution permission has not been established. Obtain the appropriate
+licenses before commercial use or distributing the skill with these files.

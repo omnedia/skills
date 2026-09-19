@@ -1,5 +1,14 @@
 [
   {
+    "id":"brunson-red-script",
+    "name":"Brunson Red Script",
+    "instructions":"styles/brunson-red-script/STYLE.md",
+    "preview":"styles/brunson-red-script/preview.gif",
+    "colors":{"headline":"#EA1315","script":"#FFFFFF","default":"#FFFFFF"},
+    "font":"styles/brunson-red-script/fonts/Brunson.ttf",
+    "fontManifest":"styles/brunson-red-script/fonts/source.json"
+  },
+  {
     "id": "active-word-highlight",
     "name": "Active Word Highlight",
     "instructions": "styles/active-word-highlight/STYLE.md",
@@ -15,5 +24,14 @@
     "colors": {"base":"#F7F4ED", "creamTop":"#E1F8F2", "creamBottom":"#77D8C8", "pinkTop":"#FFF0CD", "pinkBottom":"#E6BB70", "accent":"#F2C879", "stroke":"#F7F4ED", "shadow":"#111B22"},
     "font": "styles/editorial-kinetic/fonts/Poppins-Bold.ttf",
     "fontManifest": "styles/editorial-kinetic/fonts/source.json"
+  },
+  {
+    "id":"montserrat-difference",
+    "name":"Montserrat Difference",
+    "instructions":"styles/montserrat-difference/STYLE.md",
+    "preview":"styles/montserrat-difference/preview.gif",
+    "colors":{"base":"#F7F5EF","accent":"#FF3030","blue":"#208CFF","turquoise":"#20D6BE","gold":"#D8B86C"},
+    "font":"styles/montserrat-difference/fonts/Montserrat.ttf",
+    "fontManifest":"styles/montserrat-difference/fonts/source.json"
   }
 ]
