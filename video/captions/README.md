@@ -73,7 +73,9 @@ On first use, the agent saves your preferred project folder and optionally a nam
 | Active word | Warm yellow · `#FFD54A` |
 | Shadow and outline | Black · `#000000`, applied subtly |
 
-Choose colors in the local gallery or specify them in your request. Already supplied choices are reused. The [style catalog](styles/catalog.json) includes both styles.
+Choose colors in the local gallery or specify them in your request. Already supplied choices are reused. The [style catalog](styles/catalog.json) includes every installed style, including Montserrat Difference and [Brunson Red Script](styles/brunson-red-script/STYLE.md).
+
+Brunson Red Script combines explicitly authored red headline/script hooks with instant small white interview captions. Its font files have separate restrictions; the repository's MIT license does not grant rights to them. Read the [font source notice](styles/brunson-red-script/fonts/SOURCE-NOTICE.txt).
 
 ### Editorial Kinetic
 
@@ -102,8 +104,7 @@ No particular transcript file format is required. The agent interprets understan
 1. **Read your inputs.** Check timing, the Remotion plugin, and the local runtime.
 2. **Resolve the look.** Reuse your choices or open the style and color picker.
 3. **Create the project.** Follow the Remotion plugin's setup workflow in your selected folder, then add the caption assets and saved settings.
-4. **Preview the captions.** Inspect word boundaries, line breaks, font loading, and fades.
-5. **Export and verify.** Render the transparent overlay, check actual alpha, and inspect composites over light and dark backgrounds.
+4. **Create and render.** Build the Remotion animation and render the final transparent overlay. No preview renders, frame screenshots, placement reviews, transparency checks, or audio-silence verification are required.
 
 Completed choices survive interruptions. Existing folders are not overwritten, and later changes to your personal defaults do not alter saved projects.
 
@@ -140,7 +141,7 @@ your-project/
 └── …                           # Remotion plugin scaffold and dependencies
 ```
 
-Place `captions.mov` above your footage with alpha enabled. Follow `EDITOR.md` for the source offset and timeline placement; leading silence is preserved.
+For every style, place the default `captions.mov` above your footage with alpha enabled. Montserrat exports normal source colors by default; rendering with footage or separate Difference layers is optional and must be explicitly requested. Follow `EDITOR.md` for the source offset and timeline placement; leading silence is preserved.
 
 To revisit a generated project:
 
@@ -179,9 +180,8 @@ Use Active Word Highlight with its default colors.
 | :--- | :--- |
 | **Remotion plugin in Codex** | Every run; standalone Remotion packages do not replace the plugin. |
 | Node.js 22+, npm, and Git | Project setup through the Remotion plugin. |
-| FFmpeg and ffprobe | Audio processing and export verification. |
+| FFmpeg and ffprobe | Audio processing and alignment. |
 | Remotion's rendering browser and host libraries | Preview and final rendering; downloaded or installed during setup as needed. |
-| Python with Pillow | Export transparency checks and composite images. |
 | Python 3.10–3.12 with the alignment dependencies | Only when aligning text to audio. |
 
 Alignment runs locally with stable-ts and Whisper. The first use downloads model weights; the supplied audio and text are not uploaded by the alignment helper. See [input and timing](references/input-and-timing.md) for setup and model details. Remotion's own licensing terms apply to its use.
@@ -195,8 +195,8 @@ Alignment runs locally with stable-ts and Whisper. The first use downloads model
 | [`assets/`](assets/) | Reusable caption code and gallery UI. |
 | [`config/defaults.json`](config/defaults.json) | Shared starting values, including 2× export scale. |
 | [`references/`](references/) | Timing, configuration, project setup, and export details. |
-| [`scripts/`](scripts/) | Configuration, gallery, alignment, and verification helpers. |
-| [`tests/`](tests/) | Behavioral tests, audio fixtures, and render checks. |
+| [`scripts/`](scripts/) | Configuration, gallery, alignment, and developer helpers. |
+| [`tests/`](tests/) | Behavioral tests and audio fixtures. |
 
 <details>
 <summary><strong>What do the helpers do?</strong></summary>
@@ -207,8 +207,7 @@ Alignment runs locally with stable-ts and Whisper. The first use downloads model
 | `gallery.mjs` | Serve the local style/color picker and persist selections. |
 | `align.py` | Align supplied wording to matching audio. |
 | `alignment-requirements.txt` | Declare the local alignment dependencies. |
-| `verify-export.py` | Inspect codec, dimensions, timing, and decoded alpha; generate light/dark composites. |
-| `render-check.mjs` | Exercise the caption component and regenerate its preview GIF during development. |
+| `brunson-gallery.mjs` | Regenerate the Brunson gallery animation as a separate maintenance task. |
 
 </details>
 
@@ -221,7 +220,7 @@ node --test tests/core.test.mjs
 python -m unittest discover -s tests -p "test_*.py"
 ```
 
-Real audio, render, 4K, and standalone-copy checks are documented in [the acceptance guide](tests/acceptance.md). Integration checks create temporary Remotion projects outside the skill directory and install dependencies there.
+Developer-only checks are documented in [the acceptance guide](tests/acceptance.md). These are never part of normal caption creation or delivery. Integration checks create temporary Remotion projects outside the skill directory and install dependencies there.
 
 ## License
 
@@ -236,3 +235,11 @@ Skill code and documentation use the repository's [MIT License](../../LICENSE). 
 [Back to the skill library](../../README.md#skill-library) · [View on GitHub](https://github.com/omnedia/skills/tree/master/video/captions)
 
 </div>
+
+## Montserrat Difference
+
+![Montserrat Difference preview](styles/montserrat-difference/preview.gif)
+
+Montserrat uses [SIL OFL 1.1](styles/montserrat-difference/fonts/OFL.txt); [font sources and checksums](styles/montserrat-difference/fonts/source.json) are bundled.
+
+The installed `montserrat-difference` style adds reviewed Montserrat compositions with per-group source colors and genuine Difference blending. Save explicit phrase groups, positions and reveal/persistence choices. Delivery defaults to `alpha`: one transparent MOV using normal source-color text. Only explicitly requested `footage` or `layers` delivery preserves the backdrop-dependent Difference effect. See [style configuration, preview and delivery](styles/montserrat-difference/STYLE.md).
