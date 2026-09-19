@@ -1,0 +1,28 @@
+{
+  "duration": 9.0,
+  "time_unit": "seconds",
+  "words": [
+    { "text": "Every", "start": 0.0, "end": 0.35 },
+    { "text": "great", "start": 0.35, "end": 0.65 },
+    { "text": "idea", "start": 0.65, "end": 1.15 },
+    { "text": "starts", "start": 1.15, "end": 1.5 },
+    { "text": "with", "start": 1.5, "end": 1.7 },
+    { "text": "a", "start": 1.7, "end": 1.8 },
+    { "text": "spark.", "start": 1.8, "end": 2.5 },
+    { "text": "Add", "start": 2.8, "end": 3.1 },
+    { "text": "a", "start": 3.1, "end": 3.2 },
+    { "text": "little", "start": 3.2, "end": 3.5 },
+    { "text": "motion,", "start": 3.5, "end": 4.1 },
+    { "text": "turn", "start": 4.3, "end": 4.6 },
+    { "text": "up", "start": 4.6, "end": 4.8 },
+    { "text": "the", "start": 4.8, "end": 5.0 },
+    { "text": "energy,", "start": 5.0, "end": 5.7 },
+    { "text": "and", "start": 6.0, "end": 6.2 },
+    { "text": "watch", "start": 6.2, "end": 6.6 },
+    { "text": "your", "start": 6.6, "end": 6.85 },
+    { "text": "words", "start": 6.85, "end": 7.35 },
+    { "text": "come", "start": 7.35, "end": 7.7 },
+    { "text": "to", "start": 7.7, "end": 7.9 },
+    { "text": "life.", "start": 7.9, "end": 9.0 }
+  ]
+}
