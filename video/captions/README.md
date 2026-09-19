@@ -12,7 +12,7 @@ Turn your transcript into animated captions with precise word highlights, your b
 [![Resolution: 4K](https://img.shields.io/badge/default_export-4K-facc15?style=flat-square)](#export-defaults)
 [![License: MIT](https://img.shields.io/badge/license-MIT-16a34a?style=flat-square)](../../LICENSE)
 
-[Install](#install) · [Preview](#the-style) · [How it works](#how-it-works) · [Requirements](#requirements) · [Development](#development)
+[Install](#install) · [Update](#update) · [Preview](#the-style) · [How it works](#how-it-works) · [Requirements](#requirements) · [Development](#development)
 
 <br>
 
@@ -56,6 +56,21 @@ use Active Word Highlight, and keep the default colors and 4K export.
 ```
 
 On first use, the agent saves your preferred project folder and optionally a named brand palette. It reuses those settings on later runs.
+
+## Update
+
+To update an existing installation, give your agent this prompt:
+
+```text
+Update my installed captions skill to the current version at:
+https://github.com/omnedia/skills/tree/master/video/captions
+
+Update the complete skill directory, including its styles, fonts, assets,
+and helpers. Preserve my existing configuration at
+~/.config/codex-captions/config.json, saved preferences, brand palettes,
+and project folder setting. Do not reset or migrate my configuration,
+modify existing caption projects, or change unrelated skills or plugins.
+```
 
 ## The style
 
