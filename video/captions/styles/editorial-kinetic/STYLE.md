@@ -1,8 +1,7 @@
 # Editorial Kinetic
 
 Stable ID: `editorial-kinetic`. Component: `assets/caption-code/src/EditorialKinetic.tsx`;
-pure geometry and timeline functions: `src/editorial.mjs`. The gallery GIF is produced
-by `scripts/editorial-render-check.mjs` from this component's transparent ProRes MOV.
+pure geometry and timeline functions: `src/editorial.mjs`. The gallery GIF shows this component.
 Its dark background is preview-only.
 
 ## Color roles
@@ -163,22 +162,4 @@ font changes require a licensed asset, updated manifest/checksum/character map a
 measurement; never substitute a system font. Developer manifest generation:
 `python scripts/font-manifest.py` (fontTools), after reviewing the asset licenses.
 
-## Verification
-
-For a real transcript, review the saved phrase choices before rendering: do the
-bold bars mark genuinely major beats, and have quieter emphasis opportunities
-been considered for the curved stroke? If every decorated phrase uses `orange`,
-revisit the selection rather than assuming that is the style default. Keep a
-single treatment when the content or an explicit user direction warrants it.
-Preview a representative instance of each selected treatment, including later
-passages when the opening excerpt does not cover them.
-
-Run `node --test tests/core.test.mjs tests/editorial.test.mjs`, then
-`node scripts/editorial-render-check.mjs <current Remotion plugin SKILL.md>`.
-The latter makes an isolated project and renders the actual component, demonstrates
-all three fonts, both gradients, individual/grouped reveals, four entrance
-directions, both underline treatments, and a backward seek pixel comparison.
-Inspect PNGs and decoded alpha with `scripts/verify-export.py`. The fixture's timing
-is explicitly authored for a gallery demonstration, not inferred real speech.
-Check long-word rejection, fast speech, repeated words, immediate transitions,
-stable coordinates, measured underline alignment and safe bounds before delivery.
+Normal delivery follows the shared create-and-render workflow; no preview or final-video inspection is required.
