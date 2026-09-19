@@ -7,6 +7,7 @@ import {createHash} from 'node:crypto';
 import {exportOptions} from '../assets/caption-code/export-options.mjs';
 import {montserratDefaults} from '../assets/caption-code/src/montserrat.mjs';
 import {brunsonDefaults} from '../assets/caption-code/src/brunson.mjs';
+import {vermilionOptions,planVermilion} from '../assets/caption-code/src/vermilion.mjs';
 
 export const skillRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const readJson = file => JSON.parse(fs.readFileSync(file, 'utf8').replace(/^\uFEFF/, ''));
@@ -81,6 +82,7 @@ export function resolveSettings(run, saved) {
       sizes: {...brunsonDefaults.sizes, ...run.styleOptions?.sizes},
       anchors: {...brunsonDefaults.anchors, ...run.styleOptions?.anchors}};
   }
+  if (style.id === 'vermilion-brush-editorial') result.styleOptions = vermilionOptions(run.styleOptions);
   if (style.id === 'montserrat-difference') {
     result.styleOptions = {...montserratDefaults, ...run.styleOptions};
     result.delivery = run.delivery ?? {mode:'alpha'};
@@ -104,6 +106,10 @@ export function prepareProject(run, {saved = loadConfig(), checkRuntime = runtim
   if (!settings.projectFolder) throw new Error('First run: collect and save the default project folder.');
   if (!run.projectName || !/^[\p{L}\p{N}][\p{L}\p{N} _-]{0,79}$/u.test(run.projectName) || /^(con|prn|aux|nul|com[1-9]|lpt[1-9])$/i.test(run.projectName)) throw new Error('Use a project name containing letters, numbers, spaces, underscores or hyphens.');
   const data = readJson(run.normalizedPath);
+  if (settings.style === 'vermilion-brush-editorial') {
+    settings.styleOverrides = run.styleOptions ?? {};
+    settings.layoutPlan = planVermilion(data.sentences, run.styleOptions);
+  }
   // Internal renderer invariants only, after semantic review; never parse user transcripts here.
   const words = data.sentences.flatMap(sentence => sentence.words);
   if (!words.length) throw new Error('No reviewed words to render.');
@@ -111,6 +117,7 @@ export function prepareProject(run, {saved = loadConfig(), checkRuntime = runtim
   settings.durationInFrames = Math.ceil((Math.max(...words.map(w => w.endMs)) + settings.sourceOffsetMs + (settings.style === 'editorial-kinetic' ? settings.styleOptions.exitMs ?? 140 : 120)) * settings.fps / 1000);
   if (settings.style === 'montserrat-difference') settings.durationInFrames = Math.ceil((Math.max(...data.sentences.map((s,i) => (settings.styleOptions.phrases?.[i]?.endMs ?? s.words.at(-1).endMs) + (settings.styleOptions.phrases?.[i]?.exitMs ?? settings.styleOptions.exitMs))) + settings.sourceOffsetMs) * settings.fps / 1000);
   settings.runtimeAtCreation = runtime;
+  if (settings.layoutPlan) settings.durationInFrames = Math.ceil((settings.layoutPlan.phrases.at(-1).endMs + settings.sourceOffsetMs + 120) * settings.fps / 1000);
   if (settings.style === 'brunson-red-script') settings.durationInFrames = Math.ceil((Math.max(...data.sentences.map((s,i) => settings.styleOptions.phrases?.[i]?.endMs ?? s.words.at(-1).endMs)) + settings.sourceOffsetMs) * settings.fps / 1000);
   const fontPath = path.join(skillRoot, `styles/${settings.style}/${settings.font.asset}`);
   const font = fs.readFileSync(fontPath);

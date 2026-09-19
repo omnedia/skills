@@ -5,7 +5,7 @@ description: Create styled Remotion captions from timed transcripts or supplied 
 
 # Omnedia Captions
 
-Create an editable Remotion project and a synchronized transparent caption overlay. Shipped styles are **Active Word Highlight**, **Editorial Kinetic**, **Montserrat Difference**, and **Brunson Red Script**. All styles default to one transparent MOV; Montserrat offers optional Difference compositing when explicitly requested. This directory is independently installable; the Remotion app plugin and local runtime remain mandatory prerequisites.
+Create an editable Remotion project and a synchronized transparent caption overlay. Shipped styles are **Active Word Highlight**, **Editorial Kinetic**, **Montserrat Difference**, **Brunson Red Script**, and **Vermilion Brush Editorial**. All styles default to one transparent MOV; Montserrat offers optional Difference compositing when explicitly requested. This directory is independently installable; the Remotion app plugin and local runtime remain mandatory prerequisites.
 
 ## Start or resume
 
@@ -29,6 +29,8 @@ After independent work, read the run and poll the gallery process in bounded wai
 If the browser is unavailable, show the actual preview/name in chat, list the style’s color roles/defaults and named brand colors, and accept a named style and explicit role mapping or acceptance of defaults. Save the same fields in `run.json`. Close the gallery server after selection. Missing timing must not erase completed choices.
 
 For Editorial Kinetic, apply the style's [underline selection guide](styles/editorial-kinetic/STYLE.md#choose-by-editorial-purpose) across the transcript before rendering. Save a per-phrase choice: no underline for ordinary text, a curved stroke for quieter editorial emphasis, or a bold bar for major beats. Do not propagate the example's underline setting to every phrase.
+
+For **Vermilion Brush Editorial**, read [its style guide](styles/vermilion-brush-editorial/STYLE.md). Use word timings only; no audio analysis, footage editing, or generated backgrounds. `prepare` persists deterministic phrase/template/role choices in `settings.layoutPlan`, with project overrides kept separately. Automatic font selection targets roughly equal word counts in white Brush Script MT and vermilion Brunson across the sequence, using script for connective phrasing and Brunson for strong anchors. Ordinary captions use the same balance with instant replacements; only readable openings and eligible transcript callouts receive automatic decoration. Explicit overrides can select accumulation or more elaborate layouts. Keep source wording and stable word indices, and reject missing fonts or glyphs.
 
 ## Produce and deliver
 

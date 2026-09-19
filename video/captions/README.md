@@ -61,12 +61,14 @@ On first use, the agent saves your preferred project folder and optionally a nam
 
 Browse all available styles below. Click a preview or style name to open its folder, where `STYLE.md` explains fonts, colors, animation, and project overrides.
 
-| [Active Word Highlight](styles/active-word-highlight/) | [Brunson Red Script](styles/brunson-red-script/) | [Editorial Kinetic](styles/editorial-kinetic/) | [Montserrat Difference](styles/montserrat-difference/) |
-| :---: | :---: | :---: | :---: |
-| [![Active Word Highlight preview](styles/active-word-highlight/preview.gif)](styles/active-word-highlight/) | [![Brunson Red Script preview](styles/brunson-red-script/preview.gif)](styles/brunson-red-script/) | [![Editorial Kinetic preview](styles/editorial-kinetic/preview.gif)](styles/editorial-kinetic/) | [![Montserrat Difference preview](styles/montserrat-difference/preview.gif)](styles/montserrat-difference/) |
-| Stable Inter Bold phrases with short fades and a warm yellow highlight on the spoken word. | Authored red headline/script hooks paired with instant small white interview captions. | Mixed-font editorial headlines with teal or gold emphasis, directional entrances, and drawn underlines. | Montserrat compositions with per-group colors, positions, and reveal timing, plus optional Difference blending. |
+| [Active Word Highlight](styles/active-word-highlight/) | [Brunson Red Script](styles/brunson-red-script/) | [Editorial Kinetic](styles/editorial-kinetic/) | [Montserrat Difference](styles/montserrat-difference/) | [Vermilion Brush Editorial](styles/vermilion-brush-editorial/) |
+| :---: | :---: | :---: | :---: | :---: |
+| [![Active Word Highlight preview](styles/active-word-highlight/preview.gif)](styles/active-word-highlight/) | [![Brunson Red Script preview](styles/brunson-red-script/preview.gif)](styles/brunson-red-script/) | [![Editorial Kinetic preview](styles/editorial-kinetic/preview.gif)](styles/editorial-kinetic/) | [![Montserrat Difference preview](styles/montserrat-difference/preview.gif)](styles/montserrat-difference/) | [![Vermilion Brush Editorial preview](styles/vermilion-brush-editorial/preview.gif)](styles/vermilion-brush-editorial/) |
+| Stable Inter Bold phrases with short fades and a warm yellow highlight on the spoken word. | Authored red headline/script hooks paired with instant small white interview captions. | Mixed-font editorial headlines with teal or gold emphasis, directional entrances, and drawn underlines. | Montserrat compositions with per-group colors, positions, and reveal timing, plus optional Difference blending. | Vermilion Brunson anchors balanced with white script, whole-word rises, instant replacements, and accumulating stacks. |
 
 Previews come from the actual caption components; the final overlays have transparent backgrounds. Choose colors in the local gallery or specify them in your request. Already supplied choices are reused. The [style catalog](styles/catalog.json) lists the bundled styles and their defaults.
+
+Vermilion Brush Editorial generates a saved layout plan from word timings alone. Its 540 × 350 preview uses the shared `preview-transcript.json`, the gallery’s charcoal background, and compact preview framing. Final exports retain alpha. It bundles the same restricted font assets as Brunson Red Script; see its [font source notice](styles/vermilion-brush-editorial/fonts/SOURCE-NOTICE.txt).
 
 Brunson Red Script combines explicitly authored red headline/script hooks with instant small white interview captions. Its font files have separate restrictions; the repository's MIT license does not grant rights to them. Read the [font source notice](styles/brunson-red-script/fonts/SOURCE-NOTICE.txt).
 
@@ -194,6 +196,7 @@ Alignment runs locally with stable-ts and Whisper. The first use downloads model
 | `gallery.mjs` | Serve the local style/color picker and persist selections. |
 | `align.py` | Align supplied wording to matching audio. |
 | `alignment-requirements.txt` | Declare the local alignment dependencies. |
+| `vermilion-gallery.mjs` | Regenerate the Vermilion preview from the shared transcript and export an alpha demonstration outside the skill. |
 | `brunson-gallery.mjs` | Regenerate the Brunson gallery animation as a separate maintenance task. |
 
 </details>

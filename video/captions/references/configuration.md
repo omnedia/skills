@@ -64,3 +64,7 @@ The installed `montserrat-difference` style adds reviewed Montserrat composition
 ## Brunson Red Script
 
 Select `brunson-red-script`; colors are `headline`, `script`, and `default`. Save reviewed `styleOptions.phrases` with mode, stable word-index ranges, roles, independent region anchors/lines, explicit default units, size/shadow overrides, script overlap and layer order, entrance parameters and end times. Shared defaults do not select hero moments. See [style contract](../styles/brunson-red-script/STYLE.md) and [representative configuration](../tests/fixtures/brunson-example.mjs). Original transcript text and word timing remain independent of display casing.
+
+## Vermilion Brush Editorial
+
+Select `vermilion-brush-editorial`; its color roles are `block`, `script`, and `ordinary`. See [the style guide](../styles/vermilion-brush-editorial/STYLE.md) for transcript planning, templates, roles and global-index group overrides. `prepare` saves `settings.layoutPlan` and separate `settings.styleOverrides`. Rendering uses the saved plan. To change editorial options or transcript timing, run `planVermilion(sentences, settings.styleOverrides)` again and update the saved plan; no external model or audio is required.

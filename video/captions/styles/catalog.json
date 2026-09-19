@@ -1,5 +1,14 @@
 [
   {
+    "id":"vermilion-brush-editorial",
+    "name":"Vermilion Brush Editorial",
+    "instructions":"styles/vermilion-brush-editorial/STYLE.md",
+    "preview":"styles/vermilion-brush-editorial/preview.gif",
+    "colors":{"block":"#EB2F0C","script":"#FFFFFF","ordinary":"#EB2F0C"},
+    "font":"styles/vermilion-brush-editorial/fonts/Brunson.ttf",
+    "fontManifest":"styles/vermilion-brush-editorial/fonts/source.json"
+  },
+  {
     "id":"brunson-red-script",
     "name":"Brunson Red Script",
     "instructions":"styles/brunson-red-script/STYLE.md",
