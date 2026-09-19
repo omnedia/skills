@@ -16,9 +16,9 @@ Turn your transcript into animated captions with precise word highlights, your b
 
 <br>
 
-<img src="styles/editorial-kinetic/preview.gif" alt="Editorial Kinetic preview: each word an sentence is animated with different fonts and underlines." width="540">
+<img src="styles/montserrat-difference/preview.gif" alt="Montserrat Difference preview: each word an sentence is animated with different fonts, colors and animations." width="540">
 
-**Editorial Kinetic**<br>
+**Montserrat Difference**<br>
 <sub>Preview generated from the actual caption component. The final overlay has a transparent background.</sub>
 
 </div>
