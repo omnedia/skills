@@ -133,18 +133,28 @@ test('gallery placeholder stays selectable; selections persist into actual proje
   const runFile = path.join(temp, 'run.json');
   writeJson(runFile, {...good, style: undefined});
   const catalog = readJson(path.join(skillRoot, 'styles/catalog.json')).map(s => ({...s, preview: 'absent.gif'}));
-  const {server, url} = await startGallery(runFile, {catalog});
+  const events = [];
+  const {server, url} = await startGallery(runFile, {catalog, onSelection: event => {
+    assert.equal(readJson(runFile).colorsAccepted, true);
+    events.push(event);
+  }});
   try {
     const endpoint = route => url.replace('/?', `${route}?`);
     const data = await fetch(endpoint('/catalog')).then(r => r.json());
     assert.equal(data.catalog.length, catalog.length);
     assert.equal(data.catalog[0].previewAvailable, false);
     assert.equal((await fetch(url.split('?')[0])).status, 403);
+    assert.equal((await fetch(endpoint('/select'), {method:'POST', body:JSON.stringify({style:'absent'})})).status, 400);
+    assert.equal(events.length, 0);
+    // Independent transcript work can finish while the picker remains open.
+    writeJson(runFile, {...readJson(runFile), timingWork:'completed'});
     const colors = {base: '#123456', active: '#ABCDEF', shadow: '#000000'};
     const response = await fetch(endpoint('/select'), {method: 'POST', body: JSON.stringify({style: good.style, colors})});
     assert.equal(response.status, 200);
     const run = readJson(runFile);
     assert.equal(run.colorsAccepted, true);
+    assert.equal(run.timingWork, 'completed');
+    assert.deepEqual(events, [{event:'selection-saved', runFile, style:good.style, colors}]);
     const resumed = await fetch(endpoint('/catalog')).then(r => r.json());
     assert.equal(resumed.selected, good.style);
     assert.deepEqual(resumed.colors, colors);

@@ -5,7 +5,7 @@ import {randomBytes} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
 import {skillRoot, readJson, writeJson, loadConfig} from './core.mjs';
 
-export function startGallery(runFile, {catalog = readJson(path.join(skillRoot, 'styles/catalog.json')), port = 0} = {}) {
+export function startGallery(runFile, {catalog = readJson(path.join(skillRoot, 'styles/catalog.json')), port = 0, onSelection = () => {}} = {}) {
   const token = randomBytes(24).toString('hex');
   readJson(runFile); // Fail early if the run is not readable.
   const config = loadConfig();
@@ -51,6 +51,7 @@ export function startGallery(runFile, {catalog = readJson(path.join(skillRoot, '
         current.colorsAccepted = true;
         writeJson(runFile, current);
         res.setHeader('Content-Type', 'application/json'); res.end(JSON.stringify({saved: true, style: current.style}));
+        onSelection({event:'selection-saved', runFile:path.resolve(runFile), style:current.style, colors:current.colors});
       } catch (error) {res.writeHead(400).end(error.message);}
       return;
     }
@@ -59,5 +60,5 @@ export function startGallery(runFile, {catalog = readJson(path.join(skillRoot, '
   return new Promise(resolve => server.listen(port, '127.0.0.1', () => resolve({server, url: `http://127.0.0.1:${server.address().port}/?token=${token}`})));
 }
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  const {url} = await startGallery(process.argv[2]); console.log(url);
+  const {url} = await startGallery(process.argv[2], {onSelection: selection => console.log(JSON.stringify(selection))}); console.log(url);
 }
