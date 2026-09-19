@@ -59,31 +59,18 @@ On first use, the agent saves your preferred project folder and optionally a nam
 
 ## The style
 
-**Active Word Highlight** brings the full sentence—or a readable phrase—into view with a short fade. The currently spoken word changes color while the rest stays in place.
+Browse all available styles below. Click a preview or style name to open its folder, where `STYLE.md` explains fonts, colors, animation, and project overrides.
 
-- Bundled **Inter Bold**, with no system-font installation needed.
-- Centered text in the lower frame, with safe margins and up to two lines.
-- Normal casing and punctuation preserved.
-- Short fades, stable word positions, and no lingering highlight during pauses.
-- Long sentences split into readable blocks without changing their timing.
+| [Active Word Highlight](styles/active-word-highlight/) | [Brunson Red Script](styles/brunson-red-script/) | [Editorial Kinetic](styles/editorial-kinetic/) | [Montserrat Difference](styles/montserrat-difference/) |
+| :---: | :---: | :---: | :---: |
+| [![Active Word Highlight preview](styles/active-word-highlight/preview.gif)](styles/active-word-highlight/) | [![Brunson Red Script preview](styles/brunson-red-script/preview.gif)](styles/brunson-red-script/) | [![Editorial Kinetic preview](styles/editorial-kinetic/preview.gif)](styles/editorial-kinetic/) | [![Montserrat Difference preview](styles/montserrat-difference/preview.gif)](styles/montserrat-difference/) |
+| Stable Inter Bold phrases with short fades and a warm yellow highlight on the spoken word. | Authored red headline/script hooks paired with instant small white interview captions. | Mixed-font editorial headlines with teal or gold emphasis, directional entrances, and drawn underlines. | Montserrat compositions with per-group colors, positions, and reveal timing, plus optional Difference blending. |
 
-| Color role | Default |
-| :--- | :--- |
-| Base text | White · `#FFFFFF` |
-| Active word | Warm yellow · `#FFD54A` |
-| Shadow and outline | Black · `#000000`, applied subtly |
-
-Choose colors in the local gallery or specify them in your request. Already supplied choices are reused. The [style catalog](styles/catalog.json) includes every installed style, including Montserrat Difference and [Brunson Red Script](styles/brunson-red-script/STYLE.md).
+Previews come from the actual caption components; the final overlays have transparent backgrounds. Choose colors in the local gallery or specify them in your request. Already supplied choices are reused. The [style catalog](styles/catalog.json) lists the bundled styles and their defaults.
 
 Brunson Red Script combines explicitly authored red headline/script hooks with instant small white interview captions. Its font files have separate restrictions; the repository's MIT license does not grant rights to them. Read the [font source notice](styles/brunson-red-script/fonts/SOURCE-NOTICE.txt).
 
-### Editorial Kinetic
-
-![Editorial Kinetic preview](styles/editorial-kinetic/preview.gif)
-
-**Editorial Kinetic** (`editorial-kinetic`) builds short editorial headlines with mixed fonts, sea-glass teal or champagne-gold emphasis, directional word/group entrances and selectively drawn underlines. Complete phrases are measured before reveal, keeping visible words fixed.
-
-It bundles Poppins Bold, Libre Baskerville Italic (the approved free alternative to Marion), and Paul Neave's public-domain Lazy Dog. [Style details and project overrides](styles/editorial-kinetic/STYLE.md) cover fonts, color roles, phrase grouping and animation. The preview comes from the actual component; its dark background is excluded from exports.
+Montserrat Difference exports normal source-color text in one transparent MOV by default. Backdrop-dependent Difference blending requires explicitly requested `footage` or `layers` delivery. See its [style configuration and delivery options](styles/montserrat-difference/STYLE.md).
 
 ## What to provide
 
@@ -226,6 +213,8 @@ Developer-only checks are documented in [the acceptance guide](tests/acceptance.
 
 Skill code and documentation use the repository's [MIT License](../../LICENSE). Inter uses [SIL OFL 1.1](styles/active-word-highlight/fonts/LICENSE.txt). Editorial Kinetic includes [Poppins's OFL](styles/editorial-kinetic/fonts/Poppins-LICENSE.txt), [Libre Baskerville's OFL](styles/editorial-kinetic/fonts/LibreBaskerville-LICENSE.txt), and [Lazy Dog's public-domain dedication](styles/editorial-kinetic/fonts/LazyDog-LICENSE.txt), with [sources and checksums](styles/editorial-kinetic/fonts/source.json).
 
+Montserrat uses [SIL OFL 1.1](styles/montserrat-difference/fonts/OFL.txt); [font sources and checksums](styles/montserrat-difference/fonts/source.json) are bundled.
+
 ---
 
 <div align="center">
@@ -235,11 +224,3 @@ Skill code and documentation use the repository's [MIT License](../../LICENSE). 
 [Back to the skill library](../../README.md#skill-library) · [View on GitHub](https://github.com/omnedia/skills/tree/master/video/captions)
 
 </div>
-
-## Montserrat Difference
-
-![Montserrat Difference preview](styles/montserrat-difference/preview.gif)
-
-Montserrat uses [SIL OFL 1.1](styles/montserrat-difference/fonts/OFL.txt); [font sources and checksums](styles/montserrat-difference/fonts/source.json) are bundled.
-
-The installed `montserrat-difference` style adds reviewed Montserrat compositions with per-group source colors and genuine Difference blending. Save explicit phrase groups, positions and reveal/persistence choices. Delivery defaults to `alpha`: one transparent MOV using normal source-color text. Only explicitly requested `footage` or `layers` delivery preserves the backdrop-dependent Difference effect. See [style configuration, preview and delivery](styles/montserrat-difference/STYLE.md).
