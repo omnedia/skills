@@ -1,5 +1,14 @@
 [
   {
+    "id":"yellow-authority",
+    "name":"Yellow Authority",
+    "instructions":"styles/yellow-authority/STYLE.md",
+    "preview":"styles/yellow-authority/preview.gif",
+    "colors":{"base":"#FFFFFF","accent":"#FFE600"},
+    "font":"styles/yellow-authority/fonts/Poppins-SemiBold.ttf",
+    "fontManifest":"styles/yellow-authority/fonts/source.json"
+  },
+  {
     "id":"vermilion-brush-editorial",
     "name":"Vermilion Brush Editorial",
     "instructions":"styles/vermilion-brush-editorial/STYLE.md",

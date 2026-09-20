@@ -10,6 +10,8 @@ import {BrunsonRedScript} from './BrunsonRedScript';
 import type {BrunsonOptions} from './brunson.mjs';
 import {VermilionBrushEditorial} from './VermilionBrushEditorial';
 import type {VermilionOptions, Plan} from './vermilion.mjs';
+import {YellowAuthority} from './YellowAuthority';
+import type {YellowOptions,YellowPlan} from './yellow.mjs';
 
 export type FontEntry = {asset: string; family: string; weight: number; style?: string; sha256?: string; codepoints?: number[]};
 
@@ -20,13 +22,14 @@ export type Settings = {
   colors: Record<string, string>;
   fonts?: Record<string, FontEntry>;
   font: {asset: string; family: string; weight: number};
-  styleOptions?: (EditorialOptions | MontserratOptions | BrunsonOptions | VermilionOptions) & {fontSize?: number; bottomRatio?: number};
+  styleOptions?: (EditorialOptions | MontserratOptions | BrunsonOptions | VermilionOptions | YellowOptions) & {fontSize?: number; bottomRatio?: number};
+  yellowPlan?: YellowPlan;
   layoutPlan?: Plan;
   delivery?: {mode:'alpha'|'footage'|'layers';footage?:string;trimBeforeFrames?:number};
 };
 export type Props = {settings: Settings; sentences: {words: Caption[]}[]; previewBackground?: string;layer?:string};
 
-export const CaptionOverlay: React.FC<Props> = props => props.settings.style === 'vermilion-brush-editorial' ? <VermilionBrushEditorial {...props}/> : props.settings.style === 'editorial-kinetic'
+export const CaptionOverlay: React.FC<Props> = props => props.settings.style === 'yellow-authority' ? <YellowAuthority {...props}/> : props.settings.style === 'vermilion-brush-editorial' ? <VermilionBrushEditorial {...props}/> : props.settings.style === 'editorial-kinetic'
   ? <EditorialKinetic {...props}/> : props.settings.style === 'brunson-red-script' ? <BrunsonRedScript {...props}/> : props.settings.style === 'montserrat-difference' ? <MontserratDifference {...props}/> : <ActiveWordHighlight {...props}/>;
 
 const ActiveWordHighlight: React.FC<Props> = ({settings, sentences, previewBackground}) => {

@@ -5,7 +5,7 @@ description: Create styled Remotion captions from timed transcripts or supplied 
 
 # Omnedia Captions
 
-Create an editable Remotion project and a synchronized transparent caption overlay. Shipped styles are **Active Word Highlight**, **Editorial Kinetic**, **Montserrat Difference**, **Brunson Red Script**, and **Vermilion Brush Editorial**. All styles default to one transparent MOV; Montserrat offers optional Difference compositing when explicitly requested. This directory is independently installable; the Remotion app plugin and local runtime remain mandatory prerequisites.
+Create an editable Remotion project and a synchronized transparent caption overlay. Shipped styles are **Active Word Highlight**, **Editorial Kinetic**, **Montserrat Difference**, **Brunson Red Script**, **Vermilion Brush Editorial**, and **Yellow Authority**. All styles default to one transparent MOV; Montserrat offers optional Difference compositing when explicitly requested. This directory is independently installable; the Remotion app plugin and local runtime remain mandatory prerequisites.
 
 ## Start or resume
 
@@ -31,6 +31,8 @@ If the browser is unavailable, show the actual preview/name in chat, list the st
 For Editorial Kinetic, apply the style's [underline selection guide](styles/editorial-kinetic/STYLE.md#choose-by-editorial-purpose) across the transcript before rendering. Save a per-phrase choice: no underline for ordinary text, a curved stroke for quieter editorial emphasis, or a bold bar for major beats. Do not propagate the example's underline setting to every phrase.
 
 For **Vermilion Brush Editorial**, read [its style guide](styles/vermilion-brush-editorial/STYLE.md). Use word timings only; no audio analysis, footage editing, or generated backgrounds. `prepare` persists deterministic phrase/template/role choices in `settings.layoutPlan`, with project overrides kept separately. Automatic font selection targets roughly equal word counts in white Brush Script MT and vermilion Brunson across the sequence, using script for connective phrasing and Brunson for strong anchors. Ordinary captions use the same balance with instant replacements; only readable openings and eligible transcript callouts receive automatic decoration. Explicit overrides can select accumulation or more elaborate layouts. Keep source wording and stable word indices, and reject missing fonts or glyphs.
+
+For **Yellow Authority**, read [its style guide](styles/yellow-authority/STYLE.md), then interpret the complete transcript and author `run.styleOptions.editorialPlan` before `prepare`. Decide phrase boundaries, focal words, typography, placement and motion from meaning and timing, without keyword lists or fixed sentence-pattern triggers. This is the AI's responsibility; do not ask the user to annotate words. Keep ordinary white speech dominant, use yellow selectively, and reserve italics for actual structures. Save all source words in order with contextual reasons for the choices. `prepare` validates and compiles the plan; `captions:plan` loads exact fonts and persists measured geometry before Studio/export. Missing or stale editorial plans fail explicitly. Reconsider choices after text or density changes. Previews use the same AI planning workflow and renderer as ordinary requests; do not force treatments for a showcase.
 
 ## Produce and deliver
 

@@ -7,6 +7,7 @@ import {skillRoot, readJson, writeJson, saveConfig, loadConfig, requirePlugin, r
 import {startGallery} from '../scripts/gallery.mjs';
 import {layoutSentences, segmentState} from '../assets/caption-code/src/layout.mjs';
 import {exportOptions} from '../assets/caption-code/export-options.mjs';
+import {plainEditorialPlan} from './fixtures/yellow-example.mjs';
 
 const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'captions-tests-'));
 const fixture = path.join(skillRoot, 'tests/fixtures/normalized.json');
@@ -161,5 +162,17 @@ test('gallery placeholder stays selectable; selections persist into actual proje
     const project = createProject(run, {saved, checkRuntime: () => ({})});
     assert.deepEqual(readJson(path.join(project, 'project.json')).settings.colors, colors);
   } finally {await new Promise(resolve => server.close(resolve));}
+});
+test('Yellow Authority preparation requires and persists the AI editorial plan',()=>{
+  const run={...good,projectName:'yellow-authored',style:'yellow-authority'};
+  assert.throws(()=>prepareProject(run,{saved,checkRuntime:()=>({})}),/AI-authored/);
+  const sentences=readJson(fixture).sentences;
+  const editorialPlan=plainEditorialPlan(sentences);
+  editorialPlan.groups[0].reason='The opening word is the contextual focus';
+  editorialPlan.groups[0].spans[0].role='emphasis';
+  const {prepared}=prepareProject({...run,styleOptions:{editorialPlan}},{saved,checkRuntime:()=>({})});
+  assert.deepEqual(prepared.settings.styleOptions.editorialPlan,editorialPlan);
+  assert.equal(prepared.settings.yellowPlan.groups[0].spans[0].role,'emphasis');
+  assert.deepEqual(prepared.settings.yellowPlan.words.map(({index,...w})=>w),sentences.flatMap(s=>s.words));
 });
 process.on('exit', () => fs.rmSync(temp, {recursive: true, force: true}));

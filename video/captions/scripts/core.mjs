@@ -8,6 +8,7 @@ import {exportOptions} from '../assets/caption-code/export-options.mjs';
 import {montserratDefaults} from '../assets/caption-code/src/montserrat.mjs';
 import {brunsonDefaults} from '../assets/caption-code/src/brunson.mjs';
 import {vermilionOptions,planVermilion} from '../assets/caption-code/src/vermilion.mjs';
+import {yellowOptions,planYellow} from '../assets/caption-code/src/yellow.mjs';
 
 export const skillRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const readJson = file => JSON.parse(fs.readFileSync(file, 'utf8').replace(/^\uFEFF/, ''));
@@ -83,6 +84,7 @@ export function resolveSettings(run, saved) {
       anchors: {...brunsonDefaults.anchors, ...run.styleOptions?.anchors}};
   }
   if (style.id === 'vermilion-brush-editorial') result.styleOptions = vermilionOptions(run.styleOptions);
+  if (style.id === 'yellow-authority') result.styleOptions = yellowOptions(run.styleOptions);
   if (style.id === 'montserrat-difference') {
     result.styleOptions = {...montserratDefaults, ...run.styleOptions};
     result.delivery = run.delivery ?? {mode:'alpha'};
@@ -106,6 +108,10 @@ export function prepareProject(run, {saved = loadConfig(), checkRuntime = runtim
   if (!settings.projectFolder) throw new Error('First run: collect and save the default project folder.');
   if (!run.projectName || !/^[\p{L}\p{N}][\p{L}\p{N} _-]{0,79}$/u.test(run.projectName) || /^(con|prn|aux|nul|com[1-9]|lpt[1-9])$/i.test(run.projectName)) throw new Error('Use a project name containing letters, numbers, spaces, underscores or hyphens.');
   const data = readJson(run.normalizedPath);
+  if (settings.style === 'yellow-authority') {
+    settings.styleOverrides = run.styleOptions ?? {};
+    settings.yellowPlan = planYellow(data.sentences,run.styleOptions);
+  }
   if (settings.style === 'vermilion-brush-editorial') {
     settings.styleOverrides = run.styleOptions ?? {};
     settings.layoutPlan = planVermilion(data.sentences, run.styleOptions);
@@ -117,6 +123,7 @@ export function prepareProject(run, {saved = loadConfig(), checkRuntime = runtim
   settings.durationInFrames = Math.ceil((Math.max(...words.map(w => w.endMs)) + settings.sourceOffsetMs + (settings.style === 'editorial-kinetic' ? settings.styleOptions.exitMs ?? 140 : 120)) * settings.fps / 1000);
   if (settings.style === 'montserrat-difference') settings.durationInFrames = Math.ceil((Math.max(...data.sentences.map((s,i) => (settings.styleOptions.phrases?.[i]?.endMs ?? s.words.at(-1).endMs) + (settings.styleOptions.phrases?.[i]?.exitMs ?? settings.styleOptions.exitMs))) + settings.sourceOffsetMs) * settings.fps / 1000);
   settings.runtimeAtCreation = runtime;
+  if (settings.yellowPlan) settings.durationInFrames = Math.ceil((settings.yellowPlan.groups.at(-1).endMs + settings.sourceOffsetMs) * settings.fps / 1000);
   if (settings.layoutPlan) settings.durationInFrames = Math.ceil((settings.layoutPlan.phrases.at(-1).endMs + settings.sourceOffsetMs + 120) * settings.fps / 1000);
   if (settings.style === 'brunson-red-script') settings.durationInFrames = Math.ceil((Math.max(...data.sentences.map((s,i) => settings.styleOptions.phrases?.[i]?.endMs ?? s.words.at(-1).endMs)) + settings.sourceOffsetMs) * settings.fps / 1000);
   const fontPath = path.join(skillRoot, `styles/${settings.style}/${settings.font.asset}`);
@@ -148,16 +155,21 @@ export function attachProject(run, {checkRuntime = runtimeReady} = {}) {
   if (!fs.existsSync(packageFile)) throw new Error('The Remotion plugin must scaffold the new project before captions are attached.');
   const pkg = readJson(packageFile);
   if (!(pkg.dependencies?.remotion ?? pkg.devDependencies?.remotion)) throw new Error('The selected folder is not a Remotion scaffold.');
-  const files = ['src/captions', 'captions-render.mjs', 'captions-export-options.mjs', 'project.json', 'EDITOR.md', 'public/fonts'];
+  const files = ['src/captions', 'captions-render.mjs', 'captions-export-options.mjs', 'captions-yellow-plan.mjs', 'project.json', 'EDITOR.md', 'public/fonts'];
   if (files.some(file => fs.existsSync(path.join(target, file))) || ['captions:studio', 'captions:render', 'captions:preview'].some(key => pkg.scripts?.[key])) throw new Error('Caption files or scripts already exist. Resume that project without attaching again; do not overwrite it.');
   fs.cpSync(path.join(skillRoot, 'assets/caption-code/src'), path.join(target, 'src/captions'), {recursive: true});
   fs.copyFileSync(path.join(skillRoot, 'assets/caption-code/render.mjs'), path.join(target, 'captions-render.mjs'));
   fs.copyFileSync(path.join(skillRoot, 'assets/caption-code/export-options.mjs'), path.join(target, 'captions-export-options.mjs'));
+  fs.copyFileSync(path.join(skillRoot, 'assets/caption-code/yellow-plan.mjs'), path.join(target, 'captions-yellow-plan.mjs'));
   const fontDir = path.join(skillRoot, `styles/${settings.style}/fonts`);
   fs.cpSync(fontDir, path.join(target, 'public/fonts'), {recursive: true});
   writeJson(path.join(target, 'project.json'), {settings, sentences});
   pkg.scripts = {...pkg.scripts, 'captions:studio': 'remotion studio src/captions/index.tsx --no-open',
     'captions:render': 'node captions-render.mjs', 'captions:preview': 'node captions-render.mjs --preview'};
+  if(settings.style==='yellow-authority') {
+    pkg.scripts['captions:plan']='node captions-yellow-plan.mjs';
+    pkg.scripts['captions:studio']='node captions-yellow-plan.mjs && remotion studio src/captions/index.tsx --no-open';
+  }
   writeJson(packageFile, pkg);
   fs.writeFileSync(path.join(target, 'EDITOR.md'), `# Caption overlay\n\nImport out/captions.mov above your footage; use its alpha channel (straight/unmatted). The overlay is silent.\n\nPlace the MOV at ${settings.timelinePlacementMs} ms on the editing timeline. A source timestamp t appears at t + ${settings.sourceOffsetMs} ms inside the MOV. Leading silence is retained. Match ${settings.fps} fps; rendered dimensions ${settings.width * settings.export.scale} × ${settings.height * settings.export.scale} (${settings.export.scale}× export scale; composition ${settings.width} × ${settings.height}).\n\nReproduce: npm ci, then npm run captions:render. Edit project.json for saved colors/timing/style settings. npm run captions:studio opens an editable preview.\n`);
   if (settings.style === 'montserrat-difference' && settings.delivery.mode === 'alpha') fs.appendFileSync(path.join(target,'EDITOR.md'), '\nMontserrat alpha mode preserves source colors, typography and animation with normal compositing. Background-dependent Difference blending is not baked into this single overlay.\n');

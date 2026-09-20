@@ -1,0 +1,84 @@
+// Maintenance: node scripts/yellow-gallery.mjs <exposed Remotion SKILL.md> <runtime> [--prepare-only]
+// Dependency trees and full videos remain outside the skill. Published GIF matches the gallery.
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import {pathToFileURL} from 'node:url';
+import {createHash} from 'node:crypto';
+import {skillRoot,readJson,writeJson,loadConfig,prepareProject,attachProject,command} from './core.mjs';
+import {timedRows} from '../tests/fixtures/yellow-example.mjs';
+import {treatmentDemo} from '../tests/fixtures/yellow-treatments.mjs';
+const planFile=process.argv[process.argv.indexOf('--plan')+1];
+if(!process.argv.includes('--plan')||!planFile)throw Error('Read STYLE.md and supply --plan <AI-authored preview editorialPlan JSON>');
+const editorialPlan=readJson(path.resolve(planFile));
+const sequencePlan=process.argv.includes('--sequence-plan')?readJson(path.resolve(process.argv[process.argv.indexOf('--sequence-plan')+1])):null;
+if(!process.argv.includes('--preview-only')&&!process.argv.includes('--prepare-only')&&!sequencePlan)throw Error('Full gallery rebuild requires --sequence-plan <AI-authored sequence editorialPlan JSON>');
+const root=fs.mkdtempSync(path.join(os.tmpdir(),'yellow-gallery-'));
+const transcript=readJson(path.join(skillRoot,'preview-transcript.json'));
+const sentences=[{words:transcript.words.map((w,i)=>({text:(i?' ':'')+w.text,startMs:Math.round(w.start*1000),endMs:Math.round(w.end*1000),timestampMs:null,confidence:null}))}];
+writeJson(path.join(root,'transcript.json'),{sentences});
+const run={plugin:{availableInApp:true,checkedAt:new Date().toISOString(),instructionPath:path.resolve(process.argv[2])},projectName:'yellow-gallery',styleOptions:{editorialPlan},style:'yellow-authority',colorsAccepted:true,normalizedPath:path.join(root,'transcript.json'),timing:{status:'word-timing-reviewed',provenance:'Shared preview-transcript.json supplied word timestamps in seconds'},width:1080,height:1920,fps:30,export:{scale:1}};
+const checkRuntime=()=>({node:process.version,purpose:'Reuse installed Remotion runtime for maintenance'});
+const prepared=prepareProject(run,{saved:{...loadConfig(),projectFolder:root},checkRuntime});
+const project=prepared.projectPath,runtime=path.resolve(process.argv[3]);
+fs.mkdirSync(project,{recursive:true});
+for(const file of ['package.json','tsconfig.json'])fs.copyFileSync(path.join(runtime,file),path.join(project,file));
+const pkg=readJson(path.join(project,'package.json'));for(const key of Object.keys(pkg.scripts??{}))if(key.startsWith('captions:'))delete pkg.scripts[key];writeJson(path.join(project,'package.json'),pkg);
+fs.symlinkSync(path.join(runtime,'node_modules'),path.join(project,'node_modules'),process.platform==='win32'?'junction':'dir');
+attachProject({...run,...prepared},{checkRuntime});
+console.log(JSON.stringify({project}));
+process.chdir(project);
+const {prepareYellowProject}=await import(pathToFileURL(path.join(project,'captions-yellow-plan.mjs')));
+let props=await prepareYellowProject(project);
+command(process.execPath,[path.join(project,'node_modules/typescript/bin/tsc'),'--noEmit']);
+writeJson(path.join(project,'preview-plan.json'),props.settings.yellowPlan);
+const previewDiagnostics=props.settings.yellowPlan.diagnostics;
+// Center a fixed preview window on the complete caption layout, not the portrait baseline.
+const previewUnits=props.settings.yellowPlan.groups.flatMap(g=>g.units);
+const previewCenterY=(Math.min(...previewUnits.map(u=>u.ink.top))+Math.max(...previewUnits.map(u=>u.ink.bottom)))/2;
+const previewCropY=Math.max(0,Math.min(1920-700,Math.round(previewCenterY*1.5-350)));
+if(process.argv.includes('--prepare-only'))process.exit(0);
+const load=p=>import(pathToFileURL(path.join(project,'node_modules',p)));
+const {bundle}=await load('@remotion/bundler/dist/index.js');
+const {renderMedia,selectComposition,renderStill}=await load('@remotion/renderer/dist/index.js');
+const serveUrl=await bundle({entryPoint:path.join(project,'src/captions/index.tsx'),publicDir:path.join(project,'public')});
+const composition=await selectComposition({serveUrl,id:'Captions',inputProps:props});
+const previewProps={...props,previewBackground:'#22242e'};
+await renderMedia({serveUrl,composition:{...composition,props:previewProps},inputProps:previewProps,outputLocation:path.join(project,'preview.mp4'),codec:'h264',crf:16,concurrency:2});
+const gif=path.join(skillRoot,'styles/yellow-authority/preview.gif');
+command('ffmpeg',['-v','error','-y','-i',path.join(project,'preview.mp4'),'-t',String(transcript.duration),'-vf',`crop=1080:700:0:${previewCropY},scale=540:350,fps=20,split[x][y];[x]palettegen[p];[y][p]paletteuse`,'-loop','0',gif]);
+if(process.argv.includes('--preview-only')){
+  const reportPath=path.join(skillRoot,'styles/yellow-authority/verification.json');
+  const report=fs.existsSync(reportPath)?readJson(reportPath):{};
+  report.status='Shared preview regenerated from an AI-authored plan; other render reports remain historical.';
+  report.preview={width:540,height:350,background:'#22242e',fps:20,source:'preview-transcript.json',sourceSha256:createHash('sha256').update(fs.readFileSync(path.join(skillRoot,'preview-transcript.json'))).digest('hex'),planVersion:props.settings.yellowPlan.version,editorialPlan,selection:'AI-authored transcript plan, production compiler and default palette',diagnostics:props.settings.yellowPlan.diagnostics};
+  report.preview.crop={x:0,y:previewCropY,width:1080,height:700,alignment:'centered on caption ink bounds'};
+  writeJson(reportPath,report);
+  console.log(JSON.stringify({project,gif,diagnostics:props.settings.yellowPlan.diagnostics}));
+  process.exit(0);
+}
+await renderMedia({serveUrl,composition,inputProps:props,outputLocation:path.join(project,'captions.mov'),codec:'prores',proResProfile:'4444',pixelFormat:'yuva444p10le',imageFormat:'png',concurrency:2});
+for(const [name,frames]of [['sequential',[0,3,19,86]],['shuffled',[86,19,0,3]]])for(const frame of frames)await renderStill({serveUrl,composition,inputProps:props,frame,imageFormat:'png',output:path.join(project,`${name}-${frame}.png`)});
+for(const frame of [0,3,19,86])if(!fs.readFileSync(path.join(project,`sequential-${frame}.png`)).equals(fs.readFileSync(path.join(project,`shuffled-${frame}.png`))))throw Error(`Seek mismatch: ${frame}`);
+// Longer example uses its own AI-authored transcript plan.
+writeJson(path.join(project,'project.json'),{...props,sentences:timedRows(),settings:{...props.settings,styleOptions:{editorialPlan:sequencePlan},yellowPlan:undefined}});
+props=await prepareYellowProject(project);
+writeJson(path.join(project,'editorial-plan.json'),props.settings.yellowPlan);
+const longer={...composition,props:{...props,previewBackground:'#22242e'},durationInFrames:props.settings.durationInFrames};
+await renderMedia({serveUrl,composition:longer,inputProps:{...props,previewBackground:'#22242e'},outputLocation:path.join(project,'editorial.mp4'),codec:'h264',crf:16,concurrency:2});
+command('ffmpeg',['-v','error','-y','-i',path.join(project,'editorial.mp4'),'-vf','scale=270:480,fps=15,split[x][y];[x]palettegen[p];[y][p]paletteuse','-loop','0',path.join(skillRoot,'styles/yellow-authority/editorial.gif')]);
+writeJson(path.join(project,'verification.json'),{project,gif,alpha:path.join(project,'captions.mov'),width:540,height:350,background:'#22242e',source:'preview-transcript.json',seekFrames:[0,3,19,86],diagnostics:props.settings.yellowPlan.diagnostics});
+const editorialDiagnostics=props.settings.yellowPlan.diagnostics;
+const demo=treatmentDemo();
+writeJson(path.join(project,'project.json'),{...props,sentences:demo.sentences,settings:{...props.settings,styleOptions:demo.plan.options,yellowPlan:undefined}});
+props=await prepareYellowProject(project,{demonstrationPlan:demo.plan});
+writeJson(path.join(project,'treatments-plan.json'),props.settings.yellowPlan);
+const treatments={...composition,props:{...props,previewBackground:'#22242e'},durationInFrames:props.settings.durationInFrames};
+await renderMedia({serveUrl,composition:treatments,inputProps:{...props,previewBackground:'#22242e'},outputLocation:path.join(project,'treatments.mp4'),codec:'h264',crf:16,concurrency:2});
+command('ffmpeg',['-v','error','-y','-i',path.join(project,'treatments.mp4'),'-vf','scale=270:480,fps=15,split[x][y];[x]palettegen[p];[y][p]paletteuse','-loop','0',path.join(skillRoot,'styles/yellow-authority/treatments.gif')]);
+// Inspect a partially resolved hero over alpha and both extreme backdrop colors.
+const hero=props.settings.yellowPlan.groups.find(g=>g.template==='reverse-payoff');
+const heroFrame=Math.round((hero.startMs+250)*props.settings.fps/1000);
+for(const [name,previewBackground]of [['alpha',undefined],['black','#000000'],['white','#FFFFFF'],['checkerboard','checkerboard']])await renderStill({serveUrl,composition:{...treatments,props:{...props,previewBackground}},inputProps:{...props,previewBackground},frame:heroFrame,imageFormat:'png',output:path.join(project,`composite-${name}.png`)});
+writeJson(path.join(skillRoot,'styles/yellow-authority/verification.json'),{preview:{width:540,height:350,background:'#22242e',fps:20,source:'preview-transcript.json',selection:'AI-authored transcript plan, production compiler and default palette',diagnostics:previewDiagnostics},seekFrames:[0,3,19,86],editorial:editorialDiagnostics,treatments:props.settings.yellowPlan.diagnostics});
+console.log(JSON.stringify({project,gif,diagnostics:props.settings.yellowPlan.diagnostics}));

@@ -76,10 +76,38 @@ modify existing caption projects, or change unrelated skills or plugins.
 
 Browse all available styles below. Click a preview or style name to open its folder, where `STYLE.md` explains fonts, colors, animation, and project overrides.
 
-| [Active Word Highlight](styles/active-word-highlight/) | [Brunson Red Script](styles/brunson-red-script/) | [Editorial Kinetic](styles/editorial-kinetic/) | [Montserrat Difference](styles/montserrat-difference/) | [Vermilion Brush Editorial](styles/vermilion-brush-editorial/) |
-| :---: | :---: | :---: | :---: | :---: |
-| [![Active Word Highlight preview](styles/active-word-highlight/preview.gif)](styles/active-word-highlight/) | [![Brunson Red Script preview](styles/brunson-red-script/preview.gif)](styles/brunson-red-script/) | [![Editorial Kinetic preview](styles/editorial-kinetic/preview.gif)](styles/editorial-kinetic/) | [![Montserrat Difference preview](styles/montserrat-difference/preview.gif)](styles/montserrat-difference/) | [![Vermilion Brush Editorial preview](styles/vermilion-brush-editorial/preview.gif)](styles/vermilion-brush-editorial/) |
-| Stable Inter Bold phrases with short fades and a warm yellow highlight on the spoken word. | Authored red headline/script hooks paired with instant small white interview captions. | Mixed-font editorial headlines with teal or gold emphasis, directional entrances, and drawn underlines. | Montserrat compositions with per-group colors, positions, and reveal timing, plus optional Difference blending. | Vermilion Brunson anchors balanced with white script, whole-word rises, instant replacements, and accumulating stacks. |
+<table>
+  <tr>
+    <td width="25%" align="center" valign="top">
+      <a href="styles/active-word-highlight/"><strong>Active Word Highlight</strong><br><img src="styles/active-word-highlight/preview.gif" alt="Active Word Highlight preview" width="270"></a>
+      <p>Stable Inter Bold phrases with short fades and a warm yellow highlight on the spoken word.</p>
+    </td>
+    <td width="25%" align="center" valign="top">
+      <a href="styles/brunson-red-script/"><strong>Brunson Red Script</strong><br><img src="styles/brunson-red-script/preview.gif" alt="Brunson Red Script preview" width="270"></a>
+      <p>Authored red headline/script hooks paired with instant small white interview captions.</p>
+    </td>
+    <td width="25%" align="center" valign="top">
+      <a href="styles/editorial-kinetic/"><strong>Editorial Kinetic</strong><br><img src="styles/editorial-kinetic/preview.gif" alt="Editorial Kinetic preview" width="270"></a>
+      <p>Mixed-font editorial headlines with teal or gold emphasis, directional entrances, and drawn underlines.</p>
+    </td>
+    <td width="25%" align="center" valign="top">
+      <a href="styles/montserrat-difference/"><strong>Montserrat Difference</strong><br><img src="styles/montserrat-difference/preview.gif" alt="Montserrat Difference preview" width="270"></a>
+      <p>Montserrat compositions with per-group colors, positions, and reveal timing, plus optional Difference blending.</p>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" align="center" valign="top">
+      <a href="styles/vermilion-brush-editorial/"><strong>Vermilion Brush Editorial</strong><br><img src="styles/vermilion-brush-editorial/preview.gif" alt="Vermilion Brush Editorial preview" width="270"></a>
+      <p>Vermilion Brunson anchors balanced with white script, whole-word rises, instant replacements, and accumulating stacks.</p>
+    </td>
+    <td width="25%" align="center" valign="top">
+      <a href="styles/yellow-authority/"><strong>Yellow Authority</strong><br><img src="styles/yellow-authority/preview.gif" alt="Yellow Authority preview" width="270"></a>
+      <p>Mostly static white Poppins phrases with selective yellow emphasis, restrained word rises, and bold italic headings and comparisons. The AI chooses emphasis and motion from the transcript’s meaning.</p>
+    </td>
+    <td width="25%"></td>
+    <td width="25%"></td>
+  </tr>
+</table>
 
 Previews come from the actual caption components; the final overlays have transparent backgrounds. Choose colors in the local gallery or specify them in your request. Already supplied choices are reused. The [style catalog](styles/catalog.json) lists the bundled styles and their defaults.
 

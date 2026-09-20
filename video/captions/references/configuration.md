@@ -68,3 +68,9 @@ Select `brunson-red-script`; colors are `headline`, `script`, and `default`. Sav
 ## Vermilion Brush Editorial
 
 Select `vermilion-brush-editorial`; its color roles are `block`, `script`, and `ordinary`. See [the style guide](../styles/vermilion-brush-editorial/STYLE.md) for transcript planning, templates, roles and global-index group overrides. `prepare` saves `settings.layoutPlan` and separate `settings.styleOverrides`. Rendering uses the saved plan. To change editorial options or transcript timing, run `planVermilion(sentences, settings.styleOverrides)` again and update the saved plan; no external model or audio is required.
+
+## Yellow Authority
+
+Select `yellow-authority`; palette roles are `base` (white) and `accent` (yellow). Project-only `styleOptions` accepts `anchor: {x:360,y:688}` in the 720×1280 design canvas, uniform `scale` (0–1.5, exclusive of zero), nonstructural emphasis `density` (0–1), and an AI-authored `editorialPlan` with source text and complete group/span ranges. Unknown keys are rejected; final ink must fit the safe envelope. Defaults and original overrides remain separate. The AI reads the full transcript and saves the editorial plan before `prepare`; user-authored emphasis markup is not required. Density is an editorial planning input: regenerate choices when it changes. See [the style guide](../styles/yellow-authority/STYLE.md).
+
+`prepare` validates and compiles the AI’s saved choices into `settings.yellowPlan`; the attached `captions:plan` script validates fonts and persists shaped layout before Studio/export. Run it again after editing source text, timing, palette or options. `captions:render` and `captions:studio` invoke it automatically. Rendering consumes the saved plan without semantic selection or measurement. Exports use the existing silent ProRes 4444 alpha pipeline.

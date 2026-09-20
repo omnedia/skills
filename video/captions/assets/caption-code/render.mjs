@@ -4,9 +4,11 @@ import {readFile, mkdir, writeFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import path from 'node:path';
 import {exportOptions} from './captions-export-options.mjs';
+import {prepareYellowProject} from './captions-yellow-plan.mjs';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 process.chdir(root);
+await prepareYellowProject(root);
 const data = JSON.parse(await readFile(path.join(root, 'project.json'), 'utf8'));
 // Gallery-only props must never leak into a production MOV or review excerpt.
 delete data.previewBackground;

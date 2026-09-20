@@ -1,0 +1,9 @@
+// Synthetic fixture timing explicitly specified by the style brief; never audio alignment.
+export const rows=['People only spend money.','Consider the reason.','1 Solutions.','Remove these problems.','Debt,','Weight,','Stress.','People will pay.','Think about this.','They’re the most convenient.','It saves time.','People notice that.','Every single day.','2 Convenience.','Keep it useful.','Make it clear.','Show the result.','Remember the promise.','Fix that and the money shows up.','Learn from The Wolf of Wall Street.'];
+export function timedRows(lines=rows,interval=240,duration=200,gap=180){let time=0,index=0;return lines.map(line=>{const words=line.split(/\s+/).map(text=>{const w={text:(index++?' ':'')+text,startMs:time,endMs:time+duration,timestampMs:time,confidence:1};time+=interval;return w;});time=words.at(-1).endMs+gap;return {words};});}
+export const isolated={comparative:timedRows(['The bigger the pain, the bigger the check.']),benefit:timedRows(['faster, easier.']),small:timedRows(['a feeling.','to learn.']),amount:timedRows(['Spend $30 on this toaster.','They spend $10,000 for status.']),annotations:timedRows(['The Richest Companies on the planet aren’t the smartest.']),ordinary:timedRows(['People will pay.','Consider the reason.','Keep it useful.']),accented:timedRows(['Café déjà vu.','Again again again.']),rapid:timedRows(['These words arrive very quickly.'],40,35,0),overlap:timedRows(['These words overlap each other.'],100,200,0),silence:timedRows(['First phrase.','Second phrase.'],240,200,900),long:timedRows(['Supercalifragilisticexpialidocious.'])};
+
+export function plainEditorialPlan(sentences){
+  const words=sentences.flatMap(s=>s.words);
+  return {source:words.map(w=>w.text),groups:words.map((w,i)=>({from:i,to:i+1,template:'plain-center',reason:'plain geometry test',spans:[{from:i,to:i+1,role:'ordinary',recipe:'phrase-cut'}]}))};
+}

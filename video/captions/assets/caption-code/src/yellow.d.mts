@@ -1,0 +1,15 @@
+import type {Caption} from '@remotion/captions';
+export type YellowEditorialSpan={from:number;to:number;role:string;recipe:string;line?:number;nominalDuration?:number};
+export type YellowEditorialGroup={from:number;to:number;template:string;reason:string;spans:YellowEditorialSpan[];upper?:boolean;fade?:boolean;structural?:boolean;hook?:boolean};
+export type YellowEditorialPlan={source:string[];groups:YellowEditorialGroup[]};
+export type YellowOptions={anchor?:{x?:number;y?:number};scale?:number;density?:number;editorialPlan?:YellowEditorialPlan};
+export type YellowWord=Caption & {index:number};
+export type YellowUnit={wordIndex:number;originalText:string;text:string;role:string;line:number;font:string;size:number;tracking:number;color:string;colorRole:string;casing:string;x:number;y:number;width:number;ink:{left:number;right:number;top:number;bottom:number};recipe:string;startMs:number;duration:number;nominalDuration:number;trackScale:number;travelX:number;travelY:number;eventId:string;graphemes:string[];ranks:number[]};
+export type YellowGroup={id:string;template:string;reason:string;indices:number[];startMs:number;endMs:number;exitMs:number;exitStartMs:number;units:YellowUnit[];spans:unknown[]};
+export type YellowPlan={style:string;version:number;options:YellowOptions;words:YellowWord[];groups:YellowGroup[];measured?:boolean;palette?:Record<string,string>;diagnostics?:unknown};
+export const yellowDefaults:YellowOptions;
+export const yellowPlanVersion:number;
+export function yellowOptions(o?:YellowOptions):YellowOptions;
+export function planYellow(sentences:{words:Caption[]}[],options?:YellowOptions):YellowPlan;
+export function layoutYellow(plan:YellowPlan,measure:Function,colors?:Record<string,string>):YellowPlan;
+export function yellowState(plan:YellowPlan,timeMs:number):(YellowUnit & {opacity:number;dx:number;dy:number;blur:number;scale:number;rotation:number;glyphOpacity?:number[]})[];
