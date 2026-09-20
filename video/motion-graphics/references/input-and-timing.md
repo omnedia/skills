@@ -1,0 +1,11 @@
+# Timing
+
+Normalize supplied words to `source.json`: `{provenance, words:[{text,startMs,endMs}, ...]}`. Preserve text, order, actual timestamps and repeated occurrences. Indices are global zero-based and ranges `[from,to)` are end-exclusive. Each transcript scene has `sourceRanges`, `anchorWord` and `startMs` exactly equal to that anchor's onset. Events use their own exact `anchorWord`. Their IDs can connect an annotation's `eventId` to its reveal. No word is retimed to fit motion.
+
+Untimed/cue-only words may have only `text`. Save the authored plan and source; validation returns `needs-word-timing`. Do not render synchronized graphics until actual word timing arrives. Partially timed data is unresolved too. Standalone plans explicitly use `mode: standalone`, authored `startMs/endMs`, and events with `timeMs`; no word ranges or synchronization claim.
+
+Each scene's complete interval includes entrance, viewing/reading and exit. `motion.entranceMs` and `motion.exitMs` default to 250. Optional `exitStartMs` defines the actual exit. Reading-heavy treatments need 1400ms completed reading after entrance and any delayed reveals. Short windows simplify or disappear. Text-free camera movement may continue gently through viewing. Handles are explicit `{leadingMs,trailingMs}` transparent padding.
+
+For exact fps n/d, Q(t) = floor(t*n/(1000*d)+0.5). Decimal milliseconds are converted to integer rational arithmetic. Every source event is Q(t + sourceOffsetMs); the editor origin is Q(timelinePlacementMs) once. Local events subtract the handle-inclusive compiled clip start, never round a local duration. Negative or collapsed required intervals fail. File intervals and exported ranges are end-exclusive.
+
+Example retained from the plan: source start 10000ms, end 14500ms, source offset 500ms, editor placement 10000ms, 30/1 fps → sequence [315,450), 135-frame clip, editor placement frame 615. A reveal at 10250ms → sequence frame 323, local 8, editor 623. A reveal at 12000ms → local 60. Exit at 14250ms → local 128. Both export modes use the same saved scene function. The future chart component is not installed; these numbers remain an arithmetic fixture.

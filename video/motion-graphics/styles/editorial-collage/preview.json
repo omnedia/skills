@@ -1,0 +1,13 @@
+{
+  "fixture": "tests/fixtures/preview-plan.json",
+  "source": "tests/fixtures/preview-source.json",
+  "durationInFrames": 660,
+  "fps": "30/1",
+  "width": 540,
+  "height": 960,
+  "renderer": "Remotion 4.0.526",
+  "sha256": "638fbf1fadba9cde210b4d941508c7c1fad14a68656c2d7c13c57745ecea7967",
+  "projectFingerprint": "549dfd9f81ea8758b6693e48f2dc52ce62051b0f4390ba38a6ed2f8b3446235f",
+  "background": "preview-only neutral portrait silhouette",
+  "playbackReview": "Unavailable: no connected browser or Windows Computer Use helper; no frame extraction performed"
+}

@@ -6,7 +6,7 @@
 
 Give your agent focused workflows, domain knowledge, and reliable tools without rewriting the same instructions every time.
 
-[![Skills](https://img.shields.io/badge/skills-2-7c3aed?style=flat-square)](#skill-library)
+[![Skills](https://img.shields.io/badge/skills-3-7c3aed?style=flat-square)](#skill-library)
 [![Categories](https://img.shields.io/badge/categories-2-2563eb?style=flat-square)](#skill-library)
 [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-16a34a?style=flat-square)](#contributing)
 [![License: MIT](https://img.shields.io/badge/license-MIT-f59e0b?style=flat-square)](LICENSE)
@@ -69,6 +69,7 @@ Use the research-qualified-leads skill to find 20 qualified leads.
 | Skill | What it does |
 | :--- | :--- |
 | **[Omnedia Captions](https://github.com/omnedia/skills/tree/master/video/captions)** | Creates animated, transparent caption overlays in editable Remotion projects from timed transcripts or text with matching audio. Requires the Remotion plugin in Codex. |
+| **[Omnedia Motion Graphics](https://github.com/omnedia/skills/tree/master/video/motion-graphics)** | Creates sparse editorial collage overlays, layered parallax, paper treatments, callouts and diagrams as silent alpha clips with editable Remotion projects. Requires the Remotion plugin in Codex. |
 
 <p align="center"><em>More skills and categories are on the way.</em></p>
 

@@ -1,0 +1,24 @@
+[
+  {
+    "id":"editorial-collage",
+    "name":"Editorial collage — Vox-inspired",
+    "colors":{"surface":"#F1EDE4","ink":"#202124","highlight":"#F6CE46","accent":"#D94A45"},
+    "components":{
+      "cutout-reveal":{"renderer":"cutout","minLayers":1,"maxLayers":1,"readingHoldMs":0},
+      "layered-parallax":{"renderer":"parallax","minLayers":2,"maxLayers":3,"readingHoldMs":0},
+      "paper-clipping":{"renderer":"paper","minLayers":1,"maxLayers":1,"readingHoldMs":1400},
+      "object-callout":{"renderer":"callout","minLayers":1,"maxLayers":1,"readingHoldMs":1400},
+      "text-diagram":{"renderer":"diagram","minLayers":0,"maxLayers":0,"readingHoldMs":1400}
+    },
+    "parameterSchema":{"sceneMode":["overlay","full-screen"],"surface":["none","paper","window"],"labelMinSize":36,"nodesMin":2,"nodesMax":3},
+    "coverage":["compact","full-canvas"],
+    "aspectRatio":"uniform-fit-1080x1920",
+    "backgrounds":["transparent","explicit-full-screen"],
+    "requiredFonts":["fonts/Inter-Bold.woff2"],
+    "requiredAssets":[],
+    "defaults":{"sceneMode":"overlay","surface":"none","depthStrength":1,"motion":{"entranceMs":250,"exitMs":250},"paperTreatment":{"textureSeed":17,"textureStrength":0.12,"internalPaperOpacity":1,"tint":"#F1EDE4","edgeShadow":8,"documentTilt":0,"backingSheet":true}},
+    "preview":"styles/editorial-collage/preview.mp4",
+    "previewFixture":"tests/fixtures/preview-plan.json",
+    "guidance":"styles/editorial-collage/STYLE.md"
+  }
+]

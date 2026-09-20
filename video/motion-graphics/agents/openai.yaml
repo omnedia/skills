@@ -1,0 +1,4 @@
+interface:
+  display_name: "Omnedia Motion Graphics"
+  short_description: "Editorial collage overlays and editable motion graphics"
+  default_prompt: "Use $motion-graphics to create sparse editorial collage overlays from my timed transcript or standalone brief."

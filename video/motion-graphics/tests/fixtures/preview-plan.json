@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "style": "editorial-collage",
+  "mode": "transcript",
+  "assets": [
+    {
+      "id": "mountain",
+      "path": "assets/mountain.svg",
+      "kind": "illustration",
+      "provenance": "Original deterministic vector illustration authored for Omnedia fixture; not documentary imagery",
+      "license": "MIT (repository LICENSE)"
+    },
+    {
+      "id": "car",
+      "path": "assets/car.svg",
+      "kind": "illustration",
+      "provenance": "Original deterministic vector illustration authored for Omnedia fixture; not documentary imagery",
+      "license": "MIT (repository LICENSE)"
+    },
+    {
+      "id": "foreground",
+      "path": "assets/foreground.svg",
+      "kind": "illustration",
+      "provenance": "Original deterministic vector illustration authored for Omnedia fixture; not documentary imagery",
+      "license": "MIT (repository LICENSE)"
+    },
+    {
+      "id": "cutout",
+      "path": "assets/cutout.svg",
+      "kind": "illustration",
+      "provenance": "Original deterministic vector illustration authored for Omnedia fixture; not documentary imagery",
+      "license": "MIT (repository LICENSE)"
+    }
+  ],
+  "graphicsPlan": {
+    "scenes": [
+      {
+        "id": "spark",
+        "component": "cutout-reveal",
+        "startMs": 1000,
+        "endMs": 3500,
+        "order": 0,
+        "selectionReason": "Illustrate one selected idea using prepared local artwork.",
+        "placement": {
+          "x": 130,
+          "y": 700,
+          "width": 820,
+          "height": 600
+        },
+        "layers": [
+          {
+            "id": "bulb",
+            "asset": "cutout",
+            "depth": 1,
+            "rect": {
+              "x": 80,
+              "y": 40,
+              "width": 660,
+              "height": 470
+            },
+            "pivot": [
+              0.5,
+              0.5
+            ]
+          }
+        ],
+        "sceneMode": "overlay",
+        "anchorWord": 0,
+        "sourceRanges": [
+          [
+            0,
+            6
+          ]
+        ]
+      },
+      {
+        "id": "mountain",
+        "component": "layered-parallax",
+        "startMs": 6000,
+        "endMs": 9500,
+        "order": 1,
+        "selectionReason": "Illustrate one selected idea using prepared local artwork.",
+        "placement": {
+          "x": 130,
+          "y": 700,
+          "width": 820,
+          "height": 600
+        },
+        "layers": [
+          {
+            "id": "far",
+            "asset": "mountain",
+            "depth": 0.6,
+            "rect": {
+              "x": -80,
+              "y": -70,
+              "width": 980,
+              "height": 740
+            },
+            "pivot": [
+              0.5,
+              0.5
+            ],
+            "coverage": "window",
+            "preparedBacking": "Whole original illustrated landscape with overscan; no removed-subject holes"
+          },
+          {
+            "id": "subject",
+            "asset": "car",
+            "depth": 1.5,
+            "rect": {
+              "x": 40,
+              "y": 30,
+              "width": 640,
+              "height": 450
+            },
+            "pivot": [
+              0.5,
+              0.5
+            ]
+          },
+          {
+            "id": "near",
+            "asset": "foreground",
+            "depth": 3,
+            "rect": {
+              "x": -100,
+              "y": -70,
+              "width": 1020,
+              "height": 740
+            },
+            "pivot": [
+              0.5,
+              0.5
+            ],
+            "coverage": "window",
+            "preparedBacking": "Continuous decorative foreground extending outside the clipped window"
+          }
+        ],
+        "sceneMode": "overlay",
+        "surface": "window",
+        "camera": {
+          "x": 20,
+          "y": 0,
+          "zoom": 0.008
+        },
+        "anchorWord": 13,
+        "sourceRanges": [
+          [
+            13,
+            21
+          ]
+        ]
+      },
+      {
+        "id": "paper",
+        "component": "paper-clipping",
+        "startMs": 12000,
+        "endMs": 16000,
+        "order": 2,
+        "selectionReason": "Illustrate one selected idea using prepared local artwork.",
+        "placement": {
+          "x": 130,
+          "y": 700,
+          "width": 820,
+          "height": 600
+        },
+        "layers": [
+          {
+            "id": "print",
+            "asset": "mountain",
+            "depth": 0,
+            "rect": {
+              "x": 20,
+              "y": 20,
+              "width": 780,
+              "height": 380
+            },
+            "pivot": [
+              0.5,
+              0.5
+            ]
+          }
+        ],
+        "sceneMode": "overlay",
+        "surface": "paper",
+        "content": {
+          "label": "A new perspective"
+        },
+        "paperTreatment": {
+          "documentTilt": -1.5,
+          "textureStrength": 0.18
+        },
+        "anchorWord": 26,
+        "sourceRanges": [
+          [
+            26,
+            34
+          ]
+        ]
+      },
+      {
+        "id": "detail",
+        "component": "object-callout",
+        "startMs": 18500,
+        "endMs": 22000,
+        "order": 3,
+        "selectionReason": "Illustrate one selected idea using prepared local artwork.",
+        "placement": {
+          "x": 130,
+          "y": 700,
+          "width": 820,
+          "height": 600
+        },
+        "layers": [
+          {
+            "id": "bulb",
+            "asset": "cutout",
+            "depth": 1,
+            "rect": {
+              "x": 40,
+              "y": 70,
+              "width": 580,
+              "height": 420
+            },
+            "pivot": [
+              0.5,
+              0.5
+            ]
+          }
+        ],
+        "sceneMode": "overlay",
+        "annotations": [
+          {
+            "label": "Focus here",
+            "from": [
+              480,
+              65
+            ],
+            "to": [
+              310,
+              280
+            ],
+            "width": 270,
+            "layerId": "bulb"
+          }
+        ],
+        "anchorWord": 39,
+        "sourceRanges": [
+          [
+            39,
+            45
+          ]
+        ]
+      }
+    ]
+  },
+  "authoredOverrides": {
+    "project": {},
+    "scenes": {
+      "mountain": {
+        "components": {
+          "layered-parallax": {
+            "cameraTravel": 20
+          }
+        }
+      }
+    }
+  }
+}

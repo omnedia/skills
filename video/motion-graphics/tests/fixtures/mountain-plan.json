@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 1,
+  "style": "editorial-collage",
+  "mode": "standalone",
+  "assets": [
+    {
+      "id": "mountain",
+      "path": "assets/mountain.svg",
+      "kind": "illustration",
+      "provenance": "Original deterministic vector illustration authored for Omnedia fixture; not documentary imagery",
+      "license": "MIT (repository LICENSE)"
+    },
+    {
+      "id": "car",
+      "path": "assets/car.svg",
+      "kind": "illustration",
+      "provenance": "Original deterministic vector illustration authored for Omnedia fixture; not documentary imagery",
+      "license": "MIT (repository LICENSE)"
+    },
+    {
+      "id": "foreground",
+      "path": "assets/foreground.svg",
+      "kind": "illustration",
+      "provenance": "Original deterministic vector illustration authored for Omnedia fixture; not documentary imagery",
+      "license": "MIT (repository LICENSE)"
+    },
+    {
+      "id": "cutout",
+      "path": "assets/cutout.svg",
+      "kind": "illustration",
+      "provenance": "Original deterministic vector illustration authored for Omnedia fixture; not documentary imagery",
+      "license": "MIT (repository LICENSE)"
+    }
+  ],
+  "graphicsPlan": {
+    "scenes": [
+      {
+        "id": "mountain",
+        "component": "layered-parallax",
+        "startMs": 0,
+        "endMs": 3500,
+        "order": 1,
+        "selectionReason": "Illustrate one selected idea using prepared local artwork.",
+        "placement": {
+          "x": 130,
+          "y": 700,
+          "width": 820,
+          "height": 600
+        },
+        "layers": [
+          {
+            "id": "far",
+            "asset": "mountain",
+            "depth": 0.6,
+            "rect": {
+              "x": -80,
+              "y": -70,
+              "width": 980,
+              "height": 740
+            },
+            "pivot": [
+              0.5,
+              0.5
+            ],
+            "coverage": "window",
+            "preparedBacking": "Whole original illustrated landscape with overscan; no removed-subject holes"
+          },
+          {
+            "id": "subject",
+            "asset": "car",
+            "depth": 1.5,
+            "rect": {
+              "x": 40,
+              "y": 30,
+              "width": 640,
+              "height": 450
+            },
+            "pivot": [
+              0.5,
+              0.5
+            ]
+          },
+          {
+            "id": "near",
+            "asset": "foreground",
+            "depth": 3,
+            "rect": {
+              "x": -100,
+              "y": -70,
+              "width": 1020,
+              "height": 740
+            },
+            "pivot": [
+              0.5,
+              0.5
+            ],
+            "coverage": "window",
+            "preparedBacking": "Continuous decorative foreground extending outside the clipped window"
+          }
+        ],
+        "sceneMode": "overlay",
+        "surface": "window",
+        "camera": {
+          "x": 20,
+          "y": 0,
+          "zoom": 0.008
+        }
+      }
+    ]
+  },
+  "authoredOverrides": {
+    "project": {},
+    "scenes": {
+      "mountain": {
+        "components": {
+          "layered-parallax": {
+            "cameraTravel": 20
+          }
+        }
+      }
+    }
+  }
+}

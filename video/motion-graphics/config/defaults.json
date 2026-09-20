@@ -1,0 +1,12 @@
+{
+  "projectFolder": null,
+  "width": 1080,
+  "height": 1920,
+  "fps": "30/1",
+  "sourceOffsetMs": 0,
+  "timelinePlacementMs": 0,
+  "delivery": "clips",
+  "colors": {},
+  "exclusions": [],
+  "export": {"codec":"prores","profile":"4444","pixelFormat":"yuva444p10le","container":"mov","imageFormat":"png","scale":2}
+}
