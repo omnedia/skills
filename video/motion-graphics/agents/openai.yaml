@@ -1,4 +1,4 @@
 interface:
   display_name: "Omnedia Motion Graphics"
-  short_description: "Editorial collage overlays and editable motion graphics"
-  default_prompt: "Use $motion-graphics to create sparse editorial collage overlays from my timed transcript or standalone brief."
+  short_description: "Full-size editorial scenes for selected transcript moments"
+  default_prompt: "Use $omnedia-motion-graphics to create selective full-size editorial collage scenes in Remotion from my timed transcript or standalone brief."

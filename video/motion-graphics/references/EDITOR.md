@@ -4,7 +4,7 @@ Import the MOV files above your actual video. They contain silent ProRes 4444 wi
 
 Match the exact frame rate in `out/placement-manifest.json`. Composition dimensions and exported dimensions are listed separately: the shipped 1080×1920 canvas at scale 2 produces 2160×3840. Fit the clip to the editor sequence without stretching.
 
-For individual clips, use each entry's `placementFrame` and `trackOrder`; the placement already includes handles and source offset. For a synchronized MOV, place the entire file once at `sequencePlacementFrame`. Do not also offset each scene. Transparent gaps are intentional. Backgrounds are present only for explicitly selected full-screen scenes.
+For individual clips, use each entry's `placementFrame` and `trackOrder`; the placement already includes handles and source offset. For a synchronized MOV, place the entire file once at `sequencePlacementFrame`. Do not also offset each scene. Transparent gaps are intentional. Full-screen inserts intentionally cover the footage during their selected passages. Overlay scenes preserve it. Read sceneMode and background in the manifest; a ProRes 4444 container does not imply that every scene is visually transparent.
 
 Edit `scene-plan.json`, `settings.json`, or the local files under `public/assets`. Source word timestamps in `source.json` remain the supplied speech reference. Preserve occurrence indices when revising ranges. Keep source and derived cutouts and their provenance. Geometry in `project.json` and `compiled-motion.json` is derived; do not edit it.
 

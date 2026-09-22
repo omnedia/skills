@@ -10,7 +10,7 @@ export async function compile(root){
   process.chdir(root);
   const data=inputs(root),font=data.font;
   if(validatePlan(data.plan,data.source,data.settings,data.catalog).status!=='validated')throw Error('Word timestamps required before synchronized compilation');
-  const texts=data.plan.graphicsPlan.scenes.flatMap(s=>[s.content?.label,s.sourceLabel,...(s.content?.nodes??[]),...(s.annotations??[]).map(a=>a.label)]).filter(Boolean);
+  const texts=data.plan.graphicsPlan.scenes.flatMap(s=>[s.content?.label,s.sourceLabel,...(s.content?.nodes??[]),...(s.annotations??[]).map(a=>a.label),...(s.titles??[]).map(t=>t.text)]).filter(Boolean);
   // The local font's cmap is recorded with its checksum; unsupported glyphs fail, never silently fall back.
   for(const text of texts)for(const c of text)if(!font.codepoints.includes(c.codePointAt(0)))throw Error(`Unsupported glyph ${c}; provide a licensed covering font and update its manifest`);
   const browser=await openBrowser('chrome');

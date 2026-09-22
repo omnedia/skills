@@ -16,7 +16,7 @@ export function compileLayout(plan,source,settings,catalog,measure){
   const scale=Math.min(settings.width/1080,settings.height/1920),fit={scale,x:(settings.width-1080*scale)/2,y:(settings.height-1920*scale)/2};
   const exclusions=(settings.exclusions??[]).map(z=>(z.space??'canvas')==='design'?z:{...z,x:(z.x-fit.x)/scale,y:(z.y-fit.y)/scale,width:z.width/scale,height:z.height/scale});
   const scenes=validated.scenes.map(s=>{
-    const frames=compileTiming(s,source,settings),scene={...s,frames,renderer:validated.style.components[s.component].renderer};
+    const frames=compileTiming(s,source,settings),[fpsN,fpsD=1]=String(settings.fps).split('/').map(Number),scene={...s,frames,fps:fpsN/fpsD,renderer:validated.style.components[s.component].renderer};
     const p=s.placement,local={x:0,y:0,width:p.width,height:p.height};
     const safe=s.sceneMode==='full-screen'?{x:0,y:0,width:1080,height:1920}:{x:64,y:64,width:952,height:1792};
     const shadow=s.component==='paper-clipping'?s.paperTreatment.edgeShadow:0,angle=s.component==='paper-clipping'?Math.abs(s.paperTreatment.documentTilt)*Math.PI/180:0;
@@ -25,17 +25,19 @@ export function compileLayout(plan,source,settings,catalog,measure){
     if(s.sceneMode!=='full-screen'&&!contains(safe,bounds))throw Error(`${s.id}: complete motion/shadow bounds exceed safe canvas`);
     for(const z of exclusions)if((z.startMs===undefined||z.startMs<s.endMs&&z.endMs>s.startMs)&&intersects(bounds,z))throw Error(`${s.id}: protected region collision; reposition, simplify or omit`);
     const layers=(s.layers??[]).map(l=>{
-      const a=layerBounds(l,layerState(scene,l,frames.entranceEnd)),b=layerBounds(l,layerState(scene,l,frames.exitStart)),motionBounds=union(a,b);
+      // Camera + independently timed reveal can peak between camera endpoints.
+      const samples=Array.from({length:frames.end-frames.start},(_,i)=>layerBounds(l,layerState(scene,l,frames.start+i))),motionBounds=samples.reduce(union);
       if(l.coverage==='window'){
-        if(!contains(a,local)||!contains(b,local))throw Error(`${s.id}/${l.id}: insufficient prepared backing coverage for camera travel`);
-      }else if(!contains(local,motionBounds))throw Error(`${s.id}/${l.id}: subject motion exceeds protected window`);
+        if(samples.some(b=>!contains(b,local)))throw Error(`${s.id}/${l.id}: insufficient prepared backing coverage for camera travel`);
+      }else if(l.coverage!=='bleed'&&!contains(local,motionBounds))throw Error(`${s.id}/${l.id}: subject motion exceeds protected window`);
       if(l.coverage==='window'&&!l.preparedBacking)throw Error('Window coverage requires preparedBacking provenance');
-      return {...l,motionBounds,resolvedTransforms:{start:layerState(scene,l,frames.entranceEnd),end:layerState(scene,l,frames.exitStart)}};
+      return {...l,motionBounds,resolvedTransforms:{start:layerState(scene,l,frames.start),end:layerState(scene,l,frames.end-1)}};
     });
     const labels=[];
     const add=(text,x,y,width,size=48)=>{const m=wrapLabel(text,width,size,measure);if(!contains(local,{x,y,width:m.width,height:m.height}))throw Error(`${s.id}: labels overflow; simplify content`);labels.push({...m,text,x,y});};
     if(s.content?.label)add(s.content.label,40,p.height-160,p.width-80);
     if(s.sourceLabel)add(s.sourceLabel,40,p.height-70,p.width-80,36);
+    for(const t of s.titles??[]){add(t.text,t.x,t.y,t.width,t.fontSize);if(labels.at(-1).height>t.height)throw Error('Title exceeds reserved height');Object.assign(labels.at(-1),{eventId:t.eventId,color:t.color});}
     const nodes=s.content?.nodes??[];
     nodes.forEach((text,i)=>add(text,48,64+i*(p.height-128)/nodes.length,p.width-96,52));
     for(const a of s.annotations??[]){add(a.label,a.from[0],a.from[1],Math.min(a.width??240,p.width-a.from[0]),44);labels.at(-1).eventId=a.eventId;if(a.eventId&&!frames.events.some(e=>e.id===a.eventId))throw Error('Annotation eventId is not a saved event');}

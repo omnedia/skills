@@ -1,5 +1,5 @@
 // Dependency-free authored-plan validation and exact end-exclusive frame compilation.
-export const IDENTITY={schema:1,compiler:'editorial-collage-1',renderer:'editorial-collage-1'};
+export const IDENTITY={schema:1,compiler:'editorial-collage-2',renderer:'editorial-collage-2'};
 const assert=(value,message)=>{if(!value)throw Error(message);};
 export const finite=(x)=>typeof x==='number'&&Number.isFinite(x);
 export function fpsRatio(value) {
@@ -23,8 +23,8 @@ export function validateSettings(s){
   return s;
 }
 export function rect(r,name){assert(r&&['x','y','width','height'].every(k=>finite(r[k]))&&r.width>0&&r.height>0,`Invalid ${name} rectangle`);return r;}
-const overrideKeys=['sceneMode','surface','depthStrength','camera','motion','paperTreatment','highlight','sourceLabel','asset','layers','annotations','crop','cameraTravel'];
-function overrides(o){for(const key of Object.keys(o??{}))assert(overrideKeys.includes(key),`Unsupported override: ${key}`);for(const [key,allowed]of Object.entries({camera:['x','y','zoom'],motion:['entranceMs','exitMs'],paperTreatment:['textureAsset','textureSeed','textureStrength','internalPaperOpacity','tint','edgeShadow','documentTilt','backingSheet']}))for(const k of Object.keys(o?.[key]??{}))assert(allowed.includes(k),`Unsupported ${key} override: ${k}`);}
+const overrideKeys=['sceneMode','background','surface','depthStrength','camera','motion','paperTreatment','highlight','sourceLabel','asset','layers','annotations','strokes','titles','crop','cameraTravel'];
+function overrides(o){for(const key of Object.keys(o??{}))assert(overrideKeys.includes(key),`Unsupported override: ${key}`);for(const [key,allowed]of Object.entries({camera:['x','y','zoom','from','easing'],motion:['entranceMs','exitMs','transition'],paperTreatment:['textureAsset','textureSeed','textureStrength','internalPaperOpacity','tint','edgeShadow','documentTilt','backingSheet']}))for(const k of Object.keys(o?.[key]??{}))assert(allowed.includes(k),`Unsupported ${key} override: ${k}`);}
 export function validatePlan(plan,source,settings,catalog) {
   validateSettings(settings);assert(plan.schemaVersion===1,'Unsupported scene schema');
   const style=catalog.find(s=>s.id===plan.style);assert(style,'Unsupported style');
@@ -43,10 +43,13 @@ export function validatePlan(plan,source,settings,catalog) {
     const capability=style.components[original.component];assert(capability,`Unsupported component: ${original.component}`);
     const override=plan.authoredOverrides?.scenes?.[original.id]??{}, {components,...sceneOverride}=override;
     const s=merge(merge(merge(merge(style.defaults,original),project),sceneOverride),components?.[original.component]);
+    // An overlay is a deliberate local treatment; retain its old transition unless authored.
+    if(s.sceneMode==='overlay'&&!original.motion?.transition&&!project.motion?.transition&&!sceneOverride.motion?.transition&&!components?.[original.component]?.motion?.transition)s.motion.transition='fade-slide';
     assert(s.selectionReason&&s.selectionReason.trim(),'Explain the selected moment');
     assert(style.parameterSchema.sceneMode.includes(s.sceneMode),'Unsupported scene mode');
     assert(style.parameterSchema.surface.includes(s.surface),'Unsupported surface');
     if(s.background)assert(s.sceneMode==='full-screen'&&/^#[a-f\d]{6}$/i.test(s.background),'A background requires explicit full-screen mode');
+    if(s.sceneMode==='full-screen'&&!s.background)s.background=settings.colors?.surface??style.colors.surface;
     rect(s.placement,'placement');assert(Number.isInteger(s.order),'Save explicit compositing order');
     if(plan.mode==='transcript'){
       assert(s.sourceRanges?.length,'Missing global source ranges');
@@ -57,21 +60,43 @@ export function validatePlan(plan,source,settings,catalog) {
     if(s.crop&&layers.length===1)layers[0].crop=s.crop;
     const layerIds=new Set();
     for(const l of layers){assert(l.id&&!layerIds.has(l.id),'Unique layer IDs required');layerIds.add(l.id);assert(assets.has(l.asset),'Missing layer asset');if(l.mask)assert(assets.has(l.mask),'Missing layer mask');rect(l.rect,'layer');assert(finite(l.depth)&&l.depth>=0&&l.depth<=4,'Invalid layer depth');assert(Array.isArray(l.pivot)&&l.pivot.length===2&&l.pivot.every(v=>finite(v)&&v>=0&&v<=1),'Save normalized layer pivot');if(l.crop)assert(['x','y'].every(k=>finite(l.crop[k])&&l.crop[k]>=0&&l.crop[k]<=100),'Crop uses percentage x/y');}
+    for(const l of layers){
+      if(l.opacity!==undefined)assert(finite(l.opacity)&&l.opacity>=0&&l.opacity<=1,'Invalid layer opacity');
+      if(l.grayscale!==undefined)assert(finite(l.grayscale)&&l.grayscale>=0&&l.grayscale<=1,'Invalid grayscale');
+      if(l.coverage!==undefined)assert(['window','bleed'].includes(l.coverage),'Invalid coverage mode');
+      if(l.coverage==='bleed')assert(s.sceneMode==='full-screen'&&l.bleedReason,'Intentional cropped edges need full-screen mode and bleedReason');
+      if(l.reveal)assert(l.reveal.eventId&&finite(l.reveal.x??0)&&finite(l.reveal.y??0),'Invalid layer reveal');
+    }
     if(s.asset)assert(assets.has(s.asset),'Missing asset override');
     if(s.asset&&layers.length===1)layers[0].asset=s.asset;
     if(s.component==='layered-parallax')assert(new Set(layers.map(l=>l.depth)).size>1,'Parallax needs distinct depths');
     const camera=s.camera??{x:0,y:0,zoom:0};assert(['x','y','zoom'].every(k=>finite(camera[k]))&&Math.abs(camera.zoom)<=0.15,'Invalid/restrained camera path');
+    if(camera.from)assert(['x','y','zoom'].every(k=>finite(camera.from[k]))&&Math.abs(camera.from.zoom)<=.15,'Invalid camera start');
+    assert(['linear','in','out','in-out'].includes(camera.easing??'linear'),'Invalid camera easing');
+    assert(layers.every(l=>1+(camera.from?.zoom??0)*l.depth*s.depthStrength>0),'Camera start collapses a layer');
     assert(finite(s.depthStrength)&&s.depthStrength>=0&&s.depthStrength<=2,'Invalid depthStrength');s.camera=camera;
     assert(layers.every(l=>1+camera.zoom*l.depth*s.depthStrength>0),'Camera collapses a layer');
     if(s.cameraTravel!==undefined){assert(finite(s.cameraTravel),'Invalid cameraTravel');s.camera.x=s.cameraTravel;}
-    if(s.component==='layered-parallax')assert(camera.x!==0||camera.y!==0||camera.zoom!==0,'Parallax requires relative motion');
+    if(s.component==='layered-parallax')assert(s.depthStrength>0&&['x','y','zoom'].some(k=>camera[k] !== (camera.from?.[k]??0)),'Parallax requires relative motion');
     for(const k of ['entranceMs','exitMs'])assert(finite(s.motion[k])&&s.motion[k]>0,`Invalid ${k}`);
+    assert(['cut','fade-slide'].includes(s.motion.transition),'Unsupported transition');
     const paper=s.paperTreatment;assert(finite(paper.textureStrength)&&paper.textureStrength>=0&&paper.textureStrength<=0.3&&finite(paper.internalPaperOpacity)&&paper.internalPaperOpacity>=0.85&&paper.internalPaperOpacity<=1,'Invalid paper material strength/opacity');assert(Number.isInteger(paper.textureSeed)&&finite(paper.documentTilt)&&Math.abs(paper.documentTilt)<=5&&finite(paper.edgeShadow)&&paper.edgeShadow>=0&&paper.edgeShadow<=24,'Invalid paper material geometry');if(paper.textureAsset)assert(assets.has(paper.textureAsset),'Missing texture asset');
     assert(/^#[a-f\d]{6}$/i.test(paper.tint)&&typeof paper.backingSheet==='boolean','Invalid paper tint/backing');
     if(s.highlight)assert(/^#[a-f\d]{6}$/i.test(s.highlight),'Invalid highlight color');
     if(s.component==='text-diagram')assert(s.content?.nodes?.length>=2&&s.content.nodes.length<=3,'Diagrams support 2–3 nodes');
     if(s.component==='object-callout')assert(s.annotations?.length>=1&&s.annotations.length<=2,'Callout needs 1–2 annotations');
     for(const a of s.annotations??[]){assert(a.label&&a.from?.length===2&&a.to?.length===2&&[...a.from,...a.to].every(finite),'Invalid annotation');if(a.layerId)assert(layerIds.has(a.layerId),'Unknown attached layer');}
+    const referencedEvents=[...layers.map(l=>l.reveal?.eventId),...(s.strokes??[]).map(l=>l.eventId),...(s.titles??[]).map(l=>l.eventId)].filter(Boolean);
+    assert(referencedEvents.every(id=>(s.events??[]).some(e=>e.id===id)),'Unknown reveal event');
+    for(const t of s.titles??[]){rect(t,'title');assert(typeof t.text==='string'&&t.text.trim()&&finite(t.fontSize)&&t.fontSize>=36,'Invalid title');if(t.color)assert(/^#[a-f\d]{6}$/i.test(t.color),'Invalid title color');}
+    for(const stroke of s.strokes??[]){
+      const paths=stroke.variants??[stroke.path];
+      assert(Array.isArray(paths)&&paths.length>0&&paths.every(p=>typeof p==='string'&&/^M[\d\s.,+eE\-MLCQSTZmlcqstz]+$/.test(p)),'Use local SVG stroke paths');
+      assert(finite(stroke.width)&&stroke.width>0&&stroke.width<=24,'Invalid stroke width');
+      assert(finite(stroke.boilFps??0)&&(stroke.boilFps??0)>=0&&(stroke.boilFps??0)<=12,'Invalid line boil rate');
+      if(stroke.color)assert(/^#[a-f\d]{6}$/i.test(stroke.color),'Invalid stroke color');
+      if(stroke.layerId)assert(layerIds.has(stroke.layerId),'Unknown stroke layer');
+    }
     if(plan.mode==='transcript'&&!timed)return s;
     if(plan.mode==='transcript')assert(s.startMs===words[s.anchorWord].startMs,'Scene onset must match its exact anchor word');
     assert(finite(s.startMs)&&finite(s.endMs)&&s.endMs>s.startMs,'Invalid scene interval');

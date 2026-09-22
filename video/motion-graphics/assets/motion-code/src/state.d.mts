@@ -1,6 +1,9 @@
 export function clamp(value:number):number;
 export function sceneState(scene:any,frame:number):{active:boolean;opacity:number;y:number;camera:number};
-export function layerState(scene:any,layer:any,frame:number):{x:number;y:number;scale:number};
+export function layerState(scene:any,layer:any,frame:number):{x:number;y:number;scale:number;opacity:number};
+export function eventProgress(scene:any,eventId:string|undefined,frame:number):number;
+export function strokeState(scene:any,stroke:any,frame:number):{path:string;progress:number};
+export function ease(value:number,kind?:string):number;
 export function layerBounds(layer:any,transform:any):{x:number;y:number;width:number;height:number};
 export function intersects(a:any,b:any):boolean;
 export function contains(a:any,b:any):boolean;
