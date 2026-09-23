@@ -8,7 +8,7 @@ import {merge,validatePlan,validateSettings} from '../assets/motion-code/contrac
 export {readJson,writeJson};
 export const skillRoot=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 export const configPath=()=>path.join(os.homedir(),'.config','codex-motion-graphics','config.json');
-const fields=['projectFolder','width','height','fps','sourceOffsetMs','timelinePlacementMs','delivery','colors','exclusions','export'];
+const fields=['projectFolder','width','height','fps','sourceOffsetMs','timelinePlacementMs','delivery','renderByDefault','colors','exclusions','export'];
 const select=o=>Object.fromEntries(Object.entries(o).filter(([k])=>fields.includes(k)));
 export function loadConfig(file=configPath()){return validateSettings(merge(readJson(path.join(skillRoot,'config/defaults.json')),fs.existsSync(file)?select(readJson(file)):{}));}
 export function saveConfig(changes,file=configPath()){for(const k of Object.keys(changes))if(!fields.includes(k))throw Error(`Unknown configuration field ${k}`);const s=validateSettings(merge(loadConfig(file),changes));writeJson(file,s);return s;}

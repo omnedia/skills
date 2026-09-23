@@ -6,6 +6,7 @@
   "sourceOffsetMs": 0,
   "timelinePlacementMs": 0,
   "delivery": "clips",
+  "renderByDefault": false,
   "colors": {},
   "exclusions": [],
   "export": {"codec":"prores","profile":"4444","pixelFormat":"yuva444p10le","container":"mov","imageFormat":"png","scale":2}

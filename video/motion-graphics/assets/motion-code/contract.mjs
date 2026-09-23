@@ -13,6 +13,9 @@ export function Q(ms,fps){return Qsum(ms,0,fps);}
 const addMs=(a,b)=>{const [x,y]=decimal(a),[z,w]=decimal(b);return Number(x*w+z*y)/Number(y*w);};
 export function merge(a,b){const out=structuredClone(a);for(const [k,v]of Object.entries(b??{}))out[k]=v&&typeof v==='object'&&!Array.isArray(v)?merge(out[k]??{},v):structuredClone(v);return out;}
 export function validateSettings(s){
+  // Old saved projects inherit review-first behavior; export is an explicit action.
+  if(s.renderByDefault===undefined)s.renderByDefault=false;
+  assert(s.renderByDefault===false,'Automatic rendering is disabled; explicitly request export and invoke motion:render');
   for(const k of ['width','height'])assert(Number.isInteger(s[k])&&s[k]>0,`Invalid ${k}`);fpsRatio(s.fps);
   for(const k of ['sourceOffsetMs','timelinePlacementMs'])assert(finite(s[k]),`Invalid ${k}`);assert(s.timelinePlacementMs>=0,'Negative editor origin');
   assert(['clips','sequence'].includes(s.delivery),'delivery must be clips or sequence');

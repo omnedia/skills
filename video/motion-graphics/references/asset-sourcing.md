@@ -1,29 +1,50 @@
-# Asset generation and web sourcing
+# Generate separate scene images
 
-Obtain the assets needed for the selected visual argument as part of creating the inserts. Reuse suitable supplied assets, generate original illustrative material with available image tools, or search online for assets with suitable reuse terms. Do not stop merely because the user has not supplied pictures. Use the available image-generation skill/tool instructions when generating or editing raster assets; this skill does not bundle a generator, segmentation service or inpainting model. If a necessary tool is unavailable, use another suitable source or report the specific gap.
+Every insert needs its own newly generated image set: at least three separate images for background, subject/midground and foreground. They depict the setting and its contents, with compatible perspective, lighting and scale. This applies equally to number-led inserts, comparisons and paper-note treatments. See the style's [required image layers](../styles/editorial-collage/STYLE.md#required-image-layers).
 
 ## Generate for the composition
 
-Generate objects, cutouts, paper textures, contextual illustrations or prepared background plates. Request the intended crop, perspective, lighting, palette and separation between planes; request transparency when supported. Prefer independent subject/background/foreground assets when they must move independently. Leave room for titles and render factual text, numbers and labels in Remotion rather than inside a generated image.
+Before generation, decide what the viewer sees behind the subject, what supports it, and what passes in front. Write a separate image prompt for each spatial group. Use the available image-generation skill/tool workflow; this skill does not bundle a generator, segmentation service or inpainting model.
 
-Describe concrete art direction: for example, “an isolated vintage telephone rendered as a grayscale printed-paper cutout, irregular cut edge, front three-quarter view, transparent background, no lettering; intended over a coral field.” Maintain consistent material and lighting across the scene. A generated flat collage is not automatically a set of parallax layers. Inspect actual alpha/masks and prepare sufficient backing/overscan for the planned movement.
+- **Background:** generate a contextual setting with sufficient overscan for the complete camera move, without an unwanted duplicate of the moving subject.
+- **Subject/midground:** generate the focal subject and supporting structure as compatible imagery. Request intact contact details and transparency where appropriate. Keep connected objects in a shared transform group.
+- **Foreground:** generate a distinct near object, architectural edge, terrain or other relevant element whose silhouette overlaps the midground and makes differential travel visible.
 
-Prepare assets for their planned physical relationship. Request compatible viewpoints and intact contact details (feet, tires or attachment points), plus a supporting surface that covers the subject's travel. If a subject must pass behind a railing or through an opening, obtain separately usable foreground structure and backing/deck imagery or prepare honest masks; a flattened object cannot automatically provide the correct occlusion. A simple authored paper ground plane is an acceptable support when its perspective and contact edge fit the subject. Choose this relationship before generating an oversized isolated cutout.
+For example, a factory scene can use a generated workshop interior, a separately generated machine on its base, and generated near racks or yarn spools. A number note sits within that environment. A machine picture plus a procedural grid and a text rectangle is not an acceptable substitute.
 
-Record generated assets as illustrations or textures. Retain the prompt, tool/model when known, generation date, source inputs and edits in provenance. Preserve applicable provider usage terms; do not label an AI output public domain or rights-cleared merely because it was generated. Do not turn generated photos, newspaper text, historical records or maps into supposed evidence. Use sourced originals or verified data for documentary claims; clearly identify a reconstruction when its appearance could be mistaken for a real record.
+Generate each scene image independently for its role. Do not generate one finished collage and reuse it as several moving crops, duplicate it at different scales, or rasterize SVG scenery to satisfy the image count. Texture, paper rectangles, text and masks do not count as scene images. They may be additional assets. Never reuse another insert's background, hero or foreground, even after recoloring or recropping.
 
-## Source with usable rights
+Keep exact text and numbers in Remotion, outside the generated images. Match the transcript's wording and meaning without adding speaker attributions, verification labels or disclaimers. Researching the truth or sourcing proof of transcript statements is not part of this workflow.
 
-Search engines and Pinterest can locate references; they do not establish reuse permission. Follow the result to the original asset page and inspect that item's license or rights statement. Prefer public-domain/CC0 material, compatible Creative Commons assets, or stock already licensed for the intended project. Repository-wide labels are not enough when individual items have different terms.
+Inspect generated assets for framing, actual transparency, compatible contact points, clean cut edges and sufficient backing. Regenerate or prepare unsuitable assets before animation. An opaque rectangular image is not a cutout just because the prompt requested transparency. Do not accept a flattened print as a replacement for subject/foreground separation.
 
-Check that the terms cover the actual use: commercial/promotional use when relevant, cropping/cutouts and other adaptations, attribution, and delivery of the asset inside an editable project. “Free download,” “royalty-free,” attribution alone, or appearing in search results is not sufficient permission. Do not assume an old photograph is public domain. If rights remain unclear or incompatible, choose another asset or generate an original illustration; do not silently presume fair use. New paid licensing needs user authorization.
+SVG/CSS may supply information notes, arrows, underlines, highlights and simple explanatory marks over the generated environment. They may not replace its background, architecture, landscape, physical subjects or foreground. A flat color can underlay the imagery, but it does not count as the background scene layer.
 
-Save the creator, original item URL, license name/version and URL, checked date, required credit, and modifications in the project's asset records. Preserve the rights statement or license locally where permitted. Keep originals and prepared derivatives distinguishable. Put required credits in a delivered `CREDITS.md` and identify any placement obligations in `EDITOR.md`; metadata alone does not fulfill an on-screen credit requirement.
+If generation is unavailable, preserve prompts and run state and report that blocker. Do not silently fall back to SVG-built scenes. Supplied images may guide generation or appear as additional assets; they do not waive the generated environment unless the user explicitly changes that requirement.
 
-If a source permits the rendered use but prohibits redistribution of the raw file, do not bundle it into the editable delivery. Prefer an alternative that supports both deliverables; otherwise explain the restriction and arrange a user-owned local asset reference rather than silently distributing it.
+## Parallel generation and verification
 
-## Connect to the existing plan
+The main agent owns scene selection, shared art direction and composition planning. Once briefs are ready, use a small pool of sub-agents to generate and verify independent assets concurrently, within the available agent and image-service limits. Prefer one scene's complete image set per worker for consistency; for a single scene, separate layer workers can share the same composition brief. Generate dependent images after their required reference is available. Reuse workers for queued scenes; do not assume spawning more workers bypasses service limits.
 
-Use the existing asset fields: stable `id`, local `path`, supported `kind`, `provenance` and `license`. Detailed evidence can live in a project-side asset ledger referenced by those fields; no new renderer schema is required. Save actual files locally for reproducible rendering rather than relying on hotlinked images. Keep source identity, derivative preparation and attribution linked through the asset ID.
+Give each worker a bounded hand-off:
 
-Asset inspection here concerns suitability, source identity and prepared layers. It does not add an automatic video-preview or post-render review loop to normal delivery.
+- Scene ID, visual argument, shared style references and palette, and the relevant style/asset instructions.
+- Asset IDs and individual prompts; each layer's spatial role, perspective, lighting, scale, support/contact points, intended overlap, framing, dimensions, transparency and overscan for the planned camera move.
+- Required reference files, a dedicated output directory outside the skill, and a separate result report path. Workers own only their assigned assets and report; the main agent alone edits `run.json`, `scene-plan.json`, `editorial-plan.md` and shared animation code.
+- The available image-generation workflow, acceptance criteria below, and a bounded retry allowance (default: one initial attempt and up to two corrective attempts per asset).
+
+Workers must inspect the actual saved images, not just generation responses. Check brief compliance, framing, visual defects, clean cut edges, dimensions, actual alpha where required, sufficient backing/overscan and plausible contact details. For complete scene sets, also compare perspective, lighting and scale across layers. Correct or regenerate failures within the allowance; report a blocker when the allowance is exhausted or a required tool is unavailable. Verification here concerns assets, not the truth of transcript statements.
+
+Return each asset's ID, absolute local path, dimensions, observed transparency, generation/preparation metadata and inspection findings, with a clear `ready` or `blocked` result and unresolved issues. Distinguish originals from prepared files. Keep these work statuses and reports in the project-side ledger or worker reports, not new renderer schema fields. Never report an uninspected asset as ready.
+
+While workers run, the main agent continues independent timing/coverage work, label copy, transition planning and reusable animation helpers. Keep image-dependent geometry provisional. Integrate ready results without waiting for unrelated workers, and queue remaining work as slots become free. On resume, reconcile existing reports and files before dispatching duplicate generation. If the service serializes requests, reduce concurrency and continue useful preparation; if sub-agents are unavailable, generate and verify sequentially.
+
+Worker acceptance permits integration; the main agent still checks the assembled scene's perspective, support/contact, scale, occlusion and visible parallax across the complete motion in Studio. Send specific asset defects back for correction and retain successful assets from that insert. Complete asset-dependent validation, preparation and compilation only once the required files are accepted; placeholders do not satisfy the generated-image requirement.
+
+## Save assets for editing
+
+Save every used image locally. Use the existing asset fields: stable `id`, local `path`, supported `kind`, `provenance` and `license`. Generated scene images use `kind: illustration`. Record the generation prompt, tool/model when known, date, reference inputs and preparation in `provenance`. These fields describe files and how they were made, not whether the transcript is verified. Retain applicable image-provider terms and bundled font licenses as project metadata; do not invent license statuses.
+
+Record image IDs, spatial roles and individual generation prompts in `editorial-plan.md` or a linked asset ledger. Keep originals and prepared cutouts distinguishable. Do not invent renderer schema fields for this record. Correcting an asset within its own insert is allowed; freshness applies between different inserts.
+
+Asset inspection happens before finalizing image-dependent placement and animation. Independent planning and reusable implementation can proceed during generation. Default scene review happens in Remotion Studio; it does not require rendering video files.

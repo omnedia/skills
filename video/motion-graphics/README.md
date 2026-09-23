@@ -27,13 +27,13 @@ Turn selected passages from your transcript into editorial collage motion graphi
 
 ## Made for your editing timeline
 
-Give the agent your transcript and word timing. It selects moments where a visual helps explain an idea, creates a Remotion project, and exports separate inserts for those passages. The surrounding video stays untouched.
+Give the agent your transcript and word timing. It selects explanatory moments covering approximately 50% of the video's duration, or more when useful, builds each insert from at least three freshly generated scene images, and opens the editable project in Remotion Studio for you to check. Every animation gets a distinct spatial composition and motion approach. Exported clips are created only when you explicitly request rendering.
 
 | | What you get |
 | :--- | :--- |
 | **Visuals with a purpose** | Selected explanatory moments become full-size editorial scenes with imagery, depth, typography, and precise annotations. |
 | **Motion that follows meaning** | Reveals use actual word timestamps, with animated entrances, continuing parallax, readable holds, and designed exits. |
-| **An editable result** | Silent ProRes 4444 clips with alpha, the Remotion project, saved settings, and exact timeline placement instructions. |
+| **An editable result** | The Remotion project open in the browser, local assets and saved settings. Silent ProRes 4444 clips and placement instructions when rendering is explicitly requested. |
 
 ## Install
 
@@ -86,7 +86,7 @@ The bundled **Editorial Collage — Vox-inspired** style is selected automatical
   </tr>
 </table>
 
-Each selected insert forms a layered environment with movement throughout its entrance, reading hold, and exit. Full-screen scenes are the default; overlays work when keeping the base shot visible helps explain the passage. Typography highlights a relationship, number, or detail rather than transcribing every word.
+Every insert uses separately generated background, subject/midground and foreground imagery. Overlap and differential motion create visible depth throughout entrance, reading hold and exit. SVG/CSS is limited to supporting notes, labels, arrows and highlights; it never builds the background or scene environment. Full-screen scenes are the default; overlays retain the image-based style while leaving the base shot visible.
 
 The starting palette uses warm off-white, charcoal, yellow, and coral. Keep those defaults, specify your own colors, or ask for the local color picker. The [style brief](styles/editorial-collage/STYLE.md) and [motion direction](styles/editorial-collage/motion-direction.md) describe the intended look; the [catalog](styles/catalog.json) records bundled defaults. The Vox reference describes inspiration, not official fonts or brand colors.
 
@@ -98,24 +98,24 @@ The starting palette uses warm off-white, charcoal, yellow, and coral. Keep thos
 | Transcript with sentence or cue timestamps | The agent can prepare an untimed scene plan; synchronized export needs actual word timing. |
 | Plain or partially timed transcript | Planning can begin, but missing word timing must be supplied before synchronized export. |
 | Explicit standalone brief with authored timing | The agent creates independently timed scenes without claiming speech synchronization. |
-| Images, documents, maps, or brand colors | The agent uses them to shape the selected scenes and preserves relevant provenance and credits. |
+| Reference images, supplied assets or brand colors | They guide the generated scene images and visual treatment. |
 
 > [!NOTE]
 > This skill does not analyze audio or perform forced alignment. It preserves supplied word timing and never distributes cue words evenly or estimates speech timing from reading speed.
 
-You do not need to supply every image. The agent can generate illustrations or source reusable assets through available tools. Documentary claims and maps require faithful sources; generated illustrations do not stand in for evidence. See [asset sourcing](references/asset-sourcing.md) and the [timing contract](references/input-and-timing.md).
+You do not need to supply images. The agent generates multiple fresh images per insert. It animates the transcript as supplied, without fact-checking or adding “laut Sprecher,” verification disclaimers or source captions. See [image generation](references/asset-sourcing.md) and the [timing contract](references/input-and-timing.md).
 
 ## How it works
 
 1. **Read the complete source.** Check timing, the Remotion plugin, local runtime, and saved editor settings.
-2. **Choose the visual moments.** Select passages where a graphic adds explanation, then plan the composition, assets, exact anchors, and reading time.
-3. **Resolve the look.** Use the bundled style and default colors, or apply your overrides and color-picker choices.
+2. **Choose the visual moments.** Plan enough useful beats for approximately 50% animated coverage or more. Record the duration calculation and compare every insert's fresh assets, composition and motion approach in `editorial-plan.md`; redesign repeated treatments before production.
+3. **Build the visual world.** Inspect the style GIF, then generate separate scene images for every insert. Plan support, foreground crossings and distinct choreography before adding notes. Use default colors or your overrides.
 4. **Create the project.** Validate the plan, freeze its inputs, scaffold through the Remotion plugin, and attach the skill's assets and helpers. Extend the generated scene code when the treatment needs it.
-5. **Compile and render.** Measure text with the actual local font, compile geometry and frame intervals, then render the final clips and placement manifest.
+5. **Compile and open Studio.** Measure text and compile geometry/timing. Start `npm run motion:studio`, then open its actual local URL in the browser for scene review. Keep the server running. Render clips and a placement manifest only if you explicitly requested export, either initially or in a follow-up.
 
 Saved run state supports resuming interrupted work at the allocated project path. Personal default changes do not alter prepared projects, and attachment preserves completed project edits.
 
-Normal delivery ends after the successful final render. Preview renders and post-render inspection are not automatic; request a preview when you want one.
+Default delivery is the editable project open in Remotion Studio, with no exported video files. `renderByDefault` is `false`; “create an animation” or a request to review scenes does not request export. Say “render/export the clips” in your initial prompt or a follow-up when you want video files. Opening Studio does not render a preview MP4.
 
 ## Export defaults
 
@@ -130,6 +130,8 @@ Normal delivery ends after the successful final render. Preview renders and post
 | Audio | Silent |
 | Delivery | Individual full-canvas clips for selected scenes |
 | Scene mode | Full-screen inserts; overlays available by request or editorial choice |
+| Render by default | **No** — explicit render/export request required |
+| Default review | Remotion Studio opened in the browser |
 
 Full-screen scenes carry their designed backgrounds. Overlays, unused canvas, and sequence gaps retain transparency; a full-screen insert is not transparent throughout its entire image. Preview placeholder backgrounds are excluded from production exports.
 
@@ -141,11 +143,12 @@ Personal defaults live in `~/.config/codex-motion-graphics/config.json`, indepen
 
 ```text
 your-project/
-├── out/
+├── out/                        # Created only when export is explicitly requested
 │   ├── *.mov                   # Final clips, or the requested sequence
 │   └── placement-manifest.json # Exact timing and editor placement
 ├── motion/                     # Editable renderer and compilation helpers
 ├── scene-plan.json             # Selected passages, assets, and motion choices
+├── editorial-plan.md           # Coverage calculation and distinct scene concepts
 ├── source.json                 # Saved source words and timing
 ├── settings.json               # Resolved project settings
 ├── project.json                # Compiled geometry and frame intervals
@@ -156,17 +159,16 @@ your-project/
 
 Place the clips above your footage with alpha enabled, using `EDITOR.md` and the placement manifest for timing, offsets, and handles. The deliverables are rendered assets and editable Remotion source; they are not MOGRT templates. The skill does not assemble or retime your base footage.
 
-To recompile and export a generated project after edits:
+After edits, recompile and reopen Studio. Only when export is explicitly requested, run:
 
 ```bash
 npm run motion:compile
 npm run motion:render
 ```
 
-For an explicitly requested preview or interactive editing session:
+For the default browser review:
 
 ```bash
-npm run motion:preview
 npm run motion:studio
 ```
 
@@ -204,7 +206,7 @@ sequence with transparent gaps between the selected scenes.
 | Node.js 22+, npm, and Git | Local runtime and project setup through the Remotion plugin. |
 | Remotion's rendering browser and host libraries | Font measurement, compilation, and rendering. |
 | Actual word timestamps | Transcript-synchronized export. |
-| Image-generation or web-search tools | When suitable assets need to be created or sourced. |
+| Image-generation tools | Every insert needs multiple separately generated scene images. |
 | Prepared masks and clean backing images | Treatments that separate photographic subjects into moving layers. |
 
 Segmentation, inpainting, and automatic face or footage tracking are not bundled capabilities. Asset preparation can use a separately available workflow. Remotion's own licensing terms apply to its use.
@@ -249,7 +251,7 @@ Keep development projects and installed dependencies outside the skill directory
 
 ## License
 
-Skill code and documentation use the repository's [MIT License](../../LICENSE). Bundled Inter Bold uses [SIL OFL 1.1](styles/editorial-collage/fonts/LICENSE.txt); [font sources and checksums](styles/editorial-collage/fonts/source.json) are included. Sourced images, documents, maps, and additional fonts retain their own licenses and credit requirements.
+Skill code and documentation use the repository's [MIT License](../../LICENSE). Bundled Inter Bold uses [SIL OFL 1.1](styles/editorial-collage/fonts/LICENSE.txt); [font sources and checksums](styles/editorial-collage/fonts/source.json) are included. Additional supplied assets and fonts retain their own licenses.
 
 ---
 
