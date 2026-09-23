@@ -223,6 +223,7 @@ Alignment runs locally with stable-ts and Whisper. The first use downloads model
 | Path | Purpose |
 | :--- | :--- |
 | [`SKILL.md`](SKILL.md) | Agent workflow, input handling, and completion requirements. |
+| [`skill.yaml`](skill.yaml) | Authoritative skill version and canonical repository location. |
 | [`styles/`](styles/) | Style catalog, design instructions, animated preview, and licensed font. |
 | [`assets/`](assets/) | Reusable caption code and gallery UI. |
 | [`config/defaults.json`](config/defaults.json) | Shared starting values, including 2× export scale. |
@@ -243,6 +244,20 @@ Alignment runs locally with stable-ts and Whisper. The first use downloads model
 | `brunson-gallery.mjs` | Regenerate the Brunson gallery animation as a separate maintenance task. |
 
 </details>
+
+## Versioning
+
+The current version and canonical repository location are stored only in [`skill.yaml`](skill.yaml). This skill is versioned independently using Semantic Versioning; its canonical source is [Omnedia skills](https://github.com/omnedia/skills).
+
+When repository or network access is available, the agent compares the installed version against the corresponding canonical `skill.yaml` on `master`, at most once per conversation/session unless asked to check again. If a newer version exists, it shows the installed and latest versions and offers update instructions or help. Updates are never installed automatically: modifying the installed skill requires explicit user approval. If the check cannot be completed, the skill continues normally and does not claim to be current.
+
+### Version bump rules
+
+- **PATCH** — fixes, clarifications, prompt refinements, and other backward-compatible corrections.
+- **MINOR** — new capabilities or backward-compatible functionality.
+- **MAJOR** — breaking changes to behavior, interfaces, workflows, inputs, outputs, or compatibility.
+
+Whenever a skill change warrants a release, update its `skill.yaml` version in the same change. Do not duplicate the current version in documentation; read it from `skill.yaml`. Bump only this skill, not unrelated skills. For example: `1.0.0 -> 1.0.1` for a fix, `1.0.0 -> 1.1.0` for a new capability, or `1.0.0 -> 2.0.0` for a breaking change.
 
 ## Development
 

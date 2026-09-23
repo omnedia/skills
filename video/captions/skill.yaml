@@ -1,0 +1,4 @@
+name: omnedia-captions
+version: 1.0.0
+repository: https://github.com/omnedia/skills
+path: video/captions

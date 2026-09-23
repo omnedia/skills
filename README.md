@@ -92,6 +92,8 @@ skills/
 |-- <category>/
 |   `-- <skill-name>/
 |       |-- SKILL.md        # Instructions and metadata
+|       |-- skill.yaml      # Authoritative version and canonical location
+|       |-- README.md       # Usage and version bump guidance
 |       |-- scripts/        # Optional executable helpers
 |       |-- references/     # Optional supporting documentation
 |       |-- assets/         # Optional templates and resources
@@ -100,6 +102,14 @@ skills/
 ```
 
 Every skill is self-contained, so its directory can be installed independently.
+
+## Skill versioning
+
+Skills in this repository are versioned independently using Semantic Versioning. Every skill has its own `skill.yaml` containing its name, version, canonical repository (`https://github.com/omnedia/skills`), and repository-relative path. The version in that file is authoritative for that skill; there is no replacement global repository version.
+
+All skills existing when this convention was introduced start at **1.0.0**. Use PATCH for fixes, clarifications and prompt refinements, MINOR for backward-compatible new capabilities, and MAJOR for breaking changes to behavior, interfaces, workflows, inputs, outputs or compatibility. When a change warrants a release, bump that skill's `skill.yaml` in the same change. Read the current version from `skill.yaml` rather than duplicating it in documentation. Updating one skill does not require bumping unrelated skills; leave their versions unchanged.
+
+Each skill checks its installed version against its canonical metadata on `master` when access is available, at most once per conversation/session unless explicitly requested again. Newer versions are reported with both version numbers. Updates require explicit user approval and are never installed automatically. A failed or unavailable check does not block normal operation or justify claiming the skill is current.
 
 ## Contributing
 
